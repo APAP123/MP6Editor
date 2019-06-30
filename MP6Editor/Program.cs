@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,12 @@ namespace MP6Editor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //Testing stuff
+            //Debug.WriteLine("frtgyfghjfhfghgfhfgfghfghfghgfhfghfghfghfghhtest");
+            Extractor extract = new Extractor();
+            extract.readFile();
+
             Application.Run(new Form1());
         }
     }

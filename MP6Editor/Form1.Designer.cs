@@ -33,9 +33,10 @@
             // 
             // drawTest1
             // 
-            this.drawTest1.Location = new System.Drawing.Point(127, 72);
+            this.drawTest1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawTest1.Location = new System.Drawing.Point(0, 0);
             this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(221, 214);
+            this.drawTest1.Size = new System.Drawing.Size(800, 450);
             this.drawTest1.TabIndex = 0;
             this.drawTest1.Text = "drawTest1";
             // 
