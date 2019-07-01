@@ -39,6 +39,8 @@
             this.drawTest1.Size = new System.Drawing.Size(566, 426);
             this.drawTest1.TabIndex = 0;
             this.drawTest1.Text = "drawTest1";
+            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.drawTest1_OnMouseWheelUpwards);
+            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.drawTest1_OnMouseWheelDownwards);
             // 
             // Form1
             // 

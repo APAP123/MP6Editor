@@ -13,7 +13,10 @@ namespace MP6Editor
     //class DrawTest : InvalidationControl
     class DrawTest : MonoGameControl
     {
-        private string welcome = "Hello World!";
+        //Camera variables
+        private bool CamMouseDown = false;
+        private System.Drawing.Point CamFirstMouseDownPosition;
+
         public List<Space> Board = new List<Space>();
         Rectangle rectangle;
         Texture2D blankSpace;    //0
@@ -55,7 +58,8 @@ namespace MP6Editor
         {
             base.Draw();
 
-            Editor.spriteBatch.Begin();
+            Editor.BeginCamera2D();
+            //Editor.spriteBatch.Begin();
 
             Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
@@ -65,21 +69,82 @@ namespace MP6Editor
                 rectangle = new Rectangle((int)spot.X, (int)spot.Y, 8, 8);
                 Texture2D currSpace = getSpaceTexture(Board[i].type);
 
-                
                 //Editor.spriteBatch.Draw(currSpace, spot, Color.White);
                 Editor.spriteBatch.Draw(currSpace, rectangle, Color.White);
             }
 
-            Editor.spriteBatch.End();
+            //Editor.spriteBatch.End();
+            Editor.EndCamera2D();
         }
+
+        #region Mouse Input Events
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
-
-            MessageBox.Show($"[{e.Button.ToString()}] mouse button pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (e.Button == MouseButtons.Left)
+            {
+                
+            }
+            //MessageBox.Show($"[{e.Button.ToString()}] mouse button pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+
+            if (e.Button == MouseButtons.Right)
+            {
+                CamMouseDown = false;
+            }
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (e.Button == MouseButtons.Right)
+            {
+                CamFirstMouseDownPosition = e.Location;
+                CamMouseDown = true;
+            }
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+
+            if (CamMouseDown)
+            {
+                int xDiff = CamFirstMouseDownPosition.X - e.Location.X;
+                int yDiff = CamFirstMouseDownPosition.Y - e.Location.Y;
+
+                Editor.MoveCam(new Vector2(xDiff, yDiff));
+                //Editor.MoveCam(new Vector2(2000, 2000));
+
+                CamFirstMouseDownPosition.X = e.Location.X;
+                CamFirstMouseDownPosition.Y = e.Location.Y;
+            }
+        }
+
+        public void Board_OnMouseWheelUpwards(MouseEventArgs e)
+        {
+            Editor.Cam.Zoom += 0.1f;
+        }
+
+        public void Board_OnMouseWheelDownwards(MouseEventArgs e)
+        {
+            if (Editor.Cam.Zoom > 0.7f) Editor.Cam.Zoom -= 0.1f;
+        }
+
+        #endregion
+
+        //Determines if passed position is over a space
+        void isOverSpace(Point point)
+        {
+            //TODO
+
+        }//end isOverSpace()
 
         //Get this type's matching texture
         Texture2D getSpaceTexture(int type)

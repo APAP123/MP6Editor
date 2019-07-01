@@ -16,5 +16,15 @@ namespace MP6Editor
         {
             InitializeComponent();
         }
+
+        private void drawTest1_OnMouseWheelUpwards(MouseEventArgs e)
+        {
+            drawTest1.Board_OnMouseWheelUpwards(e);
+        }
+
+        private void drawTest1_OnMouseWheelDownwards(MouseEventArgs e)
+        {
+            drawTest1.Board_OnMouseWheelDownwards(e);
+        }
     }
 }
