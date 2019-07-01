@@ -16,7 +16,7 @@ namespace MP6Editor
         int amount;
         List<Space> Board = new List<Space>();
 
-        public void readFile()
+        public List<Space> readFile()
         {
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
             //Skip past the first three bytes of padding
@@ -36,6 +36,7 @@ namespace MP6Editor
             offset = (int)fileStream.Position;
 
             //Debug.WriteLine("Space Count: " + spaces);
+            return Board;
         }
 
         //Reads the next space in

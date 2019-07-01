@@ -24,13 +24,13 @@ namespace MP6Editor
             Blue = 0x01,
             Red = 0x02,
             Happening = 0x03, //No event occurs upon landing
-            Chance = 0x04,
+            Chance = 0x04,    
             Dueling = 0x05,
             DKBowser = 0x06,
             Star = 0x07,
             Orb = 0x08,
-            Shop = 0x09, //Does not function on it's own
-            Ztar = 0x0A //Does not funtion on it's own
+            Shop = 0x09,      //Does not function on it's own
+            Ztar = 0x0A       //Does not funtion on it's own
         }
     }
 }

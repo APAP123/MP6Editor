@@ -19,9 +19,8 @@ namespace MP6Editor
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Testing stuff
-            //Debug.WriteLine("frtgyfghjfhfghgfhfgfghfghfghgfhfghfghfghfghhtest");
-            Extractor extract = new Extractor();
-            extract.readFile();
+            //Extractor extract = new Extractor();
+            //extract.readFile();
 
             Application.Run(new Form1());
         }
