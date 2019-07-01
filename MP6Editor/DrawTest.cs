@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Windows.Forms;
 using MonoGame.Forms.Controls;
+using Microsoft.Xna.Framework.Input;
 
 namespace MP6Editor
 {
@@ -16,8 +17,12 @@ namespace MP6Editor
         //Camera variables
         private bool CamMouseDown = false;
         private System.Drawing.Point CamFirstMouseDownPosition;
+        private const int x = 8; //X dimension for sprite
+        private const int y = 8; //Y dimension for sprite
 
         public List<Space> Board = new List<Space>();
+        public List<Vector2> Positions = new List<Vector2>(); //List of the visual positions on screen
+
         Rectangle rectangle;
         Texture2D blankSpace;    //0
         Texture2D blueSpace;     //1
@@ -66,11 +71,13 @@ namespace MP6Editor
             for (int i = 0; i < Board.Count; i++)
             {
                 Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
-                rectangle = new Rectangle((int)spot.X, (int)spot.Y, 8, 8);
-                Texture2D currSpace = getSpaceTexture(Board[i].type);
+                Positions.Add(spot);
+                rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                //Texture2D currSpace = getSpaceTexture(Board[i].type);
+                Board[i].texture = getSpaceTexture(Board[i].type);
 
                 //Editor.spriteBatch.Draw(currSpace, spot, Color.White);
-                Editor.spriteBatch.Draw(currSpace, rectangle, Color.White);
+                Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
             }
 
             //Editor.spriteBatch.End();
@@ -84,7 +91,17 @@ namespace MP6Editor
             base.OnMouseClick(e);
             if (e.Button == MouseButtons.Left)
             {
-                
+                var mouseState = Mouse.GetState();
+                var mousePosition = new Point(mouseState.X, mouseState.Y);
+
+                Vector2 newpos = GetWorldPosition(new Vector2(mouseState.X, mouseState.Y));
+
+                int space = isOverSpace(mousePosition);
+                //int space = isOverSpace(newpos);
+                if (space > -1)
+                {
+                    Board[space].type = 10;
+                }
             }
             //MessageBox.Show($"[{e.Button.ToString()}] mouse button pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -138,12 +155,24 @@ namespace MP6Editor
         }
 
         #endregion
+        //Get point converted to world position
+        public Vector2 GetWorldPosition(Vector2 position)
+        {
+            return position + Editor.Cam.Position;
+        }//end GetWorldPosition()
 
         //Determines if passed position is over a space
-        void isOverSpace(Point point)
+        int isOverSpace(Point point)
         {
-            //TODO
-
+            for (int i = 0; i < Board.Count; i++)
+            {
+                Rectangle area = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                if (area.Contains(point))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }//end isOverSpace()
 
         //Get this type's matching texture

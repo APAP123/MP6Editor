@@ -18,10 +18,6 @@ namespace MP6Editor
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Testing stuff
-            //Extractor extract = new Extractor();
-            //extract.readFile();
-
             Application.Run(new Form1());
         }
     }

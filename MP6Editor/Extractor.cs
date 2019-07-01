@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Forms.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MP6Editor
 {
-    class Extractor
+    class Extractor : MonoGameControl
     {
         const int BEGIN = 3; //Header padding length
         string fileName = "00000000";
@@ -71,6 +73,34 @@ namespace MP6Editor
 
             return space;
         }//end readSpace()
+
+        //Get the passed type's matching texture
+        Texture2D getSpaceTexture(int type)
+        {
+            switch (type)
+            {
+                case 0: //Blank
+                    return Editor.Content.Load<Texture2D>(@"Blank");
+                case 1: //Blue
+                    return Editor.Content.Load<Texture2D>(@"Blue");
+                case 2: //Red
+                    return Editor.Content.Load<Texture2D>(@"Red");
+                case 3: //Happening
+                    return Editor.Content.Load<Texture2D>(@"Happening");
+                case 4: //Miracle
+                    return Editor.Content.Load<Texture2D>(@"Miracle");
+                case 5: //Duel
+                    return Editor.Content.Load<Texture2D>(@"Dueling");
+                case 6: //DK/Bowser
+                    return Editor.Content.Load<Texture2D>(@"DK");
+                case 8: //Orb
+                    return Editor.Content.Load<Texture2D>(@"Orb");
+                case 9: //Shop
+                    return Editor.Content.Load<Texture2D>(@"Shop");
+                default: //Everything else
+                    return Editor.Content.Load<Texture2D>(@"Other");
+            }
+        }//end getSpaceTexture()
 
         //Converts the next 4 bytes into a float
         float getPosition(FileStream fileStream)
