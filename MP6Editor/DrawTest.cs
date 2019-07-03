@@ -23,6 +23,8 @@ namespace MP6Editor
         public List<Space> Board = new List<Space>();
         public List<Vector2> Positions = new List<Vector2>(); //List of the visual positions on screen
 
+        Vector2 trueCenter = new Vector2();
+
         Rectangle rectangle;
         Texture2D blankSpace;    //0
         Texture2D blueSpace;     //1
@@ -67,6 +69,7 @@ namespace MP6Editor
             //Editor.spriteBatch.Begin();
 
             Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
+            trueCenter = center;
 
             for (int i = 0; i < Board.Count; i++)
             {
@@ -94,7 +97,7 @@ namespace MP6Editor
                 var mouseState = Mouse.GetState();
                 var mousePosition = new Point(mouseState.X, mouseState.Y);
 
-                Vector2 newpos = GetWorldPosition(new Vector2(mouseState.X, mouseState.Y));
+                //Vector2 newpos = GetWorldPosition(new Vector2(mouseState.X, mouseState.Y));
 
                 int space = isOverSpace(mousePosition);
                 //int space = isOverSpace(newpos);
@@ -155,18 +158,21 @@ namespace MP6Editor
         }
 
         #endregion
-        //Get point converted to world position
-        public Vector2 GetWorldPosition(Vector2 position)
+
+        //Converts passed world position to relative screen position
+        Vector2 toRelativePosition(Vector2 pos)
         {
-            return position + Editor.Cam.Position;
-        }//end GetWorldPosition()
+            return pos - (Editor.Cam.Position - trueCenter);
+        }//end To Relative Position
 
         //Determines if passed position is over a space
         int isOverSpace(Point point)
         {
             for (int i = 0; i < Board.Count; i++)
             {
-                Rectangle area = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                Vector2 newPos = toRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
+                //Rectangle area = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
                 if (area.Contains(point))
                 {
                     return i;
