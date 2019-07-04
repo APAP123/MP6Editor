@@ -20,8 +20,10 @@ namespace MP6Editor
         private const int x = 8; //X dimension for sprite
         private const int y = 8; //Y dimension for sprite
 
+        //Public board-related variables to communicate with the form
         public List<Space> Board = new List<Space>();
         public List<Vector2> Positions = new List<Vector2>(); //List of the visual positions on screen
+        public int SelectedSpace = -1;
 
         Vector2 trueCenter = new Vector2();
 
@@ -54,7 +56,7 @@ namespace MP6Editor
             orbSpace = Editor.Content.Load<Texture2D>(@"Orb");             //8
             shopSpace = Editor.Content.Load<Texture2D>(@"Shop");           //9
             otherSpace = Editor.Content.Load<Texture2D>(@"Other");         //Others
-        }
+        }//end Initialize()
 
         protected override void Update(GameTime gameTime)
         {
@@ -85,29 +87,28 @@ namespace MP6Editor
 
             //Editor.spriteBatch.End();
             Editor.EndCamera2D();
-        }
+        }//end Draw()
 
         #region Mouse Input Events
 
-        protected override void OnMouseClick(MouseEventArgs e)
+        public void Board_OnMouseClick(MouseEventArgs e)
         {
-            base.OnMouseClick(e);
+            //base.OnMouseClick(e);
             if (e.Button == MouseButtons.Left)
             {
                 var mouseState = Mouse.GetState();
                 var mousePosition = new Point(mouseState.X, mouseState.Y);
 
-                //Vector2 newpos = GetWorldPosition(new Vector2(mouseState.X, mouseState.Y));
-
                 int space = isOverSpace(mousePosition);
-                //int space = isOverSpace(newpos);
+
                 if (space > -1)
                 {
-                    Board[space].type = 10;
+                    SelectedSpace = space;
+                    //Application.OpenForms["Form1"]
+                    //Board[space].type = 10;
                 }
             }
-            //MessageBox.Show($"[{e.Button.ToString()}] mouse button pressed on control!", "Test_Action", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }//end Board_OnMouseClick()
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
@@ -117,7 +118,7 @@ namespace MP6Editor
             {
                 CamMouseDown = false;
             }
-        }
+        }//end OnMouseUp()
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -140,7 +141,6 @@ namespace MP6Editor
                 int yDiff = CamFirstMouseDownPosition.Y - e.Location.Y;
 
                 Editor.MoveCam(new Vector2(xDiff, yDiff));
-                //Editor.MoveCam(new Vector2(2000, 2000));
 
                 CamFirstMouseDownPosition.X = e.Location.X;
                 CamFirstMouseDownPosition.Y = e.Location.Y;
@@ -171,7 +171,6 @@ namespace MP6Editor
             for (int i = 0; i < Board.Count; i++)
             {
                 Vector2 newPos = toRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
-                //Rectangle area = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
                 Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
                 if (area.Contains(point))
                 {
