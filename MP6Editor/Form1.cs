@@ -37,6 +37,9 @@ namespace MP6Editor
         //Updates on-screen information
         private void updateDisplayInfo()
         {
+            //Clear previous links
+            listBox_Links.Items.Clear();
+
             if(drawTest1.SelectedSpace > -1)
             {
                 label_SelectedSpace.Text = "ID#: " + drawTest1.SelectedSpace;
@@ -44,7 +47,30 @@ namespace MP6Editor
                 textBox_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Y;
                 textBox_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Z;
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
+
+                //Add SelectedSpace's links to the listBox
+                for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
+                {
+                    listBox_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i]);
+                }
+                
             }
         }//end updateDisplayInfo()
+
+        //Updates the board visuals to match the entered text
+        private void updateSpaceInfo(int space)
+        {
+            drawTest1.Board[space].X = float.Parse(textBox_X.Text);
+            drawTest1.Board[space].Y = float.Parse(textBox_Y.Text);
+            drawTest1.Board[space].Z = float.Parse(textBox_Z.Text);
+        }//end updateSpaceInfo
+
+        private void Position_WasModified(object sender, EventArgs e)
+        {
+            TextBox sendingBox = (TextBox)sender;
+            //bool wasmod = sendingBox.Modified;
+            updateSpaceInfo(drawTest1.SelectedSpace);
+            sendingBox.Modified = false;
+        }
     }
 }

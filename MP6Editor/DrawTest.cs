@@ -45,6 +45,8 @@ namespace MP6Editor
             Extractor extractor = new Extractor();
             Board = extractor.readFile();
 
+            InitPositions();
+
             blankSpace = Editor.Content.Load<Texture2D>(@"Blank");         //0
             blueSpace = Editor.Content.Load<Texture2D>(@"Blue");           //1
             redSpace = Editor.Content.Load<Texture2D>(@"Red");             //2
@@ -76,7 +78,8 @@ namespace MP6Editor
             for (int i = 0; i < Board.Count; i++)
             {
                 Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
-                Positions.Add(spot);
+                //Positions.Add(spot);
+                Positions[i] = spot;
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
                 //Texture2D currSpace = getSpaceTexture(Board[i].type);
                 Board[i].texture = getSpaceTexture(Board[i].type);
@@ -207,5 +210,26 @@ namespace MP6Editor
                     return otherSpace;
             }
         }//end getSpaceTexture()
+
+        void InitPositions()
+        {
+            Editor.BeginCamera2D();
+            //Editor.spriteBatch.Begin();
+
+            Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
+            trueCenter = center;
+
+            for (int i = 0; i < Board.Count; i++)
+            {
+                Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
+                Positions.Add(spot);
+                rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                Board[i].texture = getSpaceTexture(Board[i].type);
+
+                //Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
+            }
+
+            Editor.EndCamera2D();
+        }
     }
 }
