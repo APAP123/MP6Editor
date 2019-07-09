@@ -37,10 +37,14 @@ namespace MP6Editor
         //Updates on-screen information
         private void updateDisplayInfo()
         {
-            label_SelectedSpace.Text = "" + drawTest1.SelectedSpace;
-            textBox_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].X;
-            textBox_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Y;
-            textBox_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Z;
+            if(drawTest1.SelectedSpace > -1)
+            {
+                label_SelectedSpace.Text = "ID#: " + drawTest1.SelectedSpace;
+                textBox_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].X;
+                textBox_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Y;
+                textBox_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Z;
+                comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
+            }
         }//end updateDisplayInfo()
     }
 }
