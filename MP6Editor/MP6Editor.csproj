@@ -86,6 +86,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="packages.config" />
@@ -101,6 +102,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\DK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Dueling.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Happening.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Miracle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Orb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Shop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

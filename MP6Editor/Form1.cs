@@ -60,17 +60,59 @@ namespace MP6Editor
         //Updates the board visuals to match the entered text
         private void updateSpaceInfo(int space)
         {
+            //Position
             drawTest1.Board[space].X = float.Parse(textBox_X.Text);
             drawTest1.Board[space].Y = float.Parse(textBox_Y.Text);
             drawTest1.Board[space].Z = float.Parse(textBox_Z.Text);
-        }//end updateSpaceInfo
 
+            //type
+            drawTest1.Board[space].type = comboBox_Type.SelectedIndex;
+
+            pictureBox_Space.Image = GetNewSpace(drawTest1.Board[drawTest1.SelectedSpace].type);
+        }//end updateSpaceInfo()
+
+        //Returns image of passed space type
+        private Image GetNewSpace(int type)
+        {
+            switch (type)
+            {
+                case 0: //Blank
+                    return MP6Editor.Properties.Resources.Blank;
+                case 1: //Blue
+                    return MP6Editor.Properties.Resources.Blue;
+                case 2: //Red
+                    return MP6Editor.Properties.Resources.Red;
+                case 3: //Happening
+                    return MP6Editor.Properties.Resources.Happening;
+                case 4: //Miracle
+                    return MP6Editor.Properties.Resources.Miracle;
+                case 5: //Duel
+                    return MP6Editor.Properties.Resources.Dueling;
+                case 6: //DK/Bowser
+                    return MP6Editor.Properties.Resources.DK;
+                case 8: //Orb
+                    return MP6Editor.Properties.Resources.Orb;
+                case 9: //Shop
+                    return MP6Editor.Properties.Resources.Shop;
+                default: //Everything else
+                    return MP6Editor.Properties.Resources.Other;
+            }
+        }//end GetNewSpace()
+
+        //Updates visual information if space position was changed
         private void Position_WasModified(object sender, EventArgs e)
         {
             TextBox sendingBox = (TextBox)sender;
             //bool wasmod = sendingBox.Modified;
             updateSpaceInfo(drawTest1.SelectedSpace);
             sendingBox.Modified = false;
-        }
+        }//end Position_WasModified()
+
+        //Updates space type if changed
+        private void type_WasModified(object sender, EventArgs e)
+        {
+            //drawTest1.Board[drawTest1.SelectedSpace].type = comboBox_Type.SelectedIndex;
+            updateSpaceInfo(drawTest1.SelectedSpace);
+        }//end type_WasModified()
     }
 }

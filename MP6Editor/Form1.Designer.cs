@@ -40,13 +40,15 @@
             this.listBox_Links = new System.Windows.Forms.ListBox();
             this.label_Links = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.drawTest1 = new MP6Editor.DrawTest();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
             // 
             // label_SelectedSpace
             // 
             this.label_SelectedSpace.AutoSize = true;
-            this.label_SelectedSpace.Location = new System.Drawing.Point(605, 199);
+            this.label_SelectedSpace.Location = new System.Drawing.Point(605, 188);
             this.label_SelectedSpace.Name = "label_SelectedSpace";
             this.label_SelectedSpace.Size = new System.Drawing.Size(28, 13);
             this.label_SelectedSpace.TabIndex = 1;
@@ -54,7 +56,7 @@
             // 
             // textBox_X
             // 
-            this.textBox_X.Location = new System.Drawing.Point(628, 233);
+            this.textBox_X.Location = new System.Drawing.Point(628, 222);
             this.textBox_X.MaxLength = 30;
             this.textBox_X.Name = "textBox_X";
             this.textBox_X.Size = new System.Drawing.Size(55, 20);
@@ -63,7 +65,7 @@
             // 
             // textBox_Y
             // 
-            this.textBox_Y.Location = new System.Drawing.Point(628, 259);
+            this.textBox_Y.Location = new System.Drawing.Point(628, 248);
             this.textBox_Y.MaxLength = 30;
             this.textBox_Y.Name = "textBox_Y";
             this.textBox_Y.Size = new System.Drawing.Size(55, 20);
@@ -72,7 +74,7 @@
             // 
             // textBox_Z
             // 
-            this.textBox_Z.Location = new System.Drawing.Point(628, 285);
+            this.textBox_Z.Location = new System.Drawing.Point(628, 274);
             this.textBox_Z.MaxLength = 30;
             this.textBox_Z.Name = "textBox_Z";
             this.textBox_Z.Size = new System.Drawing.Size(55, 20);
@@ -82,7 +84,7 @@
             // label_X
             // 
             this.label_X.AutoSize = true;
-            this.label_X.Location = new System.Drawing.Point(605, 236);
+            this.label_X.Location = new System.Drawing.Point(605, 225);
             this.label_X.Name = "label_X";
             this.label_X.Size = new System.Drawing.Size(17, 13);
             this.label_X.TabIndex = 5;
@@ -91,7 +93,7 @@
             // label_Y
             // 
             this.label_Y.AutoSize = true;
-            this.label_Y.Location = new System.Drawing.Point(605, 266);
+            this.label_Y.Location = new System.Drawing.Point(605, 255);
             this.label_Y.Name = "label_Y";
             this.label_Y.Size = new System.Drawing.Size(17, 13);
             this.label_Y.TabIndex = 6;
@@ -100,7 +102,7 @@
             // label_Z
             // 
             this.label_Z.AutoSize = true;
-            this.label_Z.Location = new System.Drawing.Point(605, 292);
+            this.label_Z.Location = new System.Drawing.Point(605, 281);
             this.label_Z.Name = "label_Z";
             this.label_Z.Size = new System.Drawing.Size(17, 13);
             this.label_Z.TabIndex = 7;
@@ -120,15 +122,16 @@
             "Star (7)",
             "Orb (8)",
             "Shop (9)"});
-            this.comboBox_Type.Location = new System.Drawing.Point(628, 311);
+            this.comboBox_Type.Location = new System.Drawing.Point(628, 300);
             this.comboBox_Type.Name = "comboBox_Type";
             this.comboBox_Type.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Type.TabIndex = 8;
+            this.comboBox_Type.SelectedIndexChanged += new System.EventHandler(this.type_WasModified);
             // 
             // label_Type
             // 
             this.label_Type.AutoSize = true;
-            this.label_Type.Location = new System.Drawing.Point(588, 319);
+            this.label_Type.Location = new System.Drawing.Point(588, 308);
             this.label_Type.Name = "label_Type";
             this.label_Type.Size = new System.Drawing.Size(34, 13);
             this.label_Type.TabIndex = 9;
@@ -137,7 +140,7 @@
             // listBox_Links
             // 
             this.listBox_Links.FormattingEnabled = true;
-            this.listBox_Links.Location = new System.Drawing.Point(608, 380);
+            this.listBox_Links.Location = new System.Drawing.Point(608, 369);
             this.listBox_Links.Name = "listBox_Links";
             this.listBox_Links.Size = new System.Drawing.Size(124, 82);
             this.listBox_Links.TabIndex = 10;
@@ -145,7 +148,7 @@
             // label_Links
             // 
             this.label_Links.AutoSize = true;
-            this.label_Links.Location = new System.Drawing.Point(588, 364);
+            this.label_Links.Location = new System.Drawing.Point(588, 353);
             this.label_Links.Name = "label_Links";
             this.label_Links.Size = new System.Drawing.Size(51, 13);
             this.label_Links.TabIndex = 11;
@@ -158,6 +161,16 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // pictureBox_Space
+            // 
+            this.pictureBox_Space.Image = global::MP6Editor.Properties.Resources.Other;
+            this.pictureBox_Space.Location = new System.Drawing.Point(628, 36);
+            this.pictureBox_Space.Name = "pictureBox_Space";
+            this.pictureBox_Space.Size = new System.Drawing.Size(124, 124);
+            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Space.TabIndex = 13;
+            this.pictureBox_Space.TabStop = false;
             // 
             // drawTest1
             // 
@@ -176,6 +189,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 474);
+            this.Controls.Add(this.pictureBox_Space);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label_Links);
             this.Controls.Add(this.listBox_Links);
@@ -191,6 +205,7 @@
             this.Controls.Add(this.drawTest1);
             this.Name = "Form1";
             this.Text = "MP6Editor";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,6 +226,7 @@
         private System.Windows.Forms.ListBox listBox_Links;
         private System.Windows.Forms.Label label_Links;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.PictureBox pictureBox_Space;
     }
 }
 
