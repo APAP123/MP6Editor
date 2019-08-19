@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label_SelectedSpace = new System.Windows.Forms.Label();
             this.textBox_X = new System.Windows.Forms.TextBox();
             this.textBox_Y = new System.Windows.Forms.TextBox();
@@ -42,6 +43,12 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.openFileDialog_wbin = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,12 +57,13 @@
             this.label_SelectedSpace.AutoSize = true;
             this.label_SelectedSpace.Location = new System.Drawing.Point(605, 188);
             this.label_SelectedSpace.Name = "label_SelectedSpace";
-            this.label_SelectedSpace.Size = new System.Drawing.Size(28, 13);
+            this.label_SelectedSpace.Size = new System.Drawing.Size(130, 13);
             this.label_SelectedSpace.TabIndex = 1;
-            this.label_SelectedSpace.Text = "ID#:";
+            this.label_SelectedSpace.Text = "ID#: (No Space Selected)";
             // 
             // textBox_X
             // 
+            this.textBox_X.Enabled = false;
             this.textBox_X.Location = new System.Drawing.Point(628, 222);
             this.textBox_X.MaxLength = 30;
             this.textBox_X.Name = "textBox_X";
@@ -65,6 +73,7 @@
             // 
             // textBox_Y
             // 
+            this.textBox_Y.Enabled = false;
             this.textBox_Y.Location = new System.Drawing.Point(628, 248);
             this.textBox_Y.MaxLength = 30;
             this.textBox_Y.Name = "textBox_Y";
@@ -74,6 +83,7 @@
             // 
             // textBox_Z
             // 
+            this.textBox_Z.Enabled = false;
             this.textBox_Z.Location = new System.Drawing.Point(628, 274);
             this.textBox_Z.MaxLength = 30;
             this.textBox_Z.Name = "textBox_Z";
@@ -110,6 +120,7 @@
             // 
             // comboBox_Type
             // 
+            this.comboBox_Type.Enabled = false;
             this.comboBox_Type.FormattingEnabled = true;
             this.comboBox_Type.Items.AddRange(new object[] {
             "Blank (0)",
@@ -139,6 +150,7 @@
             // 
             // listBox_Links
             // 
+            this.listBox_Links.Enabled = false;
             this.listBox_Links.FormattingEnabled = true;
             this.listBox_Links.Location = new System.Drawing.Point(608, 369);
             this.listBox_Links.Name = "listBox_Links";
@@ -156,6 +168,8 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -184,6 +198,42 @@
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.drawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.drawTest1_MouseClick);
             // 
+            // openFileDialog_wbin
+            // 
+            this.openFileDialog_wbin.FileName = "openFileDialog_wbin";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.exportToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Import...";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Text = "Export...";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,6 +255,8 @@
             this.Controls.Add(this.drawTest1);
             this.Name = "Form1";
             this.Text = "MP6Editor";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -227,6 +279,11 @@
         private System.Windows.Forms.Label label_Links;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.PictureBox pictureBox_Space;
+        private System.Windows.Forms.OpenFileDialog openFileDialog_wbin;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     }
 }
 

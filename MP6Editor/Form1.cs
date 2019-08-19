@@ -31,6 +31,14 @@ namespace MP6Editor
         private void drawTest1_MouseClick(object sender, MouseEventArgs e)
         {
             drawTest1.Board_OnMouseClick(e);
+            if(drawTest1.SelectedSpace > -1)
+            {
+                textBox_X.Enabled = true;
+                textBox_Y.Enabled = true;
+                textBox_Z.Enabled = true;
+                comboBox_Type.Enabled = true;
+                listBox_Links.Enabled = true;
+            }
             updateDisplayInfo();
         }
 
@@ -72,6 +80,7 @@ namespace MP6Editor
         }//end updateSpaceInfo()
 
         //Returns image of passed space type
+        //TODO: Move this and similar helper functions to their own class
         private Image GetNewSpace(int type)
         {
             switch (type)
@@ -114,5 +123,17 @@ namespace MP6Editor
             //drawTest1.Board[drawTest1.SelectedSpace].type = comboBox_Type.SelectedIndex;
             updateSpaceInfo(drawTest1.SelectedSpace);
         }//end type_WasModified()
+
+        //Opens the file openFileDialog to select the w##.bin file
+        private void ImportFile(object sender, EventArgs e)
+        {
+            string filePath = string.Empty;
+            //if openFileDialog was successful
+            if(openFileDialog_wbin.ShowDialog() == DialogResult.OK)
+            {
+                //TODO: the rest; currently this only displays the openfile dialog and then does nothing
+                filePath = openFileDialog_wbin.FileName;
+            }
+        }//end ImportFile()
     }
 }
