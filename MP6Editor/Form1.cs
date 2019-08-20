@@ -131,8 +131,13 @@ namespace MP6Editor
             //if openFileDialog was successful
             if(openFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
-                //TODO: the rest; currently this only displays the openfile dialog and then does nothing
+                //TODO: Possible code clean up? These method calls to other classes feels sloppy
+                Extractor extractor = new Extractor();
+
                 filePath = openFileDialog_wbin.FileName;
+                extractor.quickExtract(filePath);
+                drawTest1.Board = extractor.readFile();
+                drawTest1.InitPositions();
             }
         }//end ImportFile()
     }

@@ -42,10 +42,10 @@ namespace MP6Editor
         protected override void Initialize()
         {
             base.Initialize();
-            Extractor extractor = new Extractor();
-            Board = extractor.readFile();
+            //Extractor extractor = new Extractor();
+            //Board = extractor.readFile();
 
-            InitPositions();
+            //InitPositions();
 
             blankSpace = Editor.Content.Load<Texture2D>(@"Blank");         //0
             blueSpace = Editor.Content.Load<Texture2D>(@"Blue");           //1
@@ -211,7 +211,8 @@ namespace MP6Editor
             }
         }//end getSpaceTexture()
 
-        void InitPositions()
+        //Sets the initial visual space positions read from the Board
+        public void InitPositions()
         {
             Editor.BeginCamera2D();
             //Editor.spriteBatch.Begin();
@@ -225,11 +226,10 @@ namespace MP6Editor
                 Positions.Add(spot);
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
                 Board[i].texture = getSpaceTexture(Board[i].type);
-
                 //Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
             }
 
             Editor.EndCamera2D();
-        }
+        }//end InitPositions()
     }
 }

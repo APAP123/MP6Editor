@@ -13,7 +13,8 @@ namespace MP6Editor
     class Extractor : MonoGameControl
     {
         const int BEGIN = 3; //Header padding length
-        string fileName = "00000000";
+        //string fileName = "00000000";
+        string fileName = "";
         int offset;
         int amount;
         List<Space> Board = new List<Space>();
@@ -127,5 +128,35 @@ namespace MP6Editor
 
             return crap;
         }//end getCrap()
+
+        //Calls cline quickbms to extract the files
+        public void quickExtract(string filePath)
+        {
+            //TODO: cleanup; create string variables to reduce repetition and to prevent typos;
+            //use a loop to reduce code redundancy
+
+            Process quickbms = new Process();
+            //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            quickbms.StartInfo.FileName = "quickbms.exe";
+            quickbms.StartInfo.Arguments = "mario_party_6.bms \"" + filePath + "\" w01_out";
+            quickbms.StartInfo.UseShellExecute = true;
+            //Console.WriteLine(filePath);
+
+            quickbms.Start();
+
+            //Wait for the first pass to finish
+            quickbms.WaitForExit();
+
+            //Change filepaths for cl args
+            quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat w01_out\\00000000_out";
+            quickbms.Start();
+
+            //Wait for the second pass to finish
+            quickbms.WaitForExit();
+
+            //Set global fileName
+            fileName = "w01_out\\00000000_out\\00000000";
+
+        }//end quickExtract()
     }
 }
