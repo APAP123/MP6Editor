@@ -41,13 +41,13 @@
             this.listBox_Links = new System.Windows.Forms.ListBox();
             this.label_Links = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
-            this.drawTest1 = new MP6Editor.DrawTest();
-            this.openFileDialog_wbin = new System.Windows.Forms.OpenFileDialog();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
+            this.drawTest1 = new MP6Editor.DrawTest();
+            this.openFileDialog_wbin = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -176,32 +176,6 @@
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // pictureBox_Space
-            // 
-            this.pictureBox_Space.Image = global::MP6Editor.Properties.Resources.Other;
-            this.pictureBox_Space.Location = new System.Drawing.Point(628, 36);
-            this.pictureBox_Space.Name = "pictureBox_Space";
-            this.pictureBox_Space.Size = new System.Drawing.Size(124, 124);
-            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Space.TabIndex = 13;
-            this.pictureBox_Space.TabStop = false;
-            // 
-            // drawTest1
-            // 
-            this.drawTest1.Location = new System.Drawing.Point(12, 36);
-            this.drawTest1.MouseHoverUpdatesOnly = false;
-            this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(566, 426);
-            this.drawTest1.TabIndex = 0;
-            this.drawTest1.Text = "drawTest1";
-            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.drawTest1_OnMouseWheelUpwards);
-            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.drawTest1_OnMouseWheelDownwards);
-            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.drawTest1_MouseClick);
-            // 
-            // openFileDialog_wbin
-            // 
-            this.openFileDialog_wbin.FileName = "openFileDialog_wbin";
-            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -227,12 +201,39 @@
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export...";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
+            // 
+            // pictureBox_Space
+            // 
+            this.pictureBox_Space.Image = global::MP6Editor.Properties.Resources.Other;
+            this.pictureBox_Space.Location = new System.Drawing.Point(628, 36);
+            this.pictureBox_Space.Name = "pictureBox_Space";
+            this.pictureBox_Space.Size = new System.Drawing.Size(124, 124);
+            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Space.TabIndex = 13;
+            this.pictureBox_Space.TabStop = false;
+            // 
+            // drawTest1
+            // 
+            this.drawTest1.Location = new System.Drawing.Point(12, 36);
+            this.drawTest1.MouseHoverUpdatesOnly = false;
+            this.drawTest1.Name = "drawTest1";
+            this.drawTest1.Size = new System.Drawing.Size(566, 426);
+            this.drawTest1.TabIndex = 0;
+            this.drawTest1.Text = "drawTest1";
+            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.drawTest1_OnMouseWheelUpwards);
+            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.drawTest1_OnMouseWheelDownwards);
+            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.drawTest1_MouseClick);
+            // 
+            // openFileDialog_wbin
+            // 
+            this.openFileDialog_wbin.FileName = "openFileDialog_wbin";
             // 
             // Form1
             // 

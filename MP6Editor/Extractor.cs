@@ -15,6 +15,11 @@ namespace MP6Editor
         const int BEGIN = 3; //Header padding length
         //string fileName = "00000000";
         string fileName = "";
+
+
+        const string QUICKBMS = "quickbms.exe";
+        const string MP6SCRIPT = "mario_party_6.bms \"";
+        const string LZSSSCRIPT = "LZS_decompress.bms";
         int offset;
         int amount;
         List<Space> Board = new List<Space>();
@@ -148,15 +153,28 @@ namespace MP6Editor
             quickbms.WaitForExit();
 
             //Change filepaths for cl args
-            quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat w01_out\\00000000_out";
+            //quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat w01_out\\00000000_out";
+            quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
             quickbms.Start();
 
             //Wait for the second pass to finish
             quickbms.WaitForExit();
 
             //Set global fileName
-            fileName = "w01_out\\00000000_out\\00000000";
+            //fileName = "w01_out\\00000000_out\\00000000";
+            fileName = "00000000_out\\00000000";
 
         }//end quickExtract()
+
+        //Repacks the file using quickBMS's reimport feature
+        //TODO: better method names
+        public void quickReimport(string filePath)
+        {
+            Process quickbms = new Process();
+            quickbms.StartInfo.FileName = "quickbms.exe";
+            quickbms.StartInfo.Arguments = "-r LZS_decompress.bms \"" + filePath + "\" w01_out";
+            quickbms.StartInfo.UseShellExecute = true;
+            //TODO: the rest; make sure filepath points to the correct archive
+        }//end quickReimport()
     }
 }

@@ -140,5 +140,11 @@ namespace MP6Editor
                 drawTest1.InitPositions();
             }
         }//end ImportFile()
+
+        //Opposite 
+        private void ExportFile(object sender, EventArgs e)
+        {
+            //TODO
+        }//end ExportFile()
     }
 }
