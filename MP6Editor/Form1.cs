@@ -144,7 +144,18 @@ namespace MP6Editor
         //Opposite 
         private void ExportFile(object sender, EventArgs e)
         {
-            //TODO
+            string filePath = string.Empty;
+            //if openFileDialog was successful
+            if (openFileDialog_wbin.ShowDialog() == DialogResult.OK)
+            {
+                //TODO: Possible code clean up? These method calls to other classes feels sloppy
+                Extractor extractor = new Extractor();
+
+                filePath = openFileDialog_wbin.FileName;
+                extractor.quickReimport(filePath);
+                drawTest1.Board = extractor.readFile();
+                drawTest1.InitPositions();
+            }
         }//end ExportFile()
     }
 }
