@@ -16,6 +16,8 @@ namespace MP6Editor
         //string fileName = "00000000";
         string fileName = "";
 
+        int fileSize = 0;
+
 
         private const string S_QUICKBMS = "quickbms.exe";
         private const string S_MP6SCRIPT = "mario_party_6.bms \"";
@@ -24,9 +26,11 @@ namespace MP6Editor
         int amount;
         List<Space> Board = new List<Space>();
 
-        public List<Space> readFile()
+        public List<Space> ReadFile()
         {
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
+
+            fileSize = (int)fileStream.Length;
             //Skip past the first three bytes of padding
             for (int i = 0; i < BEGIN; i++)
             {
@@ -52,12 +56,12 @@ namespace MP6Editor
         {
             Space space = new Space();
             //Positions
-            space.X = getPosition(fileStream);
-            space.Y = getPosition(fileStream);
-            space.Z = getPosition(fileStream);
+            space.X = GetPosition(fileStream);
+            space.Y = GetPosition(fileStream);
+            space.Z = GetPosition(fileStream);
 
             //Crap
-            space.crap = getCrap(fileStream);
+            space.crap = GetCrap(fileStream);
 
             //Type
             space.type = fileStream.ReadByte();
@@ -82,7 +86,7 @@ namespace MP6Editor
 
         //Get the passed type's matching texture
         //TODO: Don't even remember what I was going to use this method for
-        Texture2D getSpaceTexture(int type)
+        Texture2D GetSpaceTexture(int type)
         {
             switch (type)
             {
@@ -110,7 +114,7 @@ namespace MP6Editor
         }//end getSpaceTexture()
 
         //Converts the next 4 bytes into a float
-        float getPosition(FileStream fileStream)
+        float GetPosition(FileStream fileStream)
         {
             byte[] position = new byte[4];
             for (int i = 0; i < position.Length; i++)
@@ -124,19 +128,71 @@ namespace MP6Editor
         }//end getPosition()
 
         //Get the information between the end of the positions and before the typing
-        byte[] getCrap(FileStream fileStream)
+        private byte[] GetCrap(FileStream fileStream)
         {
             byte[] crap = new byte[31];
             for (int i = 0; i < 31; i++)
             {
                 crap[i] = (byte)fileStream.ReadByte();
             }
-
             return crap;
         }//end getCrap()
 
+        //Converts current board to MP6 board format
+        public void SaveBoardLayout(List<Space> nuBoard)
+        {
+            //TODO
+            //byte[] newBoard = new byte[fileSize];
+            List<byte> newBoard = new List<byte>();
+
+            //Padding
+            FileStream fileStream = new FileStream("board_out_test", FileMode.OpenOrCreate);
+            for (int i = 0; i < BEGIN; i++)
+            {
+                newBoard.Add(0x00);
+                fileStream.WriteByte(0x00);
+            }
+
+            newBoard.Add((byte)nuBoard.Count);
+            fileStream.WriteByte(0x6B);
+
+            //Spaces
+            //TODO: clean up this mess
+            for(int i = 0; i < nuBoard.Count; i++)
+            {
+                //Space X pos
+                byte[] posArray = BitConverter.GetBytes(nuBoard[i].X);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+                //Space Y pos
+                posArray = BitConverter.GetBytes(nuBoard[i].Y);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+                //Space Z pos
+                posArray = BitConverter.GetBytes(nuBoard[i].Z);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+
+                //"crap"
+                fileStream.Write(nuBoard[i].crap, 0, nuBoard[i].crap.Length);
+                //type
+                fileStream.WriteByte((byte)nuBoard[i].type);
+                //padding
+                fileStream.WriteByte(0x00);
+                //link amount
+                fileStream.WriteByte((byte)nuBoard[i].linkAmount);
+
+                //Space links
+                for(int j = 0; j < nuBoard[i].linkAmount; j++)
+                {
+                    fileStream.WriteByte(0x00);
+                    fileStream.WriteByte((byte)nuBoard[i].links[j]);
+                }
+            }
+        }//end SaveBoardLayout()
+
         //Calls cline quickbms to extract the files
-        public void quickExtract(string filePath)
+        public void QuickExtract(string filePath)
         {
             //TODO: cleanup; create string variables to reduce repetition and to prevent typos;
             //use a loop to reduce code redundancy?
@@ -162,7 +218,7 @@ namespace MP6Editor
         }//end quickExtract()
 
         //Repacks the file using quickBMS's reimport feature
-        public void quickReimport(string filePath)
+        public void QuickReimport(string filePath)
         {
             Process quickbms = new Process();
             quickbms.StartInfo.FileName = "quickbms.exe";

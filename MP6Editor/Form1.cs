@@ -135,8 +135,8 @@ namespace MP6Editor
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
-                extractor.quickExtract(filePath);
-                drawTest1.Board = extractor.readFile();
+                extractor.QuickExtract(filePath);
+                drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
             }
         }//end ImportFile()
@@ -148,14 +148,22 @@ namespace MP6Editor
             //if openFileDialog was successful
             if (openFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
-                //TODO: Possible code clean up? These method calls to other classes feels sloppy
+                //TODO: ditto with ImportFile
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
-                extractor.quickReimport(filePath);
-                drawTest1.Board = extractor.readFile();
+                extractor.QuickReimport(filePath);
+                drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
             }
         }//end ExportFile()
+
+        //Saves current board to MP6 format
+        private void SaveBoard(object sender, EventArgs e)
+        {
+            //TODO
+            Extractor extractor = new Extractor();
+            extractor.SaveBoardLayout(drawTest1.Board);
+        }//end SaveBoard()
     }
 }
