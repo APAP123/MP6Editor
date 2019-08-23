@@ -19,9 +19,10 @@ namespace MP6Editor
         int fileSize = 0;
 
 
-        private const string S_QUICKBMS = "quickbms.exe";
-        private const string S_MP6SCRIPT = "mario_party_6.bms \"";
-        private const string S_LZSSSCRIPT = "LZS_decompress.bms";
+        private readonly string S_QUICKBMS = "quickbms.exe";
+        private readonly string S_MP6SCRIPT = "mario_party_6_alt.bms";
+        private readonly string S_OUTFOLDER = "w01_out";
+
         int offset;
         int amount;
         List<Space> Board = new List<Space>();
@@ -141,19 +142,18 @@ namespace MP6Editor
         //Converts current board to MP6 board format
         public void SaveBoardLayout(List<Space> nuBoard)
         {
-            //TODO
-            //byte[] newBoard = new byte[fileSize];
-            List<byte> newBoard = new List<byte>();
+            //TODO: Clean it up, it's a mess
+            //probably should do some file verification too
 
             //Padding
             FileStream fileStream = new FileStream("board_out_test", FileMode.OpenOrCreate);
             for (int i = 0; i < BEGIN; i++)
             {
-                newBoard.Add(0x00);
+                //newBoard.Add(0x00);
                 fileStream.WriteByte(0x00);
             }
 
-            newBoard.Add((byte)nuBoard.Count);
+            //newBoard.Add((byte)nuBoard.Count);
             fileStream.WriteByte(0x6B);
 
             //Spaces
@@ -192,49 +192,28 @@ namespace MP6Editor
         }//end SaveBoardLayout()
 
         //Calls cline quickbms to extract the files
-        public void QuickExtract(string filePath)
+        public void QuickExtract(string filePath, bool reimport)
         {
-            //TODO: cleanup; create string variables to reduce repetition and to prevent typos;
-            //use a loop to reduce code redundancy?
+            string args = "-Y ";
+            //TODO: merge
+            if (reimport)
+            {
+                args = args + "-r -w ";
+            }
 
             Process quickbms = new Process();
             //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            quickbms.StartInfo.FileName = "quickbms.exe";
+            quickbms.StartInfo.FileName = S_QUICKBMS;
             quickbms.StartInfo.UseShellExecute = true;
 
             //first pass
-            quickbms.StartInfo.Arguments = "mario_party_6_alt.bms \"" + filePath + "\" w01_out";
+            quickbms.StartInfo.Arguments = args + S_MP6SCRIPT + " \"" + filePath + "\" " + S_OUTFOLDER;
             quickbms.Start();
             quickbms.WaitForExit();
-
-            //second pass
-            //quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
-            //quickbms.Start();
-            //quickbms.WaitForExit();
 
             //Set global fileName
             fileName = "w01_out\\00000000.dat";
 
         }//end quickExtract()
-
-        //Repacks the file using quickBMS's reimport feature
-        public void QuickReimport(string filePath)
-        {
-            Process quickbms = new Process();
-            quickbms.StartInfo.FileName = "quickbms.exe";
-            quickbms.StartInfo.UseShellExecute = true;
-
-            //first pass
-            //quickbms.StartInfo.Arguments = "-r -w LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
-            //quickbms.Start();
-            //quickbms.WaitForExit();
-
-            //second pass
-            quickbms.StartInfo.Arguments = "-r -w mario_party_6_alt.bms \"" + filePath + "\" w01_out";
-            quickbms.Start();
-            quickbms.WaitForExit();
-
-            //TODO: Look into consolidating this function with the one above; the code is 90% the same.
-        }//end quickReimport()
     }
 }

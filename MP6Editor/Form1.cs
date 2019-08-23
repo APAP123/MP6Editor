@@ -135,7 +135,7 @@ namespace MP6Editor
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
-                extractor.QuickExtract(filePath);
+                extractor.QuickExtract(filePath, false);
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
             }
@@ -152,7 +152,7 @@ namespace MP6Editor
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
-                extractor.QuickReimport(filePath);
+                extractor.QuickExtract(filePath, true);
             }
         }//end ExportFile()
 
