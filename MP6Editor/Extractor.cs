@@ -81,6 +81,7 @@ namespace MP6Editor
         }//end readSpace()
 
         //Get the passed type's matching texture
+        //TODO: Don't even remember what I was going to use this method for
         Texture2D getSpaceTexture(int type)
         {
             switch (type)
@@ -143,25 +144,19 @@ namespace MP6Editor
             Process quickbms = new Process();
             //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             quickbms.StartInfo.FileName = "quickbms.exe";
-            quickbms.StartInfo.Arguments = "mario_party_6.bms \"" + filePath + "\" w01_out";
             quickbms.StartInfo.UseShellExecute = true;
-            //Console.WriteLine(filePath);
 
+            //first pass
+            quickbms.StartInfo.Arguments = "mario_party_6.bms \"" + filePath + "\" w01_out";
             quickbms.Start();
-
-            //Wait for the first pass to finish
             quickbms.WaitForExit();
 
-            //Change filepaths for cl args
-            //quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat w01_out\\00000000_out";
+            //second pass
             quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
             quickbms.Start();
-
-            //Wait for the second pass to finish
             quickbms.WaitForExit();
 
             //Set global fileName
-            //fileName = "w01_out\\00000000_out\\00000000";
             fileName = "00000000_out\\00000000";
 
         }//end quickExtract()
@@ -171,13 +166,14 @@ namespace MP6Editor
         {
             Process quickbms = new Process();
             quickbms.StartInfo.FileName = "quickbms.exe";
-
-            quickbms.StartInfo.Arguments = "-r LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
             quickbms.StartInfo.UseShellExecute = true;
 
+            //first pass
+            quickbms.StartInfo.Arguments = "-r LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
             quickbms.Start();
             quickbms.WaitForExit();
 
+            //second pass
             quickbms.StartInfo.Arguments = "-r mario_party_6.bms \"" + filePath + "\" w01_out";
             quickbms.Start();
             quickbms.WaitForExit();
