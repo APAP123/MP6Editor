@@ -159,7 +159,6 @@ namespace MP6Editor
         //Saves current board to MP6 format
         private void SaveBoard(object sender, EventArgs e)
         {
-            //TODO
             Extractor extractor = new Extractor();
             extractor.SaveBoardLayout(drawTest1.Board);
         }//end SaveBoard()

@@ -149,11 +149,9 @@ namespace MP6Editor
             FileStream fileStream = new FileStream("board_out_test", FileMode.OpenOrCreate);
             for (int i = 0; i < BEGIN; i++)
             {
-                //newBoard.Add(0x00);
                 fileStream.WriteByte(0x00);
             }
 
-            //newBoard.Add((byte)nuBoard.Count);
             fileStream.WriteByte(0x6B);
 
             //Spaces
