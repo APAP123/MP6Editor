@@ -203,17 +203,17 @@ namespace MP6Editor
             quickbms.StartInfo.UseShellExecute = true;
 
             //first pass
-            quickbms.StartInfo.Arguments = "mario_party_6.bms \"" + filePath + "\" w01_out";
+            quickbms.StartInfo.Arguments = "mario_party_6_alt.bms \"" + filePath + "\" w01_out";
             quickbms.Start();
             quickbms.WaitForExit();
 
             //second pass
-            quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
-            quickbms.Start();
-            quickbms.WaitForExit();
+            //quickbms.StartInfo.Arguments = "LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
+            //quickbms.Start();
+            //quickbms.WaitForExit();
 
             //Set global fileName
-            fileName = "00000000_out\\00000000";
+            fileName = "w01_out\\00000000.dat";
 
         }//end quickExtract()
 
@@ -225,12 +225,12 @@ namespace MP6Editor
             quickbms.StartInfo.UseShellExecute = true;
 
             //first pass
-            quickbms.StartInfo.Arguments = "-r LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
-            quickbms.Start();
-            quickbms.WaitForExit();
+            //quickbms.StartInfo.Arguments = "-r -w LZS_decompress.bms w01_out\\00000000.dat 00000000_out";
+            //quickbms.Start();
+            //quickbms.WaitForExit();
 
             //second pass
-            quickbms.StartInfo.Arguments = "-r mario_party_6.bms \"" + filePath + "\" w01_out";
+            quickbms.StartInfo.Arguments = "-r -w mario_party_6_alt.bms \"" + filePath + "\" w01_out";
             quickbms.Start();
             quickbms.WaitForExit();
 

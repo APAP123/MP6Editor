@@ -153,8 +153,6 @@ namespace MP6Editor
 
                 filePath = openFileDialog_wbin.FileName;
                 extractor.QuickReimport(filePath);
-                drawTest1.Board = extractor.ReadFile();
-                drawTest1.InitPositions();
             }
         }//end ExportFile()
 
