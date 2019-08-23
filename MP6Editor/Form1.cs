@@ -18,17 +18,17 @@ namespace MP6Editor
             InitializeComponent();
         }
 
-        private void drawTest1_OnMouseWheelUpwards(MouseEventArgs e)
+        private void DrawTest1_OnMouseWheelUpwards(MouseEventArgs e)
         {
             drawTest1.Board_OnMouseWheelUpwards(e);
         }
 
-        private void drawTest1_OnMouseWheelDownwards(MouseEventArgs e)
+        private void DrawTest1_OnMouseWheelDownwards(MouseEventArgs e)
         {
             drawTest1.Board_OnMouseWheelDownwards(e);
         }
 
-        private void drawTest1_MouseClick(object sender, MouseEventArgs e)
+        private void DrawTest1_MouseClick(object sender, MouseEventArgs e)
         {
             drawTest1.Board_OnMouseClick(e);
             if(drawTest1.SelectedSpace > -1)
@@ -39,11 +39,11 @@ namespace MP6Editor
                 comboBox_Type.Enabled = true;
                 listBox_Links.Enabled = true;
             }
-            updateDisplayInfo();
+            UpdateDisplayInfo();
         }
 
         //Updates on-screen information
-        private void updateDisplayInfo()
+        private void UpdateDisplayInfo()
         {
             //Clear previous links
             listBox_Links.Items.Clear();
@@ -66,7 +66,7 @@ namespace MP6Editor
         }//end updateDisplayInfo()
 
         //Updates the board visuals to match the entered text
-        private void updateSpaceInfo(int space)
+        private void UpdateSpaceInfo(int space)
         {
             //Position
             drawTest1.Board[space].X = float.Parse(textBox_X.Text);
@@ -113,7 +113,7 @@ namespace MP6Editor
         {
             TextBox sendingBox = (TextBox)sender;
             //bool wasmod = sendingBox.Modified;
-            updateSpaceInfo(drawTest1.SelectedSpace);
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
             sendingBox.Modified = false;
         }//end Position_WasModified()
 
@@ -121,7 +121,7 @@ namespace MP6Editor
         private void type_WasModified(object sender, EventArgs e)
         {
             //drawTest1.Board[drawTest1.SelectedSpace].type = comboBox_Type.SelectedIndex;
-            updateSpaceInfo(drawTest1.SelectedSpace);
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
         }//end type_WasModified()
 
         //Opens the file openFileDialog to select the w##.bin file

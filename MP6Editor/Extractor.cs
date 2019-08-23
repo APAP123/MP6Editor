@@ -41,7 +41,7 @@ namespace MP6Editor
             //Read in spaces from board
             for (int i = 0; i < amount; i++)
             {
-                Board.Add(readSpace(fileStream));
+                Board.Add(ReadSpace(fileStream));
             }
 
 
@@ -52,7 +52,7 @@ namespace MP6Editor
         }
 
         //Reads the next space in
-        Space readSpace(FileStream fileStream)
+        private Space ReadSpace(FileStream fileStream)
         {
             Space space = new Space();
             //Positions
@@ -114,7 +114,7 @@ namespace MP6Editor
         }//end getSpaceTexture()
 
         //Converts the next 4 bytes into a float
-        float GetPosition(FileStream fileStream)
+        private float GetPosition(FileStream fileStream)
         {
             byte[] position = new byte[4];
             for (int i = 0; i < position.Length; i++)
