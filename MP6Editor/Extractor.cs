@@ -162,10 +162,12 @@ namespace MP6Editor
                 byte[] posArray = BitConverter.GetBytes(nuBoard[i].X);
                 Array.Reverse(posArray);
                 fileStream.Write(posArray, 0, 4);
+
                 //Space Y pos
                 posArray = BitConverter.GetBytes(nuBoard[i].Y);
                 Array.Reverse(posArray);
                 fileStream.Write(posArray, 0, 4);
+
                 //Space Z pos
                 posArray = BitConverter.GetBytes(nuBoard[i].Z);
                 Array.Reverse(posArray);
@@ -204,7 +206,7 @@ namespace MP6Editor
             quickbms.StartInfo.FileName = S_QUICKBMS;
             quickbms.StartInfo.UseShellExecute = true;
 
-            //first pass
+            //cline args
             quickbms.StartInfo.Arguments = args + S_MP6SCRIPT + " \"" + filePath + "\" " + S_OUTFOLDER;
             quickbms.Start();
             quickbms.WaitForExit();
