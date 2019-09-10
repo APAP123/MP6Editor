@@ -45,7 +45,7 @@ namespace MP6Editor
         Texture2D shopSpace;     //9
         Texture2D otherSpace;    //Everything else
 
-        Texture2D bigPixel;
+        Texture2D bigPixel;      //Path sprite placeholder
 
         protected override void Initialize()
         {
@@ -67,7 +67,7 @@ namespace MP6Editor
             shopSpace = Editor.Content.Load<Texture2D>(@"Shop");           //9
             otherSpace = Editor.Content.Load<Texture2D>(@"Other");         //Others
 
-            bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");
+            bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");        //Path sprite placeholder
         }//end Initialize()
 
         protected override void Update(GameTime gameTime)
@@ -108,10 +108,8 @@ namespace MP6Editor
                 //Positions.Add(spot);
                 Positions[i] = spot;
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
-                //Texture2D currSpace = getSpaceTexture(Board[i].type);
                 Board[i].texture = getSpaceTexture(Board[i].type);
 
-                //Editor.spriteBatch.Draw(currSpace, spot, Color.White);
                 Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
             }
 
@@ -129,13 +127,11 @@ namespace MP6Editor
                 var mouseState = Mouse.GetState();
                 var mousePosition = new Point(mouseState.X, mouseState.Y);
 
-                int space = isOverSpace(mousePosition);
+                int space = IsOverSpace(mousePosition);
 
                 if (space > -1)
                 {
                     SelectedSpace = space;
-                    //Application.OpenForms["Form1"]
-                    //Board[space].type = 10;
                 }
             }
         }//end Board_OnMouseClick()
@@ -190,17 +186,17 @@ namespace MP6Editor
         #endregion
 
         //Converts passed world position to relative screen position
-        Vector2 toRelativePosition(Vector2 pos)
+        Vector2 ToRelativePosition(Vector2 pos)
         {
             return pos - (Editor.Cam.Position - trueCenter);
         }//end To Relative Position
 
         //Determines if passed position is over a space
-        int isOverSpace(Point point)
+        int IsOverSpace(Point point)
         {
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 newPos = toRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
+                Vector2 newPos = ToRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
                 Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
                 if (area.Contains(point))
                 {
@@ -211,6 +207,7 @@ namespace MP6Editor
         }//end isOverSpace()
 
         //Get this type's matching texture
+        //TODO: can possibly move to Space.cs; could also do this with enums (see Form1 constructor)
         Texture2D getSpaceTexture(int type)
         {
             switch (type)
@@ -282,11 +279,9 @@ namespace MP6Editor
 
                         path.bigPixel = bigPixel;
                         Paths.Add(path);
-                    }
-                }
-            }
-            //TODO
-            
+                    }//end foreach
+                }//end for
+            }//end if
         }//end DrawPath()
     }
 }

@@ -89,7 +89,7 @@ namespace MP6Editor
             //links
             drawTest1.Board[space].linkAmount = drawTest1.Board[space].links.Count;
 
-            pictureBox_Space.Image = GetNewSpace(drawTest1.Board[drawTest1.SelectedSpace].type);
+            pictureBox_Space.Image = GetSpaceImage(drawTest1.Board[drawTest1.SelectedSpace].type);
         }//end updateSpaceInfo()
 
         //Updates the passed space's links
@@ -105,8 +105,8 @@ namespace MP6Editor
         }//end UpdateSpaceLinks()
 
         //Returns image of passed space type
-        //TODO: Move this and similar helper functions to their own class
-        private Image GetNewSpace(int type)
+        //TODO: can possibly move to Space.cs; could also do this with enums (see constructor)
+        private Image GetSpaceImage(int type)
         {
             switch (type)
             {
@@ -131,7 +131,7 @@ namespace MP6Editor
                 default: //Everything else
                     return MP6Editor.Properties.Resources.Other;
             }
-        }//end GetNewSpace()
+        }//end GetSpaceImage()
 
         //Updates visual information if space position was changed
         private void Position_WasModified(object sender, EventArgs e)

@@ -20,7 +20,6 @@ namespace MP6Editor
     class Extractor : MonoGameControl
     {
         const int BEGIN = 3; //Header padding length
-        //string fileName = "00000000";
         string fileName = "";
 
         int fileSize = 0;
