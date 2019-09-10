@@ -25,6 +25,12 @@ namespace MP6Editor
         public List<Vector2> Positions = new List<Vector2>(); //List of the visual positions on screen
         public int SelectedSpace = -1;
 
+        List<Path> Paths = new List<Path>();
+
+        //Path drawing timer vars
+        private const int TIMERMAX = 120;
+        int PathTimer = 0;
+
         Vector2 trueCenter = new Vector2();
 
         Rectangle rectangle;
@@ -38,6 +44,8 @@ namespace MP6Editor
         Texture2D orbSpace;      //8
         Texture2D shopSpace;     //9
         Texture2D otherSpace;    //Everything else
+
+        Texture2D bigPixel;
 
         protected override void Initialize()
         {
@@ -54,15 +62,28 @@ namespace MP6Editor
             miracleSpace = Editor.Content.Load<Texture2D>(@"Miracle");     //4
             duelSpace = Editor.Content.Load<Texture2D>(@"Dueling");        //5
             DKSpace = Editor.Content.Load<Texture2D>(@"DK");               //6
-            
+                                                                           //7
             orbSpace = Editor.Content.Load<Texture2D>(@"Orb");             //8
             shopSpace = Editor.Content.Load<Texture2D>(@"Shop");           //9
             otherSpace = Editor.Content.Load<Texture2D>(@"Other");         //Others
+
+            bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");
         }//end Initialize()
 
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            UpdatePath();
+
+            for (int i = Paths.Count - 1; i >= 0; i--)
+            {
+                Paths[i].Update();
+                if (!Paths[i].moving) //Remove if pixel reached destination
+                {
+                    Paths.RemoveAt(i);
+                }
+            }
         }
 
         protected override void Draw()
@@ -74,6 +95,12 @@ namespace MP6Editor
 
             Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
             trueCenter = center;
+
+            //Path drawing
+            foreach (Path path in Paths)
+            {
+                path.Draw(Editor.spriteBatch);
+            }
 
             for (int i = 0; i < Board.Count; i++)
             {
@@ -231,5 +258,35 @@ namespace MP6Editor
 
             Editor.EndCamera2D();
         }//end InitPositions()
+
+        //Draws a moving path between linked spaces
+        public void UpdatePath()
+        {
+            PathTimer++;
+            if (PathTimer >= TIMERMAX)
+            {
+                PathTimer = 0;
+            }
+            if (PathTimer == 20 || PathTimer == 40 || PathTimer == 60)
+            {
+                for (int i = 0; i < Board.Count; i++)
+                {
+                    foreach (int link in Board[i].links)
+                    {
+                        Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
+
+                        Vector2 start = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
+                        Vector2 end = new Vector2(center.X + (Board[link].X / 16), center.Y + (Board[link].Z / 16));
+
+                        Path path = new Path(start, end);
+
+                        path.bigPixel = bigPixel;
+                        Paths.Add(path);
+                    }
+                }
+            }
+            //TODO
+            
+        }//end DrawPath()
     }
 }
