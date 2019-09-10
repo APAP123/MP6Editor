@@ -47,7 +47,9 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.openFileDialog_wbin = new System.Windows.Forms.OpenFileDialog();
+            this.btn_AddLink = new System.Windows.Forms.Button();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.btn_RemoveLink = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +152,6 @@
             // 
             // listBox_Links
             // 
-            this.listBox_Links.Enabled = false;
             this.listBox_Links.FormattingEnabled = true;
             this.listBox_Links.Location = new System.Drawing.Point(608, 369);
             this.listBox_Links.Name = "listBox_Links";
@@ -224,23 +225,45 @@
             // 
             this.openFileDialog_wbin.Filter = "Mario Party 6 board files|*.bin|All files|*.*";
             // 
+            // btn_AddLink
+            // 
+            this.btn_AddLink.Location = new System.Drawing.Point(738, 369);
+            this.btn_AddLink.Name = "btn_AddLink";
+            this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
+            this.btn_AddLink.TabIndex = 14;
+            this.btn_AddLink.Text = "+";
+            this.btn_AddLink.UseVisualStyleBackColor = true;
+            this.btn_AddLink.Click += new System.EventHandler(this.btn_AddLink_Click);
+            // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 36);
             this.drawTest1.MouseHoverUpdatesOnly = false;
             this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(566, 426);
+            this.drawTest1.Size = new System.Drawing.Size(566, 444);
             this.drawTest1.TabIndex = 0;
             this.drawTest1.Text = "drawTest1";
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // btn_RemoveLink
+            // 
+            this.btn_RemoveLink.Location = new System.Drawing.Point(738, 398);
+            this.btn_RemoveLink.Name = "btn_RemoveLink";
+            this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
+            this.btn_RemoveLink.TabIndex = 15;
+            this.btn_RemoveLink.Text = "-";
+            this.btn_RemoveLink.UseVisualStyleBackColor = true;
+            this.btn_RemoveLink.Click += new System.EventHandler(this.btn_RemoveLink_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 474);
+            this.ClientSize = new System.Drawing.Size(800, 504);
+            this.Controls.Add(this.btn_RemoveLink);
+            this.Controls.Add(this.btn_AddLink);
             this.Controls.Add(this.pictureBox_Space);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label_Links);
@@ -286,6 +309,8 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.Button btn_AddLink;
+        private System.Windows.Forms.Button btn_RemoveLink;
     }
 }
 

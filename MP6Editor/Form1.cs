@@ -76,6 +76,9 @@ namespace MP6Editor
             //type
             drawTest1.Board[space].type = comboBox_Type.SelectedIndex;
 
+            //links
+            drawTest1.Board[space].linkAmount = drawTest1.Board[space].links.Count;
+
             pictureBox_Space.Image = GetNewSpace(drawTest1.Board[drawTest1.SelectedSpace].type);
         }//end updateSpaceInfo()
 
@@ -162,5 +165,20 @@ namespace MP6Editor
             Extractor extractor = new Extractor();
             extractor.SaveBoardLayout(drawTest1.Board);
         }//end SaveBoard()
+
+        //Adds a new link
+        private void btn_AddLink_Click(object sender, EventArgs e)
+        {
+            //TODO
+            int listSelected = (int)listBox_Links.SelectedItem;
+        }//end btn_AddLink_Click()
+
+        //Remove a selected link
+        private void btn_RemoveLink_Click(object sender, EventArgs e)
+        {
+            drawTest1.Board[drawTest1.SelectedSpace].links.RemoveAt(listBox_Links.SelectedIndex);
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
+            UpdateDisplayInfo();
+        }//end btn_RemoveLink_Click()
     }
 }

@@ -17,7 +17,7 @@ namespace MP6Editor
         public int type;
         public Texture2D texture;
         public byte typePad; //Padding after the type byte; This probably isn't neccessary
-        public int linkAmount;
+        public int linkAmount; //TODO: This variable is redundant (just do links.Count) and should be removed
         public List<int> links = new List<int>(); //IDs of the spaces linked to
         
         public enum Types
