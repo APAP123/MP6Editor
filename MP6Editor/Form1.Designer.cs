@@ -48,8 +48,9 @@
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.openFileDialog_wbin = new System.Windows.Forms.OpenFileDialog();
             this.btn_AddLink = new System.Windows.Forms.Button();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.btn_RemoveLink = new System.Windows.Forms.Button();
+            this.listView_Links = new System.Windows.Forms.ListView();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -235,6 +236,28 @@
             this.btn_AddLink.UseVisualStyleBackColor = true;
             this.btn_AddLink.Click += new System.EventHandler(this.btn_AddLink_Click);
             // 
+            // btn_RemoveLink
+            // 
+            this.btn_RemoveLink.Location = new System.Drawing.Point(738, 398);
+            this.btn_RemoveLink.Name = "btn_RemoveLink";
+            this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
+            this.btn_RemoveLink.TabIndex = 15;
+            this.btn_RemoveLink.Text = "-";
+            this.btn_RemoveLink.UseVisualStyleBackColor = true;
+            this.btn_RemoveLink.Click += new System.EventHandler(this.btn_RemoveLink_Click);
+            // 
+            // listView_Links
+            // 
+            this.listView_Links.HideSelection = false;
+            this.listView_Links.LabelEdit = true;
+            this.listView_Links.Location = new System.Drawing.Point(608, 457);
+            this.listView_Links.Name = "listView_Links";
+            this.listView_Links.Size = new System.Drawing.Size(124, 97);
+            this.listView_Links.TabIndex = 16;
+            this.listView_Links.UseCompatibleStateImageBehavior = false;
+            this.listView_Links.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_Links_AfterLabelEdit);
+            this.listView_Links.DoubleClick += new System.EventHandler(this.listView_Links_Click);
+            // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 36);
@@ -247,21 +270,12 @@
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
-            // btn_RemoveLink
-            // 
-            this.btn_RemoveLink.Location = new System.Drawing.Point(738, 398);
-            this.btn_RemoveLink.Name = "btn_RemoveLink";
-            this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
-            this.btn_RemoveLink.TabIndex = 15;
-            this.btn_RemoveLink.Text = "-";
-            this.btn_RemoveLink.UseVisualStyleBackColor = true;
-            this.btn_RemoveLink.Click += new System.EventHandler(this.btn_RemoveLink_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 504);
+            this.ClientSize = new System.Drawing.Size(800, 609);
+            this.Controls.Add(this.listView_Links);
             this.Controls.Add(this.btn_RemoveLink);
             this.Controls.Add(this.btn_AddLink);
             this.Controls.Add(this.pictureBox_Space);
@@ -311,6 +325,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.Button btn_AddLink;
         private System.Windows.Forms.Button btn_RemoveLink;
+        private System.Windows.Forms.ListView listView_Links;
     }
 }
 

@@ -26,6 +26,23 @@ namespace MP6Editor
         public int linkAmount; //TODO: This variable is redundant (just do links.Count) and should be removed
         public List<int> links = new List<int>(); //IDs of the spaces linked to
 
+        public Space()
+        {
+
+        }
+
+        public Space(float X, float Y, float Z, int type, List<int> links)
+        {
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
+            crap = new byte[31];
+            this.type = type;
+            typePad = 0x00;
+            //this.linkAmount = linkAmount;
+            this.links = links;
+        }
+
         
         public enum Types
         {

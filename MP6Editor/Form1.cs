@@ -48,6 +48,8 @@ namespace MP6Editor
             //Clear previous links
             listBox_Links.Items.Clear();
 
+            listView_Links.Items.Clear();
+
             if(drawTest1.SelectedSpace > -1)
             {
                 label_SelectedSpace.Text = "ID#: " + drawTest1.SelectedSpace;
@@ -60,6 +62,8 @@ namespace MP6Editor
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
                     listBox_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i]);
+
+                    listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString());
                 }
                 
             }
@@ -81,6 +85,18 @@ namespace MP6Editor
 
             pictureBox_Space.Image = GetNewSpace(drawTest1.Board[drawTest1.SelectedSpace].type);
         }//end updateSpaceInfo()
+
+        //Updates the passed space's links
+        private void UpdateSpaceLinks(int space)
+        {
+            if (listView_Links.Items.Count > 0)
+            {
+                for (int i = 0; i < drawTest1.Board[space].links.Count; i++)
+                {
+                    drawTest1.Board[space].links[i] = int.Parse(listView_Links.Items[i].Text);
+                }
+            }
+        }//end UpdateSpaceLinks()
 
         //Returns image of passed space type
         //TODO: Move this and similar helper functions to their own class
@@ -169,16 +185,43 @@ namespace MP6Editor
         //Adds a new link
         private void btn_AddLink_Click(object sender, EventArgs e)
         {
-            //TODO
-            int listSelected = (int)listBox_Links.SelectedItem;
+            //drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
+            drawTest1.Board[drawTest1.SelectedSpace].links.Add(1);
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
+            UpdateDisplayInfo();
+
         }//end btn_AddLink_Click()
 
         //Remove a selected link
         private void btn_RemoveLink_Click(object sender, EventArgs e)
         {
-            drawTest1.Board[drawTest1.SelectedSpace].links.RemoveAt(listBox_Links.SelectedIndex);
+            drawTest1.Board[drawTest1.SelectedSpace].links.Remove(int.Parse(listView_Links.SelectedItems[0].Text));
             UpdateSpaceInfo(drawTest1.SelectedSpace);
             UpdateDisplayInfo();
         }//end btn_RemoveLink_Click()
+
+        private void listView_Links_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            if (listView_Links.SelectedItems.Count > 0 && e.Label != null)
+            {
+                listView_Links.SelectedItems[0].Text = e.Label;
+                UpdateSpaceLinks(drawTest1.SelectedSpace);
+                UpdateSpaceInfo(drawTest1.SelectedSpace);
+            }
+        }
+
+        //Allows editing labels on double click rather than having to hold the mouse down
+        private void listView_Links_Click(object sender, EventArgs e)
+        {
+            if(listView_Links.SelectedItems.Count > 0)
+            {
+                listView_Links.SelectedItems[0].BeginEdit();
+            }
+        }//end listView_Links_Click()
+
+        private void listView_Links_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
+        }
     }
 }
