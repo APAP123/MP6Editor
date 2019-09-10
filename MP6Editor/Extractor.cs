@@ -1,4 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿/*************************************
+ * Extractor.cs   
+ *
+ * Used to extract board layout from 
+ * MP6 board .bin files via QuickBMS
+ *************************************/
+
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
 using System;
 using System.Collections.Generic;

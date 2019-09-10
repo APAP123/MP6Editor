@@ -1,4 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿/*************************************
+ * Space.cs   
+ *
+ * represents an individual board space
+ *************************************/
+
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;

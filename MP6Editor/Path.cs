@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*************************************
+ * Path.cs   
+ *
+ * Moving sprite to show space links
+ *************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +36,6 @@ namespace MP6Editor
         {
             this.start = start;
             this.end = end;
-            //bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");
             rect = new Rectangle((int)start.X, (int)start.Y, 4, 4);
 
             distance = Vector2.Distance(this.start, this.end);
@@ -41,25 +46,19 @@ namespace MP6Editor
 
         public void Update()
         {
-            MovePath();
+            position += direction * speed * elapsed;
+            rect.X = (int)position.X;
+            rect.Y = (int)position.Y;
+            if (Vector2.Distance(start, position) >= distance)
+            {
+                position = end;
+                moving = false;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(bigPixel, new Vector2(rect.X, rect.Y), Color.White);
         }
-
-        //Moves the Path marker
-        public void MovePath()
-        {
-            position += direction * speed * elapsed;
-            rect.X = (int)position.X;
-            rect.Y = (int)position.Y;
-            if(Vector2.Distance(start, position) >= distance)
-            {
-                position = end;
-                moving = false;
-            }
-        }//end Move()
     }
 }
