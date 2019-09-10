@@ -191,7 +191,7 @@ namespace MP6Editor
             }
         }//end SaveBoardLayout()
 
-        //Calls cline quickbms to extract the files
+        //Calls cline quickbms to extract/import the files
         public void QuickExtract(string filePath, bool reimport)
         {
             string args = "-Y ";
@@ -214,6 +214,12 @@ namespace MP6Editor
             //Set global fileName
             fileName = "w01_out\\00000000.dat";
 
-        }//end quickExtract()
+        }//end QuickExtract()
+
+        //Attempt at making a QBMS-independent extractor
+        public void NewExtract(string filePath)
+        {
+            //TODO: everything (and come up with a better function name)
+        }//end NewExtract()
     }
 }
