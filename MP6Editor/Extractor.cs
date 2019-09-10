@@ -33,6 +33,8 @@ namespace MP6Editor
 
             fileSize = (int)fileStream.Length;
             //Skip past the first three bytes of padding
+            //TODO: The amount of files in the .bin is probably the initial 4 bytes,
+            //so skipping the first three is going to cause issues sooner or later
             for (int i = 0; i < BEGIN; i++)
             {
                 fileStream.ReadByte();
@@ -215,11 +217,5 @@ namespace MP6Editor
             fileName = "w01_out\\00000000.dat";
 
         }//end QuickExtract()
-
-        //Attempt at making a QBMS-independent extractor
-        public void NewExtract(string filePath)
-        {
-            //TODO: everything (and come up with a better function name)
-        }//end NewExtract()
     }
 }
