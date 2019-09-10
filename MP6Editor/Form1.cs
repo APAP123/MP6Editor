@@ -12,10 +12,16 @@ namespace MP6Editor
 {
     public partial class Form1 : Form
     {
-
+        ImageList imageList = new ImageList();
         public Form1()
         {
             InitializeComponent();
+
+            //Populate imageList
+            foreach (string spaceType in Enum.GetNames(typeof(Space.Types)))
+            {
+                imageList.Images.Add("Blank", Image.FromFile("thumbs\\" + spaceType + ".png"));
+            }
         }
 
         private void DrawTest1_OnMouseWheelUpwards(MouseEventArgs e)
@@ -56,10 +62,14 @@ namespace MP6Editor
                 textBox_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Z;
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
 
+                listView_Links.LargeImageList = null;
+                listView_Links.LargeImageList = imageList;
+
                 //Add SelectedSpace's links to the listBox
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
-                    listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString());
+                    listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
+                    //listView_Links.Items[0].
                 }
                 
             }
@@ -206,6 +216,7 @@ namespace MP6Editor
                 listView_Links.SelectedItems[0].Text = e.Label;
                 UpdateSpaceLinks(drawTest1.SelectedSpace);
                 UpdateSpaceInfo(drawTest1.SelectedSpace);
+                UpdateDisplayInfo();
             }
         }
 

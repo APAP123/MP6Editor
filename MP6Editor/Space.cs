@@ -50,7 +50,7 @@ namespace MP6Editor
             Blue = 0x01,
             Red = 0x02,
             Happening = 0x03, //No event occurs upon landing
-            Chance = 0x04,
+            Miracle = 0x04,
             Dueling = 0x05,
             DKBowser = 0x06,
             Star = 0x07,
