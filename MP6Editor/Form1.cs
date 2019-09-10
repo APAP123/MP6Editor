@@ -37,7 +37,7 @@ namespace MP6Editor
                 textBox_Y.Enabled = true;
                 textBox_Z.Enabled = true;
                 comboBox_Type.Enabled = true;
-                listBox_Links.Enabled = true;
+                listView_Links.Enabled = true;
             }
             UpdateDisplayInfo();
         }
@@ -46,8 +46,6 @@ namespace MP6Editor
         private void UpdateDisplayInfo()
         {
             //Clear previous links
-            listBox_Links.Items.Clear();
-
             listView_Links.Items.Clear();
 
             if(drawTest1.SelectedSpace > -1)
@@ -61,8 +59,6 @@ namespace MP6Editor
                 //Add SelectedSpace's links to the listBox
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
-                    listBox_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i]);
-
                     listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString());
                 }
                 
@@ -139,7 +135,6 @@ namespace MP6Editor
         //Updates space type if changed
         private void type_WasModified(object sender, EventArgs e)
         {
-            //drawTest1.Board[drawTest1.SelectedSpace].type = comboBox_Type.SelectedIndex;
             UpdateSpaceInfo(drawTest1.SelectedSpace);
         }//end type_WasModified()
 
@@ -167,7 +162,6 @@ namespace MP6Editor
             //if openFileDialog was successful
             if (openFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
-                //TODO: ditto with ImportFile
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
@@ -181,6 +175,11 @@ namespace MP6Editor
             Extractor extractor = new Extractor();
             extractor.SaveBoardLayout(drawTest1.Board);
         }//end SaveBoard()
+
+        private void btn_AddSpace_click(object sender, EventArgs e)
+        {
+            //TODO
+        }
 
         //Adds a new link
         private void btn_AddLink_Click(object sender, EventArgs e)
@@ -218,10 +217,5 @@ namespace MP6Editor
                 listView_Links.SelectedItems[0].BeginEdit();
             }
         }//end listView_Links_Click()
-
-        private void listView_Links_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            UpdateSpaceInfo(drawTest1.SelectedSpace);
-        }
     }
 }

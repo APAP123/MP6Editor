@@ -38,7 +38,6 @@
             this.label_Z = new System.Windows.Forms.Label();
             this.comboBox_Type = new System.Windows.Forms.ComboBox();
             this.label_Type = new System.Windows.Forms.Label();
-            this.listBox_Links = new System.Windows.Forms.ListBox();
             this.label_Links = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -151,14 +150,6 @@
             this.label_Type.TabIndex = 9;
             this.label_Type.Text = "Type:";
             // 
-            // listBox_Links
-            // 
-            this.listBox_Links.FormattingEnabled = true;
-            this.listBox_Links.Location = new System.Drawing.Point(608, 369);
-            this.listBox_Links.Name = "listBox_Links";
-            this.listBox_Links.Size = new System.Drawing.Size(124, 82);
-            this.listBox_Links.TabIndex = 10;
-            // 
             // label_Links
             // 
             this.label_Links.AutoSize = true;
@@ -248,9 +239,10 @@
             // 
             // listView_Links
             // 
+            this.listView_Links.Enabled = false;
             this.listView_Links.HideSelection = false;
             this.listView_Links.LabelEdit = true;
-            this.listView_Links.Location = new System.Drawing.Point(608, 457);
+            this.listView_Links.Location = new System.Drawing.Point(608, 369);
             this.listView_Links.Name = "listView_Links";
             this.listView_Links.Size = new System.Drawing.Size(124, 97);
             this.listView_Links.TabIndex = 16;
@@ -281,7 +273,6 @@
             this.Controls.Add(this.pictureBox_Space);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label_Links);
-            this.Controls.Add(this.listBox_Links);
             this.Controls.Add(this.label_Type);
             this.Controls.Add(this.comboBox_Type);
             this.Controls.Add(this.label_Z);
@@ -314,7 +305,6 @@
         private System.Windows.Forms.Label label_Z;
         private System.Windows.Forms.ComboBox comboBox_Type;
         private System.Windows.Forms.Label label_Type;
-        private System.Windows.Forms.ListBox listBox_Links;
         private System.Windows.Forms.Label label_Links;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.PictureBox pictureBox_Space;
