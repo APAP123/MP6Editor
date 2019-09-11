@@ -223,5 +223,24 @@ namespace MP6Editor
             fileName = "w01_out\\00000000.dat";
 
         }//end QuickExtract()
+
+        //Repacks the files into the .bin and appends the modified 0.dat to the end
+        public void RepackFile(string filePath)
+        {
+            //TODO
+            //Get 0.dat's uncompressed size in bytes (SIZE)     X
+            //Call QBMS lzss_comp script to compress 0.dat      
+            //Get size of w01.bin in bytes (OFFSET)
+            //Append w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
+            //Append compressed 0.dat to w01.bin
+            //Go to offset 0x04 and write OFFSET (4 bytes)
+            FileStream fileStream = new FileStream("board_out_test", FileMode.Open);
+            byte[] SIZE = BitConverter.GetBytes((int)fileStream.Length);
+
+            Process quickbms = new Process();
+            //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            quickbms.StartInfo.FileName = S_QUICKBMS;
+            quickbms.StartInfo.UseShellExecute = true;
+        }//end RepackFile()
     }
 }

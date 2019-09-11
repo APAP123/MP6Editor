@@ -69,7 +69,6 @@ namespace MP6Editor
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
                     listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
-                    //listView_Links.Items[0].
                 }
                 
             }
@@ -137,7 +136,6 @@ namespace MP6Editor
         private void Position_WasModified(object sender, EventArgs e)
         {
             TextBox sendingBox = (TextBox)sender;
-            //bool wasmod = sendingBox.Modified;
             UpdateSpaceInfo(drawTest1.SelectedSpace);
             sendingBox.Modified = false;
         }//end Position_WasModified()
