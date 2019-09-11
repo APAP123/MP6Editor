@@ -13,6 +13,8 @@ namespace MP6Editor
     public partial class Form1 : Form
     {
         ImageList imageList = new ImageList();
+        string packedFileName = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -157,6 +159,7 @@ namespace MP6Editor
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
+                packedFileName = filePath;
                 extractor.QuickExtract(filePath, false);
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
@@ -167,13 +170,15 @@ namespace MP6Editor
         private void ExportFile(object sender, EventArgs e)
         {
             string filePath = string.Empty;
-            //if openFileDialog was successful
-            if (openFileDialog_wbin.ShowDialog() == DialogResult.OK)
+            //if saveFileDialog was successful
+            if (saveFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
                 Extractor extractor = new Extractor();
 
-                filePath = openFileDialog_wbin.FileName;
-                extractor.QuickExtract(filePath, true);
+                filePath = saveFileDialog_wbin.FileName;
+                //extractor.QuickExtract(filePath, true);
+                extractor.SaveBoardLayout(drawTest1.Board);
+                extractor.RepackFile(filePath, packedFileName);
             }
         }//end ExportFile()
 
@@ -187,12 +192,12 @@ namespace MP6Editor
         private void btn_AddSpace_click(object sender, EventArgs e)
         {
             //TODO
+            //drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
         }
 
         //Adds a new link
         private void btn_AddLink_Click(object sender, EventArgs e)
         {
-            //drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
             drawTest1.Board[drawTest1.SelectedSpace].links.Add(1);
             UpdateSpaceInfo(drawTest1.SelectedSpace);
             UpdateDisplayInfo();

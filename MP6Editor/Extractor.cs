@@ -27,7 +27,10 @@ namespace MP6Editor
 
         private readonly string S_QUICKBMS = "quickbms.exe";
         private readonly string S_MP6SCRIPT = "mario_party_6_alt.bms";
+        private readonly string S_LZSSCOMP = "lzss_comp.bms";
         private readonly string S_OUTFOLDER = "w01_out";
+
+        private readonly byte[] FLAGS = { 0x00, 0x00, 0x00, 0x01 };
 
         int offset;
         int amount;
@@ -197,13 +200,13 @@ namespace MP6Editor
                     fileStream.WriteByte((byte)nuBoard[i].links[j]);
                 }
             }
+            fileStream.Dispose();
         }//end SaveBoardLayout()
 
         //Calls cline quickbms to extract/import the files
         public void QuickExtract(string filePath, bool reimport)
         {
             string args = "-Y ";
-            //TODO: merge
             if (reimport)
             {
                 args = args + "-r -w ";
@@ -225,22 +228,50 @@ namespace MP6Editor
         }//end QuickExtract()
 
         //Repacks the files into the .bin and appends the modified 0.dat to the end
-        public void RepackFile(string filePath)
+        public void RepackFile(string newFileName, string packedFileName)
         {
-            //TODO
-            //Get 0.dat's uncompressed size in bytes (SIZE)     X
-            //Call QBMS lzss_comp script to compress 0.dat      
-            //Get size of w01.bin in bytes (OFFSET)
-            //Append w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
-            //Append compressed 0.dat to w01.bin
-            //Go to offset 0x04 and write OFFSET (4 bytes)
-            FileStream fileStream = new FileStream("board_out_test", FileMode.Open);
-            byte[] SIZE = BitConverter.GetBytes((int)fileStream.Length);
+            //TODO: replace hardcoded filenames with variables
 
+            //Get 0.dat's uncompressed size in bytes (SIZE)
+            FileStream layoutFileStream = new FileStream("board_out_test", FileMode.Open);
+            byte[] SIZE = BitConverter.GetBytes((int)layoutFileStream.Length);
+            Array.Reverse(SIZE);
+            layoutFileStream.Dispose();
+
+            //Call QBMS lzss_comp script to compress 0.dat
             Process quickbms = new Process();
             //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             quickbms.StartInfo.FileName = S_QUICKBMS;
             quickbms.StartInfo.UseShellExecute = true;
+
+            string args = "-Y ";
+            quickbms.StartInfo.Arguments = args + S_LZSSCOMP + " \"" + "board_out_test" + "\" " + "recompress_out";
+            quickbms.Start();
+            quickbms.WaitForExit();
+
+            //Get size of w01.bin in bytes (OFFSET)
+            File.Copy("w01.bin", newFileName, true);
+            FileStream packedFileStream = new FileStream(newFileName, FileMode.Append);
+            byte[] OFFSET = BitConverter.GetBytes((int)packedFileStream.Length);
+            Array.Reverse(OFFSET);
+
+            //Append w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
+            packedFileStream.Write(SIZE, 0, SIZE.Length);
+            packedFileStream.Write(FLAGS, 0, FLAGS.Length);
+
+            //Append compressed 0.dat to w01.bin
+            layoutFileStream = new FileStream("recompress_out\\0_compressed.dat", FileMode.Open);
+            layoutFileStream.CopyTo(packedFileStream);
+            packedFileStream.Dispose();
+
+            //Go to offset 0x04 and write OFFSET (4 bytes)
+            packedFileStream = new FileStream(newFileName, FileMode.Open);
+            packedFileStream.Seek(0x04, 0);
+            //packedFileStream.Position = 0x04;
+            packedFileStream.Write(OFFSET, 0, OFFSET.Length);
+
+            layoutFileStream.Dispose();
+            packedFileStream.Dispose();
         }//end RepackFile()
     }
 }

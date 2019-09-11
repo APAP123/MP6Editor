@@ -50,6 +50,7 @@
             this.btn_RemoveLink = new System.Windows.Forms.Button();
             this.listView_Links = new System.Windows.Forms.ListView();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -216,6 +217,7 @@
             // openFileDialog_wbin
             // 
             this.openFileDialog_wbin.Filter = "Mario Party 6 board files|*.bin|All files|*.*";
+            this.openFileDialog_wbin.Title = "Open...";
             // 
             // btn_AddLink
             // 
@@ -262,6 +264,11 @@
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
+            // 
+            // saveFileDialog_wbin
+            // 
+            this.saveFileDialog_wbin.Filter = "Mario Party 6 board files|*.bin|All files|*.*";
+            this.saveFileDialog_wbin.Title = "Save As...";
             // 
             // Form1
             // 
@@ -317,6 +324,7 @@
         private System.Windows.Forms.Button btn_AddLink;
         private System.Windows.Forms.Button btn_RemoveLink;
         private System.Windows.Forms.ListView listView_Links;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog_wbin;
     }
 }
 
