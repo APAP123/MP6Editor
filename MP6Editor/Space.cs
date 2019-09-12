@@ -58,5 +58,20 @@ namespace MP6Editor
             Shop = 0x09,      //Does not function on it's own
             Ztar = 0x0A       //Does not funtion on it's own
         }
+
+        //Some data in "crap[25]" correlates to flags that
+        //change how the player traverses the environment;
+        //Currently just for reference
+        public enum TraversalFlags
+        {
+            NoUnique = 0x0000,
+            Jump1 = 0x0001, //Maybe a height difference between the two jumps?
+            Activation = 0x0002,
+            Jump3 = 0x0003,
+            ClimbEnd = 0x0004,
+            ClimbStart = 0x08, //For climb to work, the next space must be marked with a ClimbEnd flag
+            HomeSpace = 0x8000 //(starting at crap[24])Space #63 (home) is marked with this, and when it's removed, the paths on the map screen stop being drawn.
+            
+        }
     }
 }

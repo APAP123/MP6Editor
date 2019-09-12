@@ -231,6 +231,7 @@ namespace MP6Editor
         public void RepackFile(string newFileName, string packedFileName)
         {
             //TODO: replace hardcoded filenames with variables
+            //TODO: Instead of Appending to end of file, put it back in the front and move everything else forward
 
             //Get 0.dat's uncompressed size in bytes (SIZE)
             FileStream layoutFileStream = new FileStream("board_out_test", FileMode.Open);
@@ -243,7 +244,6 @@ namespace MP6Editor
             //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             quickbms.StartInfo.FileName = S_QUICKBMS;
             quickbms.StartInfo.UseShellExecute = true;
-
             string args = "-Y ";
             quickbms.StartInfo.Arguments = args + S_LZSSCOMP + " \"" + "board_out_test" + "\" " + "recompress_out";
             quickbms.Start();
@@ -267,7 +267,6 @@ namespace MP6Editor
             //Go to offset 0x04 and write OFFSET (4 bytes)
             packedFileStream = new FileStream(newFileName, FileMode.Open);
             packedFileStream.Seek(0x04, 0);
-            //packedFileStream.Position = 0x04;
             packedFileStream.Write(OFFSET, 0, OFFSET.Length);
 
             layoutFileStream.Dispose();
