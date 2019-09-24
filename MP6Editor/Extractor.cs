@@ -274,9 +274,8 @@ namespace MP6Editor
         }//end RepackFile()
 
         //Gets file header (data offsets) from board file
-        List<byte[]> GetFileHeader(string fileName)
+        public List<byte[]> GetFileHeader(string fileName)
         {
-            //TODO
             FileStream boardFileStream = new FileStream(fileName, FileMode.Open);
             byte[] COUNT = new byte[4]; //amount of packed files
 
