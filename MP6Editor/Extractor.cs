@@ -293,5 +293,17 @@ namespace MP6Editor
 
             return offsets;
         }//end GetFileHeader()
+
+        //Changes offsets to match new file layout
+        void AdjustFileHeader(List<byte[]> offsets)
+        {
+            //TODO
+        }//end AdjustFileHeader()
+
+        //Does exactly what it says on the can
+        List<int> ByteListToInt(List<byte[]> byteList)
+        {
+            //TODO
+        }//end ByteListToInt()
     }
 }
