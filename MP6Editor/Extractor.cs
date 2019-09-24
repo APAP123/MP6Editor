@@ -272,5 +272,12 @@ namespace MP6Editor
             layoutFileStream.Dispose();
             packedFileStream.Dispose();
         }//end RepackFile()
+
+        //Gets file header (data offsets) from board file
+        List<int> GetFileHeader(string fileName)
+        {
+            //TODO
+            FileStream boardFileStream = new FileStream(fileName, FileMode.Open);
+        }//end GetFileHeader()
     }
 }
