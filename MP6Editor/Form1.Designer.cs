@@ -221,7 +221,7 @@
             // 
             // btn_AddLink
             // 
-            this.btn_AddLink.Location = new System.Drawing.Point(738, 354);
+            this.btn_AddLink.Location = new System.Drawing.Point(758, 354);
             this.btn_AddLink.Name = "btn_AddLink";
             this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
             this.btn_AddLink.TabIndex = 14;
@@ -231,7 +231,7 @@
             // 
             // btn_RemoveLink
             // 
-            this.btn_RemoveLink.Location = new System.Drawing.Point(738, 383);
+            this.btn_RemoveLink.Location = new System.Drawing.Point(758, 383);
             this.btn_RemoveLink.Name = "btn_RemoveLink";
             this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
             this.btn_RemoveLink.TabIndex = 15;
@@ -247,7 +247,7 @@
             this.listView_Links.Location = new System.Drawing.Point(608, 354);
             this.listView_Links.MultiSelect = false;
             this.listView_Links.Name = "listView_Links";
-            this.listView_Links.Size = new System.Drawing.Size(124, 97);
+            this.listView_Links.Size = new System.Drawing.Size(144, 97);
             this.listView_Links.TabIndex = 16;
             this.listView_Links.UseCompatibleStateImageBehavior = false;
             this.listView_Links.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_Links_AfterLabelEdit);
