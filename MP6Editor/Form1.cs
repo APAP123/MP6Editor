@@ -14,7 +14,8 @@ namespace MP6Editor
     {
         ImageList imageList = new ImageList();
         string packedFileName = "";
-        List<byte[]> offsets;
+        //List<int> newOffsets;
+        List<byte[]> oldOffsets;
 
         public Form1()
         {
@@ -161,7 +162,7 @@ namespace MP6Editor
 
                 filePath = openFileDialog_wbin.FileName;
                 packedFileName = filePath;
-                offsets = extractor.GetFileHeader(filePath);
+                oldOffsets = extractor.GetFileHeader(filePath);
                 extractor.QuickExtract(filePath, false);
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
@@ -180,7 +181,8 @@ namespace MP6Editor
                 filePath = saveFileDialog_wbin.FileName;
                 //extractor.QuickExtract(filePath, true);
                 extractor.SaveBoardLayout(drawTest1.Board);
-                extractor.RepackFile(filePath, packedFileName);
+                //extractor.RepackFile(filePath, packedFileName);
+                extractor.RepackFile2(filePath, packedFileName, oldOffsets);
             }
         }//end ExportFile()
 

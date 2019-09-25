@@ -273,6 +273,81 @@ namespace MP6Editor
             packedFileStream.Dispose();
         }//end RepackFile()
 
+        //Repacks the files into the .bin and appends the modified 0.dat to the end
+        public void RepackFile2(string newFileName, string packedFileName, List<byte[]> oldOffsets)
+        {
+            //TODO: replace hardcoded filenames with variables
+
+            //Get 0.dat's uncompressed size in bytes (SIZE)
+            FileStream layoutFileStream = new FileStream("board_out_test", FileMode.Open);
+            byte[] SIZE = BitConverter.GetBytes((int)layoutFileStream.Length);
+            Array.Reverse(SIZE);
+            layoutFileStream.Dispose();
+
+            //Call QBMS lzss_comp script to compress 0.dat
+            Process quickbms = new Process();
+            //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            quickbms.StartInfo.FileName = S_QUICKBMS;
+            quickbms.StartInfo.UseShellExecute = true;
+            string args = "-Y ";
+            quickbms.StartInfo.Arguments = args + S_LZSSCOMP + " \"" + "board_out_test" + "\" " + "recompress_out";
+            quickbms.Start();
+            quickbms.WaitForExit();
+
+            //File stuff
+            File.Copy("w01.bin", newFileName, true);
+            File.Copy("w01.bin", newFileName + ".TEMP", true);
+            FileStream packedFileStream = new FileStream(newFileName, FileMode.Open);
+            byte[] OFFSET = oldOffsets[0];
+            //Array.Reverse(OFFSET);
+
+            packedFileStream.Seek(BitConverter.ToInt32(OFFSET, 0), 0);
+
+
+            //Write w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
+            packedFileStream.Write(SIZE, 0, SIZE.Length);
+            packedFileStream.Write(FLAGS, 0, FLAGS.Length);
+
+            //Write compressed 0.dat to w01.bin
+            layoutFileStream = new FileStream("recompress_out\\0_compressed.dat", FileMode.Open);
+            int compLength = (int)layoutFileStream.Length;
+            layoutFileStream.CopyTo(packedFileStream);
+            layoutFileStream.Dispose();
+            packedFileStream.Dispose();
+
+            //copy remaining compressed files to new file
+            FileStream tempStream = new FileStream(newFileName + ".TEMP", FileMode.Open);
+            OFFSET = oldOffsets[1];
+            //Array.Reverse(OFFSET);
+            tempStream.Seek(BitConverter.ToInt32(OFFSET, 0), 0);
+
+            List<int> newOffsets = new List<int>();
+            newOffsets = AdjustFileHeader(oldOffsets, compLength);
+
+            packedFileStream = new FileStream(newFileName, FileMode.Open);
+            packedFileStream.Seek(newOffsets[1], 0);
+            tempStream.CopyTo(packedFileStream);
+
+            tempStream.Dispose();
+            packedFileStream.Dispose();
+            File.Delete(newFileName + ".TEMP");
+
+            //write new file header
+            packedFileStream = new FileStream(newFileName, FileMode.Open);
+            byte[] FILECOUNT = BitConverter.GetBytes(newOffsets.Count);
+            Array.Reverse(FILECOUNT);
+            packedFileStream.Write(FILECOUNT, 0, 4);
+
+            for (int i = 0; i < newOffsets.Count; i++)
+            {
+                OFFSET = BitConverter.GetBytes(newOffsets[i]);
+                Array.Reverse(OFFSET);
+                packedFileStream.Write(OFFSET, 0, 4);
+            }
+
+            packedFileStream.Dispose();
+        }//end RepackFile2()
+
         //Gets file header (data offsets) from board file
         public List<byte[]> GetFileHeader(string fileName)
         {
@@ -288,6 +363,7 @@ namespace MP6Editor
             {
                 byte[] offset = new byte[4];
                 boardFileStream.Read(offset, 0, 4);
+                Array.Reverse(offset);
                 offsets.Add(offset);
             }
 
@@ -295,15 +371,31 @@ namespace MP6Editor
         }//end GetFileHeader()
 
         //Changes offsets to match new file layout
-        void AdjustFileHeader(List<byte[]> offsets)
+        public List<int> AdjustFileHeader(List<byte[]> offsets, int newSize)
         {
             //TODO
+            List<int> intList = ByteListToInt(offsets);
+            int adjustmentAmount = (newSize + 8) - (intList[1] - intList[0]);
+
+            for (int i = 1; i < intList.Count; i++)
+            {
+                intList[i] = intList[i] + adjustmentAmount;
+            }
+
+            return intList;
         }//end AdjustFileHeader()
 
         //Does exactly what it says on the can
         List<int> ByteListToInt(List<byte[]> byteList)
         {
-            //TODO
+            List<int> intList = new List<int>();
+
+            for(int i = 0; i < byteList.Count; i++)
+            {
+                intList.Add(BitConverter.ToInt32(byteList[i], 0));
+            }
+
+            return intList;
         }//end ByteListToInt()
     }
 }
