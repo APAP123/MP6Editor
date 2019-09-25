@@ -228,53 +228,7 @@ namespace MP6Editor
         }//end QuickExtract()
 
         //Repacks the files into the .bin and appends the modified 0.dat to the end
-        public void RepackFile(string newFileName, string packedFileName)
-        {
-            //TODO: replace hardcoded filenames with variables
-            //TODO: Instead of Appending to end of file, put it back in the front and move everything else forward
-
-            //Get 0.dat's uncompressed size in bytes (SIZE)
-            FileStream layoutFileStream = new FileStream("board_out_test", FileMode.Open);
-            byte[] SIZE = BitConverter.GetBytes((int)layoutFileStream.Length);
-            Array.Reverse(SIZE);
-            layoutFileStream.Dispose();
-
-            //Call QBMS lzss_comp script to compress 0.dat
-            Process quickbms = new Process();
-            //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            quickbms.StartInfo.FileName = S_QUICKBMS;
-            quickbms.StartInfo.UseShellExecute = true;
-            string args = "-Y ";
-            quickbms.StartInfo.Arguments = args + S_LZSSCOMP + " \"" + "board_out_test" + "\" " + "recompress_out";
-            quickbms.Start();
-            quickbms.WaitForExit();
-
-            //Get size of w01.bin in bytes (OFFSET)
-            File.Copy("w01.bin", newFileName, true);
-            FileStream packedFileStream = new FileStream(newFileName, FileMode.Append);
-            byte[] OFFSET = BitConverter.GetBytes((int)packedFileStream.Length);
-            Array.Reverse(OFFSET);
-
-            //Append w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
-            packedFileStream.Write(SIZE, 0, SIZE.Length);
-            packedFileStream.Write(FLAGS, 0, FLAGS.Length);
-
-            //Append compressed 0.dat to w01.bin
-            layoutFileStream = new FileStream("recompress_out\\0_compressed.dat", FileMode.Open);
-            layoutFileStream.CopyTo(packedFileStream);
-            packedFileStream.Dispose();
-
-            //Go to offset 0x04 and write OFFSET (4 bytes)
-            packedFileStream = new FileStream(newFileName, FileMode.Open);
-            packedFileStream.Seek(0x04, 0);
-            packedFileStream.Write(OFFSET, 0, OFFSET.Length);
-
-            layoutFileStream.Dispose();
-            packedFileStream.Dispose();
-        }//end RepackFile()
-
-        //Repacks the files into the .bin and appends the modified 0.dat to the end
-        public void RepackFile2(string newFileName, string packedFileName, List<byte[]> oldOffsets)
+        public void RepackFile(string newFileName, string packedFileName, List<byte[]> oldOffsets)
         {
             //TODO: replace hardcoded filenames with variables
 
@@ -299,9 +253,8 @@ namespace MP6Editor
             File.Copy("w01.bin", newFileName + ".TEMP", true);
             FileStream packedFileStream = new FileStream(newFileName, FileMode.Open);
             byte[] OFFSET = oldOffsets[0];
-            //Array.Reverse(OFFSET);
 
-            packedFileStream.Seek(BitConverter.ToInt32(OFFSET, 0), 0);
+            packedFileStream.Seek(BitConverter.ToInt32(oldOffsets[0], 0), 0);
 
 
             //Write w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
@@ -317,9 +270,7 @@ namespace MP6Editor
 
             //copy remaining compressed files to new file
             FileStream tempStream = new FileStream(newFileName + ".TEMP", FileMode.Open);
-            OFFSET = oldOffsets[1];
-            //Array.Reverse(OFFSET);
-            tempStream.Seek(BitConverter.ToInt32(OFFSET, 0), 0);
+            tempStream.Seek(BitConverter.ToInt32(oldOffsets[1], 0), 0);
 
             List<int> newOffsets = new List<int>();
             newOffsets = AdjustFileHeader(oldOffsets, compLength);
@@ -346,7 +297,7 @@ namespace MP6Editor
             }
 
             packedFileStream.Dispose();
-        }//end RepackFile2()
+        }//end RepackFile()
 
         //Gets file header (data offsets) from board file
         public List<byte[]> GetFileHeader(string fileName)

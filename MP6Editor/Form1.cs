@@ -182,7 +182,7 @@ namespace MP6Editor
                 //extractor.QuickExtract(filePath, true);
                 extractor.SaveBoardLayout(drawTest1.Board);
                 //extractor.RepackFile(filePath, packedFileName);
-                extractor.RepackFile2(filePath, packedFileName, oldOffsets);
+                extractor.RepackFile(filePath, packedFileName, oldOffsets);
             }
         }//end ExportFile()
 
