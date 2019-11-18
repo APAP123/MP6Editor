@@ -33,25 +33,22 @@ namespace MP6Editor
         private readonly byte[] FLAGS = { 0x00, 0x00, 0x00, 0x01 };
 
         int offset;
-        int amount;
         List<Space> Board = new List<Space>();
 
+        //Reads decompressed board file
         public List<Space> ReadFile()
         {
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
             fileSize = (int)fileStream.Length;
-            //Skip past the first three bytes of padding
-            //TODO: The amount of files in the .bin is probably the initial 4 bytes,
-            //so skipping the first three is going to cause issues sooner or later
-            for (int i = 0; i < BEGIN; i++)
-            {
-                fileStream.ReadByte();
-            }
-            amount = fileStream.ReadByte();
+
+            //Get amount of spaces on board
+            byte[] spaceCount = new byte[4];
+            fileStream.Read(spaceCount, 0, spaceCount.Length);
+            Array.Reverse(spaceCount);
 
             //Read in spaces from board
-            for (int i = 0; i < amount; i++)
+            for (int i = 0; i < BitConverter.ToInt32(spaceCount, 0); i++)
             {
                 Board.Add(ReadSpace(fileStream));
             }
@@ -61,7 +58,7 @@ namespace MP6Editor
 
             //Debug.WriteLine("Space Count: " + spaces);
             return Board;
-        }
+        }//end ReadFile()
 
         //Reads the next space in
         private Space ReadSpace(FileStream fileStream)
@@ -155,15 +152,12 @@ namespace MP6Editor
         {
             //TODO: Clean it up, it's a mess
             //probably should do some file verification too
-
-            //Padding
             FileStream fileStream = new FileStream("board_out_test", FileMode.OpenOrCreate);
-            for (int i = 0; i < BEGIN; i++)
-            {
-                fileStream.WriteByte(0x00);
-            }
 
-            fileStream.WriteByte(0x6B);
+            //Amount of spaces
+            byte[] spaceCount = BitConverter.GetBytes(nuBoard.Count);
+            Array.Reverse(spaceCount);
+            fileStream.Write(spaceCount, 0, 4);
 
             //Spaces
             //TODO: clean up this mess

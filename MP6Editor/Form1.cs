@@ -181,7 +181,6 @@ namespace MP6Editor
                 filePath = saveFileDialog_wbin.FileName;
                 //extractor.QuickExtract(filePath, true);
                 extractor.SaveBoardLayout(drawTest1.Board);
-                //extractor.RepackFile(filePath, packedFileName);
                 extractor.RepackFile(filePath, packedFileName, oldOffsets);
             }
         }//end ExportFile()
@@ -189,8 +188,11 @@ namespace MP6Editor
         //Saves current board to MP6 format
         private void SaveBoard(object sender, EventArgs e)
         {
-            Extractor extractor = new Extractor();
-            extractor.SaveBoardLayout(drawTest1.Board);
+            if (saveFileDialog_wbin.ShowDialog() == DialogResult.OK)
+            {
+                Extractor extractor = new Extractor();
+                extractor.SaveBoardLayout(drawTest1.Board);
+            }
         }//end SaveBoard()
 
         private void btn_AddSpace_click(object sender, EventArgs e)
