@@ -18,8 +18,6 @@ namespace MP6Editor
         //List<int> newOffsets;
         List<byte[]> oldOffsets;
 
-        string PosBox_LastGoodValue = "0";
-
         public Form1()
         {
             InitializeComponent();
