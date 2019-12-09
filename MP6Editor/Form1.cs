@@ -75,7 +75,10 @@ namespace MP6Editor
                 //Add SelectedSpace's links to the listBox
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
-                    listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
+                    //if (drawTest1.Board[drawTest1.SelectedSpace].links[i] >= 0 && drawTest1.Board[drawTest1.SelectedSpace].links[i]  < drawTest1.Board.Count)
+                   // {
+                        listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
+                    //}
                 }
                 
             }
@@ -237,13 +240,16 @@ namespace MP6Editor
 
         private void listView_Links_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            if (listView_Links.SelectedItems.Count > 0 && e.Label != null)
+            // Validates the new label text
+            if (listView_Links.SelectedItems.Count > 0 && e.Label != null 
+                && int.Parse(e.Label) > 0 && int.Parse(e.Label) < drawTest1.Board.Count)
             {
                 listView_Links.SelectedItems[0].Text = e.Label;
-                UpdateSpaceLinks(drawTest1.SelectedSpace);
-                UpdateSpaceInfo(drawTest1.SelectedSpace);
-                UpdateDisplayInfo();
             }
+
+            UpdateSpaceLinks(drawTest1.SelectedSpace);
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
+            UpdateDisplayInfo();
         }
 
         //Allows editing labels on double click rather than having to hold the mouse down

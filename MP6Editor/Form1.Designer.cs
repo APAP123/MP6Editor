@@ -50,8 +50,8 @@
             this.btn_RemoveLink = new System.Windows.Forms.Button();
             this.listView_Links = new System.Windows.Forms.ListView();
             this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.btn_CreateSpace = new System.Windows.Forms.Button();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -259,6 +259,16 @@
             this.saveFileDialog_wbin.Filter = "Mario Party 6 board files|*.bin|All files|*.*";
             this.saveFileDialog_wbin.Title = "Save As...";
             // 
+            // btn_CreateSpace
+            // 
+            this.btn_CreateSpace.Location = new System.Drawing.Point(608, 478);
+            this.btn_CreateSpace.Name = "btn_CreateSpace";
+            this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
+            this.btn_CreateSpace.TabIndex = 17;
+            this.btn_CreateSpace.Text = "Create New Space";
+            this.btn_CreateSpace.UseVisualStyleBackColor = true;
+            this.btn_CreateSpace.Click += new System.EventHandler(this.btn_CreateSpace_Click);
+            // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 36);
@@ -270,16 +280,6 @@
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
-            // 
-            // btn_CreateSpace
-            // 
-            this.btn_CreateSpace.Location = new System.Drawing.Point(608, 478);
-            this.btn_CreateSpace.Name = "btn_CreateSpace";
-            this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
-            this.btn_CreateSpace.TabIndex = 17;
-            this.btn_CreateSpace.Text = "Create New Space";
-            this.btn_CreateSpace.UseVisualStyleBackColor = true;
-            this.btn_CreateSpace.Click += new System.EventHandler(this.btn_CreateSpace_Click);
             // 
             // Form1
             // 
