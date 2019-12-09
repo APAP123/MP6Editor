@@ -227,9 +227,12 @@ namespace MP6Editor
         //Remove a selected link
         private void btn_RemoveLink_Click(object sender, EventArgs e)
         {
-            drawTest1.Board[drawTest1.SelectedSpace].links.Remove(int.Parse(listView_Links.SelectedItems[0].Text));
-            UpdateSpaceInfo(drawTest1.SelectedSpace);
-            UpdateDisplayInfo();
+            if (listView_Links.SelectedItems.Count == 1)
+            {
+                drawTest1.Board[drawTest1.SelectedSpace].links.Remove(int.Parse(listView_Links.SelectedItems[0].Text));
+                UpdateSpaceInfo(drawTest1.SelectedSpace);
+                UpdateDisplayInfo();
+            }
         }//end btn_RemoveLink_Click()
 
         private void listView_Links_AfterLabelEdit(object sender, LabelEditEventArgs e)
@@ -252,5 +255,10 @@ namespace MP6Editor
             }
         }//end listView_Links_Click()
 
+        //Creates a new Space connected to the currently selected one
+        private void btn_CreateSpace_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
     }
 }

@@ -51,6 +51,7 @@
             this.listView_Links = new System.Windows.Forms.ListView();
             this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.btn_CreateSpace = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -270,11 +271,22 @@
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // btn_CreateSpace
+            // 
+            this.btn_CreateSpace.Location = new System.Drawing.Point(608, 478);
+            this.btn_CreateSpace.Name = "btn_CreateSpace";
+            this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
+            this.btn_CreateSpace.TabIndex = 17;
+            this.btn_CreateSpace.Text = "Create New Space";
+            this.btn_CreateSpace.UseVisualStyleBackColor = true;
+            this.btn_CreateSpace.Click += new System.EventHandler(this.btn_CreateSpace_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 503);
+            this.ClientSize = new System.Drawing.Size(800, 513);
+            this.Controls.Add(this.btn_CreateSpace);
             this.Controls.Add(this.listView_Links);
             this.Controls.Add(this.btn_RemoveLink);
             this.Controls.Add(this.btn_AddLink);
@@ -325,6 +337,7 @@
         private System.Windows.Forms.Button btn_RemoveLink;
         private System.Windows.Forms.ListView listView_Links;
         private System.Windows.Forms.SaveFileDialog saveFileDialog_wbin;
+        private System.Windows.Forms.Button btn_CreateSpace;
     }
 }
 
