@@ -49,8 +49,8 @@
             this.btn_AddLink = new System.Windows.Forms.Button();
             this.btn_RemoveLink = new System.Windows.Forms.Button();
             this.listView_Links = new System.Windows.Forms.ListView();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -253,6 +253,11 @@
             this.listView_Links.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_Links_AfterLabelEdit);
             this.listView_Links.DoubleClick += new System.EventHandler(this.listView_Links_Click);
             // 
+            // saveFileDialog_wbin
+            // 
+            this.saveFileDialog_wbin.Filter = "Mario Party 6 board files|*.bin|All files|*.*";
+            this.saveFileDialog_wbin.Title = "Save As...";
+            // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 36);
@@ -264,11 +269,6 @@
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
-            // 
-            // saveFileDialog_wbin
-            // 
-            this.saveFileDialog_wbin.Filter = "Mario Party 6 board files|*.bin|All files|*.*";
-            this.saveFileDialog_wbin.Title = "Save As...";
             // 
             // Form1
             // 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace MP6Editor
 {
@@ -16,6 +17,8 @@ namespace MP6Editor
         string packedFileName = "";
         //List<int> newOffsets;
         List<byte[]> oldOffsets;
+
+        string PosBox_LastGoodValue = "0";
 
         public Form1()
         {
@@ -140,8 +143,19 @@ namespace MP6Editor
         private void Position_WasModified(object sender, EventArgs e)
         {
             TextBox sendingBox = (TextBox)sender;
-            UpdateSpaceInfo(drawTest1.SelectedSpace);
+            //UpdateSpaceInfo(drawTest1.SelectedSpace);
             sendingBox.Modified = false;
+
+            if (float.TryParse(sendingBox.Text, out float result))
+            {
+                System.Diagnostics.Debug.WriteLine("Validate successful!");
+                UpdateSpaceInfo(drawTest1.SelectedSpace);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Validate failed! Reverting to last good value...");
+                UpdateDisplayInfo();
+            }
         }//end Position_WasModified()
 
         //Updates space type if changed
@@ -237,5 +251,6 @@ namespace MP6Editor
                 listView_Links.SelectedItems[0].BeginEdit();
             }
         }//end listView_Links_Click()
+
     }
 }
