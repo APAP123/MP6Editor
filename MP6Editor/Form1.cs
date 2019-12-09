@@ -15,14 +15,13 @@ namespace MP6Editor
     {
         ImageList imageList = new ImageList();
         string packedFileName = "";
-        //List<int> newOffsets;
         List<byte[]> oldOffsets;
 
         public Form1()
         {
             InitializeComponent();
 
-            //Populate imageList
+            // Populate imageList.
             foreach (string spaceType in Enum.GetNames(typeof(Space.Types)))
             {
                 imageList.Images.Add("Blank", Image.FromFile("thumbs\\" + spaceType + ".png"));
@@ -53,10 +52,10 @@ namespace MP6Editor
             UpdateDisplayInfo();
         }
 
-        //Updates on-screen information
+        // Updates on-screen information.
         private void UpdateDisplayInfo()
         {
-            //Clear previous links
+            // Clear previous links.
             listView_Links.Items.Clear();
 
             if(drawTest1.SelectedSpace > -1)
@@ -70,36 +69,33 @@ namespace MP6Editor
                 listView_Links.LargeImageList = null;
                 listView_Links.LargeImageList = imageList;
 
-                //Add SelectedSpace's links to the listBox
+                //  Add SelectedSpace's links to the listBox.
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
-                    //if (drawTest1.Board[drawTest1.SelectedSpace].links[i] >= 0 && drawTest1.Board[drawTest1.SelectedSpace].links[i]  < drawTest1.Board.Count)
-                   // {
-                        listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
-                    //}
+                    listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
                 }
                 
             }
         }//end updateDisplayInfo()
 
-        //Updates the board visuals to match the entered text
+        // Updates the board visuals to match the entered text
         private void UpdateSpaceInfo(int space)
         {
-            //Position
+            // Position
             drawTest1.Board[space].X = float.Parse(textBox_X.Text);
             drawTest1.Board[space].Y = float.Parse(textBox_Y.Text);
             drawTest1.Board[space].Z = float.Parse(textBox_Z.Text);
 
-            //type
+            // type
             drawTest1.Board[space].type = comboBox_Type.SelectedIndex;
 
-            //links
+            // links
             drawTest1.Board[space].linkAmount = drawTest1.Board[space].links.Count;
 
             pictureBox_Space.Image = GetSpaceImage(drawTest1.Board[drawTest1.SelectedSpace].type);
-        }//end updateSpaceInfo()
+        }// end updateSpaceInfo()
 
-        //Updates the passed space's links
+        // Updates the passed space's links
         private void UpdateSpaceLinks(int space)
         {
             if (listView_Links.Items.Count > 0)
@@ -111,40 +107,40 @@ namespace MP6Editor
             }
         }//end UpdateSpaceLinks()
 
-        //Returns image of passed space type
-        //TODO: can possibly move to Space.cs; could also do this with enums (see constructor)
+        // Returns image of passed space type
+        // TODO: can possibly move to Space.cs; could also do this with enums (see constructor)
         private Image GetSpaceImage(int type)
         {
             switch (type)
             {
-                case 0: //Blank
+                case 0: // Blank
                     return MP6Editor.Properties.Resources.Blank;
-                case 1: //Blue
+                case 1: // Blue
                     return MP6Editor.Properties.Resources.Blue;
-                case 2: //Red
+                case 2: // Red
                     return MP6Editor.Properties.Resources.Red;
-                case 3: //Happening
+                case 3: // Happening
                     return MP6Editor.Properties.Resources.Happening;
-                case 4: //Miracle
+                case 4: // Miracle
                     return MP6Editor.Properties.Resources.Miracle;
-                case 5: //Duel
+                case 5: // Duel
                     return MP6Editor.Properties.Resources.Dueling;
-                case 6: //DK/Bowser
+                case 6: // DK/Bowser
                     return MP6Editor.Properties.Resources.DK;
-                case 8: //Orb
+                case 8: // Orb
                     return MP6Editor.Properties.Resources.Orb;
-                case 9: //Shop
+                case 9: // Shop
                     return MP6Editor.Properties.Resources.Shop;
-                default: //Everything else
+                default: // Everything else
                     return MP6Editor.Properties.Resources.Other;
             }
-        }//end GetSpaceImage()
+        }// end GetSpaceImage()
 
-        //Updates visual information if space position was changed
+        // Updates visual information if space position was changed
         private void Position_WasModified(object sender, EventArgs e)
         {
             TextBox sendingBox = (TextBox)sender;
-            //UpdateSpaceInfo(drawTest1.SelectedSpace);
+            // UpdateSpaceInfo(drawTest1.SelectedSpace);
             sendingBox.Modified = false;
 
             if (float.TryParse(sendingBox.Text, out float result))
@@ -157,22 +153,22 @@ namespace MP6Editor
                 System.Diagnostics.Debug.WriteLine("Validate failed! Reverting to last good value...");
                 UpdateDisplayInfo();
             }
-        }//end Position_WasModified()
+        }// end Position_WasModified()
 
-        //Updates space type if changed
+        // Updates space type if changed
         private void type_WasModified(object sender, EventArgs e)
         {
             UpdateSpaceInfo(drawTest1.SelectedSpace);
-        }//end type_WasModified()
+        }// end type_WasModified()
 
-        //Opens the file openFileDialog to select the w##.bin file
+        // Opens the file openFileDialog to select the w##.bin file
         private void ImportFile(object sender, EventArgs e)
         {
             string filePath = string.Empty;
-            //if openFileDialog was successful
+            // if openFileDialog was successful
             if(openFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
-                //TODO: Possible code clean up? These method calls to other classes feels sloppy
+                // TODO: Possible code clean up? These method calls to other classes feels sloppy.
                 Extractor extractor = new Extractor();
 
                 filePath = openFileDialog_wbin.FileName;
@@ -182,25 +178,24 @@ namespace MP6Editor
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
             }
-        }//end ImportFile()
+        }// end ImportFile()
 
-        //Opposite 
+        // Opposite 
         private void ExportFile(object sender, EventArgs e)
         {
             string filePath = string.Empty;
-            //if saveFileDialog was successful
+            // if saveFileDialog was successful...
             if (saveFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
                 Extractor extractor = new Extractor();
 
                 filePath = saveFileDialog_wbin.FileName;
-                //extractor.QuickExtract(filePath, true);
                 extractor.SaveBoardLayout(drawTest1.Board);
                 extractor.RepackFile(filePath, packedFileName, oldOffsets);
             }
-        }//end ExportFile()
+        }// end ExportFile()
 
-        //Saves current board to MP6 format
+        // Saves current board to MP6 format.
         private void SaveBoard(object sender, EventArgs e)
         {
             if (saveFileDialog_wbin.ShowDialog() == DialogResult.OK)
@@ -208,24 +203,24 @@ namespace MP6Editor
                 Extractor extractor = new Extractor();
                 extractor.SaveBoardLayout(drawTest1.Board);
             }
-        }//end SaveBoard()
+        }// end SaveBoard()
 
         private void btn_AddSpace_click(object sender, EventArgs e)
         {
-            //TODO
-            //drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
+            // TODO
+            // drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
         }
 
-        //Adds a new link
+        // Adds a new link.
         private void btn_AddLink_Click(object sender, EventArgs e)
         {
             drawTest1.Board[drawTest1.SelectedSpace].links.Add(1);
             UpdateSpaceInfo(drawTest1.SelectedSpace);
             UpdateDisplayInfo();
 
-        }//end btn_AddLink_Click()
+        }// end btn_AddLink_Click()
 
-        //Remove a selected link
+        // Remove a selected link.
         private void btn_RemoveLink_Click(object sender, EventArgs e)
         {
             if (listView_Links.SelectedItems.Count == 1)
@@ -234,11 +229,11 @@ namespace MP6Editor
                 UpdateSpaceInfo(drawTest1.SelectedSpace);
                 UpdateDisplayInfo();
             }
-        }//end btn_RemoveLink_Click()
+        }// end btn_RemoveLink_Click()
 
         private void listView_Links_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            // Validates the new label text
+            // Validates the new label text.
             if (listView_Links.SelectedItems.Count > 0 && e.Label != null 
                 && int.Parse(e.Label) > 0 && int.Parse(e.Label) < drawTest1.Board.Count)
             {
@@ -250,16 +245,16 @@ namespace MP6Editor
             UpdateDisplayInfo();
         }
 
-        //Allows editing labels on double click rather than having to hold the mouse down
+        // Allows editing labels on double click rather than having to hold the mouse down.
         private void listView_Links_Click(object sender, EventArgs e)
         {
             if(listView_Links.SelectedItems.Count > 0)
             {
                 listView_Links.SelectedItems[0].BeginEdit();
             }
-        }//end listView_Links_Click()
+        }// end listView_Links_Click()
 
-        //Creates a new Space connected to the currently selected one
+        // Creates a new Space connected to the currently selected one.
         private void btn_CreateSpace_Click(object sender, EventArgs e)
         {
             // TODO
