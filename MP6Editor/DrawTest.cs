@@ -28,6 +28,10 @@ namespace MP6Editor
         public List<Vector2> Positions = new List<Vector2>(); 
         public int SelectedSpace = -1;
 
+        // Font drawing vars
+        private SpriteFont font;
+        public bool fontDraw = false;
+
         List<Path> Paths = new List<Path>();
 
         /* Path drawing timer vars */
@@ -70,6 +74,7 @@ namespace MP6Editor
             shopSpace = Editor.Content.Load<Texture2D>(@"Shop");           //9
             otherSpace = Editor.Content.Load<Texture2D>(@"Other");         //Others
 
+            font = Editor.Content.Load<SpriteFont>(@"SpaceIDs");
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");        //Path sprite placeholder
         }//end Initialize()
 
@@ -114,6 +119,14 @@ namespace MP6Editor
                 Board[i].texture = getSpaceTexture(Board[i].type);
 
                 Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
+
+                if (fontDraw)
+                {
+                    string text = ""+i;
+                    //Editor.spriteBatch.DrawString(font, text, spot + new Vector2(-1f, -1f), Color.White);
+                    //Editor.spriteBatch.DrawString(font, text, spot + new Vector2(1f, -1f), Color.White);
+                    Editor.spriteBatch.DrawString(font, text, spot + new Vector2(-10, 0), Color.Black);
+                }
             }
 
             //Editor.spriteBatch.End();
