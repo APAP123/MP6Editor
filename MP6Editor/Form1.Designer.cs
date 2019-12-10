@@ -136,7 +136,9 @@
             "DK/Bowser (6)",
             "Star (7)",
             "Orb (8)",
-            "Shop (9)"});
+            "Shop (9)",
+            "Unknown (10)",
+            "Unknown (11)"});
             this.comboBox_Type.Location = new System.Drawing.Point(628, 300);
             this.comboBox_Type.Name = "comboBox_Type";
             this.comboBox_Type.Size = new System.Drawing.Size(104, 21);

@@ -57,8 +57,7 @@ namespace MP6Editor
             Orb = 0x08,
             Shop = 0x09,        // Does not function on it's own.
             Ztar = 0x0A,        // Does not funtion on it's own.
-            Unknown1 = 0x0B,    // Used by MP7.
-            Unknown2 = 0x0C     // Just in case.
+            Other = 0x0B   // Used by MP7.
         }
 
         /* Some data in "crap[25]" correlates to flags that

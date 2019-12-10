@@ -64,6 +64,8 @@ namespace MP6Editor
                 textBox_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].X;
                 textBox_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Y;
                 textBox_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Z;
+
+                // TODO: Implement the adding of unrecognized types to comboBox Items List on the fly.
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
 
                 listView_Links.LargeImageList = null;
@@ -76,7 +78,7 @@ namespace MP6Editor
                 }
                 
             }
-        }//end updateDisplayInfo()
+        }// end updateDisplayInfo()
 
         // Updates the board visuals to match the entered text
         private void UpdateSpaceInfo(int space)
@@ -105,7 +107,7 @@ namespace MP6Editor
                     drawTest1.Board[space].links[i] = int.Parse(listView_Links.Items[i].Text);
                 }
             }
-        }//end UpdateSpaceLinks()
+        }// end UpdateSpaceLinks()
 
         // Returns image of passed space type
         // TODO: can possibly move to Space.cs; could also do this with enums (see constructor)
