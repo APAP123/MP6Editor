@@ -179,15 +179,30 @@ namespace MP6Editor
             UpdateSpaceInfo(drawTest1.SelectedSpace);
         }// end type_WasModified()
 
+        // MP4 and MP5
+        private void ImportType1_Click(object sender, EventArgs e)
+        {
+            ImportFile(sender, e, 4);
+        }// end ImportType1_Click()
+
+        // MP6 and MP7
+        private void ImportType2_Click(object sender, EventArgs e)
+        {
+            ImportFile(sender, e, 6);
+        }// end ImportType2_Click()
+
         // Opens the file openFileDialog to select the w##.bin file
-        private void ImportFile(object sender, EventArgs e)
+        private void ImportFile(object sender, EventArgs e, int version)
         {
             string filePath = string.Empty;
+            openFileDialog_wbin.Filter = "Mario Party " + version + " board files|*.bin|All files|*.*";
             // if openFileDialog was successful
-            if(openFileDialog_wbin.ShowDialog() == DialogResult.OK)
+            if (openFileDialog_wbin.ShowDialog() == DialogResult.OK)
             {
                 // TODO: Possible code clean up? These method calls to other classes feels sloppy.
                 Extractor extractor = new Extractor();
+
+                extractor.mpVersion = version;
 
                 filePath = openFileDialog_wbin.FileName;
                 packedFileName = filePath;
@@ -198,6 +213,7 @@ namespace MP6Editor
                 btn_CreateSpace.Enabled = true;
             }
         }// end ImportFile()
+
 
         // Opposite 
         private void ExportFile(object sender, EventArgs e)
@@ -270,7 +286,7 @@ namespace MP6Editor
         // Creates a new Space connected to the currently selected one.
         private void btn_CreateSpace_Click(object sender, EventArgs e)
         {
-            drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
+            drawTest1.Board.Add(new Space(0, 0, 0, 29, 0x00, new List<int>()));
             drawTest1.InitPositions();
         }
 

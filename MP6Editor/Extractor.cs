@@ -25,6 +25,8 @@ namespace MP6Editor
 
         int fileSize = 0;
 
+        public int mpVersion = 0; // 4 == MP4, 5 == MP5, all else == MP6
+        private int crapCount = 0;
 
         private readonly string S_QUICKBMS = "quickbms.exe";
         private readonly string S_MP6SCRIPT = "mario_party_6_alt.bms";
@@ -39,6 +41,14 @@ namespace MP6Editor
         // Reads decompressed board file
         public List<Space> ReadFile()
         {
+            if(mpVersion == 4 || mpVersion == 5)
+            {
+                crapCount = 29;
+            }
+            else
+            {
+                crapCount = 31;
+            }
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
             fileSize = (int)fileStream.Length;
@@ -71,7 +81,7 @@ namespace MP6Editor
             space.Z = GetPosition(fileStream);
 
             // Crap
-            space.crap = GetCrap(fileStream);
+            space.crap = GetCrap(fileStream, crapCount).ToList();
 
             // Type
             space.type = fileStream.ReadByte();
@@ -138,10 +148,10 @@ namespace MP6Editor
         }// end getPosition()
 
         // Get the information between the end of the positions and before the typing
-        private byte[] GetCrap(FileStream fileStream)
+        private byte[] GetCrap(FileStream fileStream, int crapAmount)
         {
-            byte[] crap = new byte[31];
-            for (int i = 0; i < 31; i++)
+            byte[] crap = new byte[crapAmount];
+            for (int i = 0; i < crapAmount; i++)
             {
                 crap[i] = (byte)fileStream.ReadByte();
             }
@@ -180,7 +190,7 @@ namespace MP6Editor
                 fileStream.Write(posArray, 0, 4);
 
                 // "crap"
-                fileStream.Write(nuBoard[i].crap, 0, nuBoard[i].crap.Length);
+                fileStream.Write(nuBoard[i].crap.ToArray(), 0, nuBoard[i].crap.Count);
                 // type
                 fileStream.WriteByte((byte)nuBoard[i].type);
                 // padding

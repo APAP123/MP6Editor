@@ -43,6 +43,10 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marioParty4binToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marioParty5binToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marioParty6binToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marioParty7BoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -54,10 +58,10 @@
             this.listView_Links = new System.Windows.Forms.ListView();
             this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
             this.btn_CreateSpace = new System.Windows.Forms.Button();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolTip_AddLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -195,22 +199,54 @@
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.marioParty4binToolStripMenuItem,
+            this.marioParty5binToolStripMenuItem,
+            this.marioParty6binToolStripMenuItem,
+            this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Import...";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
+            // 
+            // marioParty4binToolStripMenuItem
+            // 
+            this.marioParty4binToolStripMenuItem.Name = "marioParty4binToolStripMenuItem";
+            this.marioParty4binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty4binToolStripMenuItem.Text = "Mario Party 4 board...";
+            this.marioParty4binToolStripMenuItem.Click += new System.EventHandler(this.ImportType1_Click);
+            // 
+            // marioParty5binToolStripMenuItem
+            // 
+            this.marioParty5binToolStripMenuItem.Name = "marioParty5binToolStripMenuItem";
+            this.marioParty5binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty5binToolStripMenuItem.Text = "Mario Party 5 board...";
+            this.marioParty5binToolStripMenuItem.Click += new System.EventHandler(this.ImportType2_Click);
+            // 
+            // marioParty6binToolStripMenuItem
+            // 
+            this.marioParty6binToolStripMenuItem.Name = "marioParty6binToolStripMenuItem";
+            this.marioParty6binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty6binToolStripMenuItem.Text = "Mario Party 6 board...";
+            this.marioParty6binToolStripMenuItem.Click += new System.EventHandler(this.ImportType2_Click);
+            // 
+            // marioParty7BoardToolStripMenuItem
+            // 
+            this.marioParty7BoardToolStripMenuItem.Name = "marioParty7BoardToolStripMenuItem";
+            this.marioParty7BoardToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty7BoardToolStripMenuItem.Text = "Mario Party 7 board...";
+            this.marioParty7BoardToolStripMenuItem.Click += new System.EventHandler(this.ImportType2_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -374,6 +410,10 @@
         private System.Windows.Forms.ToolTip toolTip_AddLink;
         private System.Windows.Forms.ToolTip toolTip_RemoveLink;
         private System.Windows.Forms.ToolTip toolTip_CreateSpaceButton;
+        private System.Windows.Forms.ToolStripMenuItem marioParty4binToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marioParty5binToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marioParty6binToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marioParty7BoardToolStripMenuItem;
     }
 }
 

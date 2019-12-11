@@ -15,11 +15,14 @@ namespace MP6Editor
 {
     class Space
     {
+        public readonly int MP6_CRAPCOUNT = 31;
+        public readonly int MP5_CRAPCOUNT = 29;
         // Position values are the distance from the origin point (center).
         public float X; // X position
         public float Y; // Y position
         public float Z; // Z position
-        public byte[] crap = new byte[31]; // Not sure what this info means yet, but it's probably important.
+        public List<byte> crap = new List<byte>();
+        //public byte[] crap = new byte[31]; // Not sure what this info means yet, but it's probably important.
         public int type;
         public Texture2D texture;
         public byte typePad; // Padding after the type byte; This probably isn't neccessary.
@@ -31,12 +34,12 @@ namespace MP6Editor
 
         }
 
-        public Space(float X, float Y, float Z, int type, List<int> links)
+        public Space(float X, float Y, float Z, int crapAmount, int type, List<int> links)
         {
             this.X = X;
             this.Y = Y;
             this.Z = Z;
-            crap = new byte[31];
+            crap = new byte[crapAmount].ToList();
             this.type = type;
             typePad = 0x00;
             //this.linkAmount = linkAmount;
