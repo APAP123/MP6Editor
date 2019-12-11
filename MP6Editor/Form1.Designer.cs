@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label_SelectedSpace = new System.Windows.Forms.Label();
             this.textBox_X = new System.Windows.Forms.TextBox();
@@ -54,6 +55,9 @@
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.displaySpaceIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.toolTip_AddLink = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -366,6 +370,9 @@
         private System.Windows.Forms.Button btn_CreateSpace;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
         private System.Windows.Forms.ToolStripMenuItem displaySpaceIDsToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip_AddLink;
+        private System.Windows.Forms.ToolTip toolTip_RemoveLink;
+        private System.Windows.Forms.ToolTip toolTip_CreateSpaceButton;
     }
 }
 

@@ -26,6 +26,15 @@ namespace MP6Editor
             {
                 imageList.Images.Add("Blank", Image.FromFile("thumbs\\" + spaceType + ".png"));
             }
+
+            AddToolTips();
+        }
+
+        private void AddToolTips()
+        {
+            toolTip_AddLink.SetToolTip(btn_AddLink, "Adds a new link to the currently selected space.");
+            toolTip_RemoveLink.SetToolTip(btn_RemoveLink, "Removes the currently selected link from the selected space.");
+            toolTip_CreateSpaceButton.SetToolTip(btn_CreateSpace, "Adds a new Space to the Board.");
         }
 
         private void DrawTest1_OnMouseWheelUpwards(MouseEventArgs e)
