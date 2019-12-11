@@ -91,7 +91,7 @@ namespace MP6Editor
             for (int i = Paths.Count - 1; i >= 0; i--)
             {
                 Paths[i].Update();
-                if (!Paths[i].moving) //Remove if pixel reached destination
+                if (!Paths[i].moving) // Remove if pixel reached destination
                 {
                     Paths.RemoveAt(i);
                 }
@@ -116,7 +116,6 @@ namespace MP6Editor
 
             for (int i = 0; i < Board.Count; i++)
             {
-                //(spot.x - center.x)*16 = Board[i].X)
                 Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
                 //Positions.Add(spot);
                 Positions[i] = spot;
@@ -185,9 +184,7 @@ namespace MP6Editor
             // To click and drag spaces
             if (e.Button == MouseButtons.Left)
             {
-                var mouseState = Mouse.GetState();
-                var mousePosition = new Point(mouseState.X, mouseState.Y);
-                int space = IsOverSpace(mousePosition);
+                int space = IsOverSpace(new Point(e.Location.X, e.Location.Y));
 
                 if (space > -1)
                 {
@@ -214,31 +211,18 @@ namespace MP6Editor
                 CamFirstMouseDownPosition.Y = e.Location.Y;
             }
 
+            // Clicking and dragging to move a space.
             if (SpaceMouseDown)
             {
-                // TODO
-                var mouseState = Mouse.GetState();
-                var mousePosition = new Point(mouseState.X, mouseState.Y);
-                Vector2 mouseAlt = new Vector2(e.Location.X, e.Location.Y);
-                Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
-
-                // Almost
-                float newX = (e.Location.X - trueCenter.X) * 16;
-                float newY = (e.Location.Y - trueCenter.Y) * 16;
-                Vector2 newPos = new Vector2(newX, newY);
-                newPos = ToGlobalPosition(newPos);
-
-                // Follow Test
                 int xFollow = (SelectFirstMouseDownPosition.X - e.Location.X)*16;
                 int yFollow = (SelectFirstMouseDownPosition.Y - e.Location.Y)*16;
 
-                newPos = new Vector2(xFollow, yFollow);
+                Vector2 newPos = new Vector2(xFollow, yFollow);
                 Board[SelectedSpace].X -= newPos.X;
                 Board[SelectedSpace].Z -= newPos.Y;
 
                 SelectFirstMouseDownPosition.X = e.Location.X;
                 SelectFirstMouseDownPosition.Y = e.Location.Y;
-                //Positions[SelectedSpace] = new Vector2(e.Location.X*16, e.Location.Y*16);
             }
         }
 
@@ -259,9 +243,6 @@ namespace MP6Editor
         // Converts passed world position to relative screen position
         Vector2 ToRelativePosition(Vector2 pos)
         {
-            // R = P - (E - T)
-            //R + (E-T) = P
-            //result = pos - (Editor.Cam.Position - trueCenter);
             return pos - (Editor.Cam.Position - trueCenter);
         }// end ToRelativePosition()
 
