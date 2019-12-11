@@ -227,7 +227,7 @@ namespace MP6Editor
         // Adds a new link.
         private void btn_AddLink_Click(object sender, EventArgs e)
         {
-            drawTest1.Board[drawTest1.SelectedSpace].links.Add(1);
+            drawTest1.Board[drawTest1.SelectedSpace].links.Add(0);
             UpdateSpaceInfo(drawTest1.SelectedSpace);
             UpdateDisplayInfo();
 
@@ -248,7 +248,7 @@ namespace MP6Editor
         {
             // Validates the new label text.
             if (listView_Links.SelectedItems.Count > 0 && e.Label != null 
-                && int.Parse(e.Label) > 0 && int.Parse(e.Label) < drawTest1.Board.Count)
+                && int.Parse(e.Label) > -1 && int.Parse(e.Label) < drawTest1.Board.Count)
             {
                 listView_Links.SelectedItems[0].Text = e.Label;
             }
