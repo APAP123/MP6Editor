@@ -14,6 +14,9 @@ namespace MP6Editor
     //class DrawTest : InvalidationControl
     class DrawTest : MonoGameControl
     {
+        /* scaling factor */
+        private readonly int SCALE = 16;
+
         /* Camera variables */
         private bool CamMouseDown = false;
         private System.Drawing.Point CamFirstMouseDownPosition;
@@ -28,7 +31,7 @@ namespace MP6Editor
 
         /* Public board-related variables to communicate with the form */
         public List<Space> Board = new List<Space>();
-        // List of the visual positions on screen
+        // List containing the on-screen visual positions
         public List<Vector2> Positions = new List<Vector2>(); 
         public int SelectedSpace = -1;
 
@@ -61,10 +64,6 @@ namespace MP6Editor
         protected override void Initialize()
         {
             base.Initialize();
-            //Extractor extractor = new Extractor();
-            //Board = extractor.readFile();
-
-            //InitPositions();
 
             blankSpace = Editor.Content.Load<Texture2D>(@"Blank");         //0
             blueSpace = Editor.Content.Load<Texture2D>(@"Blue");           //1
@@ -116,7 +115,7 @@ namespace MP6Editor
 
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
+                Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
                 //Positions.Add(spot);
                 Positions[i] = spot;
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
@@ -214,8 +213,8 @@ namespace MP6Editor
             // Clicking and dragging to move a space.
             if (SpaceMouseDown)
             {
-                int xFollow = (SelectFirstMouseDownPosition.X - e.Location.X)*16;
-                int yFollow = (SelectFirstMouseDownPosition.Y - e.Location.Y)*16;
+                int xFollow = (SelectFirstMouseDownPosition.X - e.Location.X)*SCALE;
+                int yFollow = (SelectFirstMouseDownPosition.Y - e.Location.Y)*SCALE;
 
                 Vector2 newPos = new Vector2(xFollow, yFollow);
                 Board[SelectedSpace].X -= newPos.X;
@@ -268,7 +267,6 @@ namespace MP6Editor
         }// end isOverSpace()
 
         // Get this type's matching texture
-        // TODO: can possibly move to Space.cs; could also do this with enums (see Form1 constructor)
         Texture2D getSpaceTexture(int type)
         {
             switch (type)
@@ -307,7 +305,7 @@ namespace MP6Editor
 
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
+                Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
                 Positions.Add(spot);
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
                 Board[i].texture = getSpaceTexture(Board[i].type);
@@ -333,8 +331,8 @@ namespace MP6Editor
                     {
                         Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
-                        Vector2 start = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
-                        Vector2 end = new Vector2(center.X + (Board[link].X / 16), center.Y + (Board[link].Z / 16));
+                        Vector2 start = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
+                        Vector2 end = new Vector2(center.X + (Board[link].X / SCALE), center.Y + (Board[link].Z / SCALE));
 
                         Path path = new Path(start, end);
 

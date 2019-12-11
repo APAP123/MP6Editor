@@ -32,6 +32,9 @@ namespace MP6Editor
         private readonly string S_MP6SCRIPT = "mario_party_6_alt.bms";
         private readonly string S_LZSSCOMP = "lzss_comp.bms";
         private readonly string S_OUTFOLDER = "w01_out";
+        private readonly string S_RECOMPRESS_OUT_FOLDER = "recompress_out";
+        private readonly string S_0_COMPRESSED_OUT = "0_compressed.dat";
+        private readonly string S_BOARD_LAYOUT = "board_layout_raw";
 
         private readonly byte[] FLAGS = { 0x00, 0x00, 0x00, 0x01 };
 
@@ -163,7 +166,7 @@ namespace MP6Editor
         {
             // TODO: Clean it up, it's a mess
             // probably should do some file verification too
-            FileStream fileStream = new FileStream("board_out_test", FileMode.OpenOrCreate);
+            FileStream fileStream = new FileStream(S_BOARD_LAYOUT, FileMode.OpenOrCreate);
 
             // Amount of spaces
             byte[] spaceCount = BitConverter.GetBytes(nuBoard.Count);
@@ -218,7 +221,7 @@ namespace MP6Editor
             }
 
             Process quickbms = new Process();
-            // quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //quickbms.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             quickbms.StartInfo.FileName = S_QUICKBMS;
             quickbms.StartInfo.UseShellExecute = true;
 
@@ -238,7 +241,7 @@ namespace MP6Editor
             // TODO: replace hardcoded filenames with variables
 
             // Get 0.dat's uncompressed size in bytes (SIZE)
-            FileStream layoutFileStream = new FileStream("board_out_test", FileMode.Open);
+            FileStream layoutFileStream = new FileStream(S_BOARD_LAYOUT, FileMode.Open);
             byte[] SIZE = BitConverter.GetBytes((int)layoutFileStream.Length);
             Array.Reverse(SIZE);
             layoutFileStream.Dispose();
@@ -249,13 +252,11 @@ namespace MP6Editor
             quickbms.StartInfo.FileName = S_QUICKBMS;
             quickbms.StartInfo.UseShellExecute = true;
             string args = "-Y ";
-            quickbms.StartInfo.Arguments = args + S_LZSSCOMP + " \"" + "board_out_test" + "\" " + "recompress_out";
+            quickbms.StartInfo.Arguments = args + S_LZSSCOMP + " \"" + S_BOARD_LAYOUT + "\" " + S_RECOMPRESS_OUT_FOLDER;
             quickbms.Start();
             quickbms.WaitForExit();
 
             // File stuff
-            //File.Copy("w01.bin", newFileName, true);
-            //File.Copy("w01.bin", newFileName + ".TEMP", true);
             File.Copy(packedFileName, newFileName + ".TEMP", true);
             File.Copy(newFileName + ".TEMP", newFileName, true);
             
@@ -270,7 +271,7 @@ namespace MP6Editor
             packedFileStream.Write(FLAGS, 0, FLAGS.Length);
 
             // Write compressed 0.dat to w01.bin
-            layoutFileStream = new FileStream("recompress_out\\0_compressed.dat", FileMode.Open);
+            layoutFileStream = new FileStream(S_RECOMPRESS_OUT_FOLDER + "\\" + S_0_COMPRESSED_OUT, FileMode.Open);
             int compLength = (int)layoutFileStream.Length;
             layoutFileStream.CopyTo(packedFileStream);
             layoutFileStream.Dispose();
@@ -332,7 +333,6 @@ namespace MP6Editor
         // Changes offsets to match new file layout
         public List<int> AdjustFileHeader(List<byte[]> offsets, int newSize)
         {
-            // TODO
             List<int> intList = ByteListToInt(offsets);
             int adjustmentAmount = (newSize + 8) - (intList[1] - intList[0]);
 
