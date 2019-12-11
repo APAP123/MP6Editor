@@ -20,7 +20,11 @@ namespace MP6Editor
         // X dimension for sprite
         private const int x = 8;
         // Y dimension for sprite
-        private const int y = 8; 
+        private const int y = 8;
+
+        /* For moving Spaces with mouse */
+        private Point SelectFirstMouseDownPosition = new Point(0, 0);
+        private bool SpaceMouseDown = false;
 
         /* Public board-related variables to communicate with the form */
         public List<Space> Board = new List<Space>();
@@ -112,6 +116,7 @@ namespace MP6Editor
 
             for (int i = 0; i < Board.Count; i++)
             {
+                //(spot.x - center.x)*16 = Board[i].X)
                 Vector2 spot = new Vector2(center.X + (Board[i].X / 16), center.Y + (Board[i].Z / 16));
                 //Positions.Add(spot);
                 Positions[i] = spot;
@@ -160,6 +165,11 @@ namespace MP6Editor
             {
                 CamMouseDown = false;
             }
+
+            if (e.Button == MouseButtons.Left)
+            {
+                SpaceMouseDown = false;
+            }
         }// end OnMouseUp()
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -170,6 +180,22 @@ namespace MP6Editor
             {
                 CamFirstMouseDownPosition = e.Location;
                 CamMouseDown = true;
+            }
+
+            // To click and drag spaces
+            if (e.Button == MouseButtons.Left)
+            {
+                var mouseState = Mouse.GetState();
+                var mousePosition = new Point(mouseState.X, mouseState.Y);
+                int space = IsOverSpace(mousePosition);
+
+                if (space > -1)
+                {
+                    SelectedSpace = space;
+                    SpaceMouseDown = true;
+                    SelectFirstMouseDownPosition.X = e.Location.X;
+                    SelectFirstMouseDownPosition.Y = e.Location.Y;
+                }
             }
         }
 
@@ -186,6 +212,33 @@ namespace MP6Editor
 
                 CamFirstMouseDownPosition.X = e.Location.X;
                 CamFirstMouseDownPosition.Y = e.Location.Y;
+            }
+
+            if (SpaceMouseDown)
+            {
+                // TODO
+                var mouseState = Mouse.GetState();
+                var mousePosition = new Point(mouseState.X, mouseState.Y);
+                Vector2 mouseAlt = new Vector2(e.Location.X, e.Location.Y);
+                Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
+
+                // Almost
+                float newX = (e.Location.X - trueCenter.X) * 16;
+                float newY = (e.Location.Y - trueCenter.Y) * 16;
+                Vector2 newPos = new Vector2(newX, newY);
+                newPos = ToGlobalPosition(newPos);
+
+                // Follow Test
+                int xFollow = (SelectFirstMouseDownPosition.X - e.Location.X)*16;
+                int yFollow = (SelectFirstMouseDownPosition.Y - e.Location.Y)*16;
+
+                newPos = new Vector2(xFollow, yFollow);
+                Board[SelectedSpace].X -= newPos.X;
+                Board[SelectedSpace].Z -= newPos.Y;
+
+                SelectFirstMouseDownPosition.X = e.Location.X;
+                SelectFirstMouseDownPosition.Y = e.Location.Y;
+                //Positions[SelectedSpace] = new Vector2(e.Location.X*16, e.Location.Y*16);
             }
         }
 
@@ -206,8 +259,17 @@ namespace MP6Editor
         // Converts passed world position to relative screen position
         Vector2 ToRelativePosition(Vector2 pos)
         {
+            // R = P - (E - T)
+            //R + (E-T) = P
+            //result = pos - (Editor.Cam.Position - trueCenter);
             return pos - (Editor.Cam.Position - trueCenter);
-        }// end To Relative Position
+        }// end ToRelativePosition()
+
+        // Converts passed relative screen position to world position
+        Vector2 ToGlobalPosition(Vector2 pos)
+        {
+            return pos + (Editor.Cam.Position - trueCenter);
+        }// end ToGlobalPosition()
 
         // Determines if passed position is over a space
         int IsOverSpace(Point point)
