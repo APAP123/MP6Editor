@@ -254,8 +254,11 @@ namespace MP6Editor
             quickbms.WaitForExit();
 
             // File stuff
-            File.Copy("w01.bin", newFileName, true);
-            File.Copy("w01.bin", newFileName + ".TEMP", true);
+            //File.Copy("w01.bin", newFileName, true);
+            //File.Copy("w01.bin", newFileName + ".TEMP", true);
+            File.Copy(packedFileName, newFileName + ".TEMP", true);
+            File.Copy(newFileName + ".TEMP", newFileName, true);
+            
             FileStream packedFileStream = new FileStream(newFileName, FileMode.Open);
             byte[] OFFSET = oldOffsets[0];
 

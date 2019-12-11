@@ -206,7 +206,7 @@
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Import...";
+            this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
             // 
@@ -265,7 +265,7 @@
             // 
             this.displaySpaceIDsToolStripMenuItem.CheckOnClick = true;
             this.displaySpaceIDsToolStripMenuItem.Name = "displaySpaceIDsToolStripMenuItem";
-            this.displaySpaceIDsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.displaySpaceIDsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.displaySpaceIDsToolStripMenuItem.Text = "Display space IDs";
             this.displaySpaceIDsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.displaySpaceIDsToolStripMenuItem_CheckedChanged);
             // 
