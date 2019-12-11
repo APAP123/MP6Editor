@@ -45,6 +45,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.displaySpaceIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.openFileDialog_wbin = new System.Windows.Forms.OpenFileDialog();
             this.btn_AddLink = new System.Windows.Forms.Button();
@@ -52,8 +54,6 @@
             this.listView_Links = new System.Windows.Forms.ListView();
             this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
             this.btn_CreateSpace = new System.Windows.Forms.Button();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.displaySpaceIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawTest1 = new MP6Editor.DrawTest();
             this.toolTip_AddLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
@@ -214,6 +214,25 @@
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.displaySpaceIDsToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(45, 22);
+            this.toolStripDropDownButton2.Text = "View";
+            // 
+            // displaySpaceIDsToolStripMenuItem
+            // 
+            this.displaySpaceIDsToolStripMenuItem.CheckOnClick = true;
+            this.displaySpaceIDsToolStripMenuItem.Name = "displaySpaceIDsToolStripMenuItem";
+            this.displaySpaceIDsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.displaySpaceIDsToolStripMenuItem.Text = "Display space IDs";
+            this.displaySpaceIDsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.displaySpaceIDsToolStripMenuItem_CheckedChanged);
+            // 
             // pictureBox_Space
             // 
             this.pictureBox_Space.Image = global::MP6Editor.Properties.Resources.Other;
@@ -280,24 +299,6 @@
             this.btn_CreateSpace.Text = "Create New Space";
             this.btn_CreateSpace.UseVisualStyleBackColor = true;
             this.btn_CreateSpace.Click += new System.EventHandler(this.btn_CreateSpace_Click);
-            // 
-            // toolStripDropDownButton2
-            // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.displaySpaceIDsToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(45, 22);
-            this.toolStripDropDownButton2.Text = "View";
-            // 
-            // displaySpaceIDsToolStripMenuItem
-            // 
-            this.displaySpaceIDsToolStripMenuItem.Name = "displaySpaceIDsToolStripMenuItem";
-            this.displaySpaceIDsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.displaySpaceIDsToolStripMenuItem.Text = "Display space IDs";
-            this.displaySpaceIDsToolStripMenuItem.Click += new System.EventHandler(this.displaySpaceIDsToolStripMenuItem_Click);
             // 
             // drawTest1
             // 

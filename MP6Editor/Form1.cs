@@ -270,26 +270,15 @@ namespace MP6Editor
         // Creates a new Space connected to the currently selected one.
         private void btn_CreateSpace_Click(object sender, EventArgs e)
         {
-            // TODO
             drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
             drawTest1.InitPositions();
         }
 
         // Draws Space ID # overlays when checked.
-        private void displaySpaceIDsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void displaySpaceIDsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             ToolStripMenuItem sendingItem = (ToolStripMenuItem)sender;
-            if (sendingItem.Checked)
-            {
-                sendingItem.Checked = false;
-                drawTest1.fontDraw = false;
-            }
-            else
-            {
-                sendingItem.Checked = true;
-                drawTest1.fontDraw = true;
-            }
-            
-        } // end displaySpaceIDsToolStripMenuItem_Click()
+            drawTest1.fontDraw = sendingItem.Checked;
+        }// end displaySpaceIDsToolStripMenuItem_CheckedChanged()
     }
 }
