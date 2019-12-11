@@ -150,6 +150,11 @@ namespace MP6Editor
                 System.Diagnostics.Debug.WriteLine("Validate successful!");
                 UpdateSpaceInfo(drawTest1.SelectedSpace);
             }
+            else if(sendingBox.Text == "" || sendingBox.Text == "-0" || sendingBox.Text == "-" || sendingBox.Text == null)
+            {
+                sendingBox.Text = "0";
+                UpdateSpaceInfo(drawTest1.SelectedSpace);
+            }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Validate failed! Reverting to last good value...");
@@ -254,7 +259,8 @@ namespace MP6Editor
         private void btn_CreateSpace_Click(object sender, EventArgs e)
         {
             // TODO
-            //drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
+            drawTest1.Board.Add(new Space(0, 0, 0, 0x00, new List<int>()));
+            drawTest1.InitPositions();
         }
 
         // Draws Space ID # overlays when checked.
