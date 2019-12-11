@@ -48,6 +48,8 @@ namespace MP6Editor
                 textBox_Z.Enabled = true;
                 comboBox_Type.Enabled = true;
                 listView_Links.Enabled = true;
+                btn_AddLink.Enabled = true;
+                btn_RemoveLink.Enabled = true;
             }
             UpdateDisplayInfo();
         }
@@ -184,6 +186,7 @@ namespace MP6Editor
                 extractor.QuickExtract(filePath, false);
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
+                btn_CreateSpace.Enabled = true;
             }
         }// end ImportFile()
 

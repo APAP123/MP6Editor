@@ -192,21 +192,21 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Import...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -227,6 +227,7 @@
             // 
             // btn_AddLink
             // 
+            this.btn_AddLink.Enabled = false;
             this.btn_AddLink.Location = new System.Drawing.Point(758, 354);
             this.btn_AddLink.Name = "btn_AddLink";
             this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
@@ -237,6 +238,7 @@
             // 
             // btn_RemoveLink
             // 
+            this.btn_RemoveLink.Enabled = false;
             this.btn_RemoveLink.Location = new System.Drawing.Point(758, 383);
             this.btn_RemoveLink.Name = "btn_RemoveLink";
             this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
@@ -266,7 +268,8 @@
             // 
             // btn_CreateSpace
             // 
-            this.btn_CreateSpace.Location = new System.Drawing.Point(608, 478);
+            this.btn_CreateSpace.Enabled = false;
+            this.btn_CreateSpace.Location = new System.Drawing.Point(608, 457);
             this.btn_CreateSpace.Name = "btn_CreateSpace";
             this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_CreateSpace.TabIndex = 17;
@@ -288,7 +291,7 @@
             // displaySpaceIDsToolStripMenuItem
             // 
             this.displaySpaceIDsToolStripMenuItem.Name = "displaySpaceIDsToolStripMenuItem";
-            this.displaySpaceIDsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.displaySpaceIDsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.displaySpaceIDsToolStripMenuItem.Text = "Display space IDs";
             this.displaySpaceIDsToolStripMenuItem.Click += new System.EventHandler(this.displaySpaceIDsToolStripMenuItem_Click);
             // 
