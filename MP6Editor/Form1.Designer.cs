@@ -61,8 +61,8 @@
             this.toolTip_AddLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.btn_DeleteSpace = new System.Windows.Forms.Button();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -206,7 +206,7 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
@@ -221,7 +221,7 @@
             this.marioParty5binToolStripMenuItem.Name = "marioParty5binToolStripMenuItem";
             this.marioParty5binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.marioParty5binToolStripMenuItem.Text = "Mario Party 5 board...";
-            this.marioParty5binToolStripMenuItem.Click += new System.EventHandler(this.ImportType2_Click);
+            this.marioParty5binToolStripMenuItem.Click += new System.EventHandler(this.ImportType1_Click);
             // 
             // marioParty6binToolStripMenuItem
             // 
@@ -240,14 +240,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -337,6 +337,17 @@
             this.btn_CreateSpace.UseVisualStyleBackColor = true;
             this.btn_CreateSpace.Click += new System.EventHandler(this.btn_CreateSpace_Click);
             // 
+            // btn_DeleteSpace
+            // 
+            this.btn_DeleteSpace.Enabled = false;
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(608, 487);
+            this.btn_DeleteSpace.Name = "btn_DeleteSpace";
+            this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
+            this.btn_DeleteSpace.TabIndex = 18;
+            this.btn_DeleteSpace.Text = "Delete Space";
+            this.btn_DeleteSpace.UseVisualStyleBackColor = true;
+            this.btn_DeleteSpace.Click += new System.EventHandler(this.btn_DeleteSpace_Click);
+            // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 36);
@@ -348,16 +359,6 @@
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
-            // 
-            // btn_DeleteSpace
-            // 
-            this.btn_DeleteSpace.Location = new System.Drawing.Point(608, 487);
-            this.btn_DeleteSpace.Name = "btn_DeleteSpace";
-            this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
-            this.btn_DeleteSpace.TabIndex = 18;
-            this.btn_DeleteSpace.Text = "Delete Space";
-            this.btn_DeleteSpace.UseVisualStyleBackColor = true;
-            this.btn_DeleteSpace.Click += new System.EventHandler(this.btn_DeleteSpace_Click);
             // 
             // Form1
             // 

@@ -211,6 +211,7 @@ namespace MP6Editor
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.InitPositions();
                 btn_CreateSpace.Enabled = true;
+                btn_DeleteSpace.Enabled = true;
             }
         }// end ImportFile()
 
