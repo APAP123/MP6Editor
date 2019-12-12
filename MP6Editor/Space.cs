@@ -21,6 +21,17 @@ namespace MP6Editor
         public float X; // X position
         public float Y; // Y position
         public float Z; // Z position
+
+        // Rotation values
+        public float rot_X;
+        public float rot_Y;
+        public float rot_Z;
+
+        // Scaling values
+        public float scale_X;
+        public float scale_Y;
+        public float scale_Z;
+
         public List<byte> crap = new List<byte>();
         //public byte[] crap = new byte[31]; // Not sure what this info means yet, but it's probably important.
         public int type;
