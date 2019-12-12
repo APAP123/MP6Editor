@@ -46,11 +46,13 @@ namespace MP6Editor
         {
             if(mpVersion == 4 || mpVersion == 5)
             {
-                crapCount = 29;
+                //crapCount = 29;
+                crapCount = 5;
             }
             else
             {
-                crapCount = 31;
+                //crapCount = 31;
+                crapCount = 7;
             }
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
@@ -83,13 +85,23 @@ namespace MP6Editor
             space.Y = GetPosition(fileStream);
             space.Z = GetPosition(fileStream);
 
+            // Rotation
+            space.rot_X = GetPosition(fileStream);
+            space.rot_Y = GetPosition(fileStream);
+            space.rot_Z = GetPosition(fileStream);
+
+            // Scaling
+            space.scale_X = GetPosition(fileStream);
+            space.scale_Y = GetPosition(fileStream);
+            space.scale_Z = GetPosition(fileStream);
+
             // Crap
             space.crap = GetCrap(fileStream, crapCount).ToList();
 
             // Type
             space.type = fileStream.ReadByte();
 
-            // Type padding (can probably get rid of this)
+            // Type padding (TODO: consider removing this var and just skipping this byte)
             space.typePad = (byte)fileStream.ReadByte();
 
             // Link count
@@ -174,21 +186,45 @@ namespace MP6Editor
             fileStream.Write(spaceCount, 0, 4);
 
             // Spaces
-            // TODO: clean up this mess
+            // TODO TODO TODO: SERIOUSLY clean up this mess
             for(int i = 0; i < nuBoard.Count; i++)
             {
                 // Space X pos
                 byte[] posArray = BitConverter.GetBytes(nuBoard[i].X);
                 Array.Reverse(posArray);
                 fileStream.Write(posArray, 0, 4);
-
                 // Space Y pos
                 posArray = BitConverter.GetBytes(nuBoard[i].Y);
                 Array.Reverse(posArray);
                 fileStream.Write(posArray, 0, 4);
-
                 // Space Z pos
                 posArray = BitConverter.GetBytes(nuBoard[i].Z);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+
+                // Space rot_X pos
+                posArray = BitConverter.GetBytes(nuBoard[i].rot_X);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+                // Space rot_Y pos
+                posArray = BitConverter.GetBytes(nuBoard[i].rot_Y);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+                // Space rot_Z pos
+                posArray = BitConverter.GetBytes(nuBoard[i].rot_Z);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+
+                // Space scale_X pos
+                posArray = BitConverter.GetBytes(nuBoard[i].scale_X);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+                // Space scale_Y pos
+                posArray = BitConverter.GetBytes(nuBoard[i].scale_Y);
+                Array.Reverse(posArray);
+                fileStream.Write(posArray, 0, 4);
+                // Space scale_Z pos
+                posArray = BitConverter.GetBytes(nuBoard[i].scale_Z);
                 Array.Reverse(posArray);
                 fileStream.Write(posArray, 0, 4);
 

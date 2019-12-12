@@ -15,8 +15,8 @@ namespace MP6Editor
 {
     class Space
     {
-        public readonly int MP6_CRAPCOUNT = 31;
-        public readonly int MP5_CRAPCOUNT = 29;
+        public static readonly int MP6_CRAPCOUNT = 7;
+        public static readonly int MP5_CRAPCOUNT = 5;
         // Position values are the distance from the origin point (center).
         public float X; // X position
         public float Y; // Y position
@@ -55,6 +55,23 @@ namespace MP6Editor
             typePad = 0x00;
             //this.linkAmount = linkAmount;
             this.links = links;
+        }
+
+        public Space(int crapAmount)
+        {
+            X = 0;
+            Y = 0;
+            Z = 0;
+            rot_X = 0;
+            rot_Y = 0;
+            rot_Z = 0;
+            scale_X = 1f;
+            scale_Y = 1f;
+            scale_Z = 1f;
+            crap = new byte[crapAmount].ToList();
+            type = 0;
+            typePad = 0x00;
+            links = new List<int>();
         }
 
         

@@ -52,9 +52,13 @@ namespace MP6Editor
             drawTest1.Board_OnMouseClick(e);
             if(drawTest1.SelectedSpace > -1)
             {
-                textBox_X.Enabled = true;
-                textBox_Y.Enabled = true;
-                textBox_Z.Enabled = true;
+                foreach(TextBox textBox in Controls.OfType<TextBox>())
+                {
+                    textBox.Enabled = true;
+                }
+                //textBox_X.Enabled = true;
+                //textBox_Y.Enabled = true;
+                //textBox_Z.Enabled = true;
                 comboBox_Type.Enabled = true;
                 listView_Links.Enabled = true;
                 btn_AddLink.Enabled = true;
@@ -72,9 +76,21 @@ namespace MP6Editor
             if(drawTest1.SelectedSpace > -1)
             {
                 label_SelectedSpace.Text = "ID#: " + drawTest1.SelectedSpace;
+
+                // Position
                 textBox_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].X;
                 textBox_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Y;
                 textBox_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].Z;
+
+                // Rotation
+                textBox_Rot_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].rot_X;
+                textBox_Rot_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].rot_Y;
+                textBox_Rot_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].rot_Z;
+
+                // Scaling
+                textBox_Scale_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_X;
+                textBox_Scale_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Y;
+                textBox_Scale_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Z;
 
                 // TODO: Implement the adding of unrecognized types to comboBox Items List on the fly.
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
@@ -100,10 +116,14 @@ namespace MP6Editor
             drawTest1.Board[space].Z = float.Parse(textBox_Z.Text);
 
             // Rotation
-            // TODO
+            drawTest1.Board[space].rot_X = float.Parse(textBox_Rot_X.Text);
+            drawTest1.Board[space].rot_Y = float.Parse(textBox_Rot_Y.Text);
+            drawTest1.Board[space].rot_Z = float.Parse(textBox_Rot_Z.Text);
 
             // Scaling
-            // TODO
+            drawTest1.Board[space].scale_X = float.Parse(textBox_Scale_X.Text);
+            drawTest1.Board[space].scale_Y = float.Parse(textBox_Scale_Y.Text);
+            drawTest1.Board[space].scale_Z = float.Parse(textBox_Scale_Z.Text);
 
             // type
             drawTest1.Board[space].type = comboBox_Type.SelectedIndex;
@@ -293,7 +313,8 @@ namespace MP6Editor
         // Creates a new Space connected to the currently selected one.
         private void btn_CreateSpace_Click(object sender, EventArgs e)
         {
-            drawTest1.Board.Add(new Space(0, 0, 0, 29, 0x00, new List<int>()));
+            //drawTest1.Board.Add(new Space(0, 0, 0, 29, 0x00, new List<int>()));
+            drawTest1.Board.Add(new Space(5));
             drawTest1.InitPositions();
         }
 

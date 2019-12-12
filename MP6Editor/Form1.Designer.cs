@@ -62,7 +62,6 @@
             this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
             this.btn_DeleteSpace = new System.Windows.Forms.Button();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,6 +76,7 @@
             this.textBox_Scale_X = new System.Windows.Forms.TextBox();
             this.label_Rotation = new System.Windows.Forms.Label();
             this.label_Size = new System.Windows.Forms.Label();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -195,7 +195,7 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(972, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(923, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -220,7 +220,7 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
@@ -254,14 +254,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -362,18 +362,6 @@
             this.btn_DeleteSpace.UseVisualStyleBackColor = true;
             this.btn_DeleteSpace.Click += new System.EventHandler(this.btn_DeleteSpace_Click);
             // 
-            // drawTest1
-            // 
-            this.drawTest1.Location = new System.Drawing.Point(12, 36);
-            this.drawTest1.MouseHoverUpdatesOnly = false;
-            this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(566, 444);
-            this.drawTest1.TabIndex = 0;
-            this.drawTest1.Text = "drawTest1";
-            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
-            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
-            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -409,6 +397,7 @@
             this.textBox_Rot_Z.Name = "textBox_Rot_Z";
             this.textBox_Rot_Z.Size = new System.Drawing.Size(55, 20);
             this.textBox_Rot_Z.TabIndex = 21;
+            this.textBox_Rot_Z.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // textBox_Rot_Y
             // 
@@ -418,6 +407,7 @@
             this.textBox_Rot_Y.Name = "textBox_Rot_Y";
             this.textBox_Rot_Y.Size = new System.Drawing.Size(55, 20);
             this.textBox_Rot_Y.TabIndex = 20;
+            this.textBox_Rot_Y.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // textBox_Rot_X
             // 
@@ -427,11 +417,12 @@
             this.textBox_Rot_X.Name = "textBox_Rot_X";
             this.textBox_Rot_X.Size = new System.Drawing.Size(55, 20);
             this.textBox_Rot_X.TabIndex = 19;
+            this.textBox_Rot_X.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(868, 281);
+            this.label4.Location = new System.Drawing.Point(834, 281);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 30;
@@ -440,7 +431,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(868, 255);
+            this.label5.Location = new System.Drawing.Point(834, 255);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 29;
@@ -449,7 +440,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(868, 225);
+            this.label6.Location = new System.Drawing.Point(834, 225);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 13);
             this.label6.TabIndex = 28;
@@ -458,53 +449,68 @@
             // textBox_Scale_Z
             // 
             this.textBox_Scale_Z.Enabled = false;
-            this.textBox_Scale_Z.Location = new System.Drawing.Point(891, 274);
+            this.textBox_Scale_Z.Location = new System.Drawing.Point(857, 274);
             this.textBox_Scale_Z.MaxLength = 30;
             this.textBox_Scale_Z.Name = "textBox_Scale_Z";
             this.textBox_Scale_Z.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_Z.TabIndex = 27;
+            this.textBox_Scale_Z.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // textBox_Scale_Y
             // 
             this.textBox_Scale_Y.Enabled = false;
-            this.textBox_Scale_Y.Location = new System.Drawing.Point(891, 248);
+            this.textBox_Scale_Y.Location = new System.Drawing.Point(857, 248);
             this.textBox_Scale_Y.MaxLength = 30;
             this.textBox_Scale_Y.Name = "textBox_Scale_Y";
             this.textBox_Scale_Y.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_Y.TabIndex = 26;
+            this.textBox_Scale_Y.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // textBox_Scale_X
             // 
             this.textBox_Scale_X.Enabled = false;
-            this.textBox_Scale_X.Location = new System.Drawing.Point(891, 222);
+            this.textBox_Scale_X.Location = new System.Drawing.Point(857, 222);
             this.textBox_Scale_X.MaxLength = 30;
             this.textBox_Scale_X.Name = "textBox_Scale_X";
             this.textBox_Scale_X.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_X.TabIndex = 25;
+            this.textBox_Scale_X.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // label_Rotation
             // 
             this.label_Rotation.AutoSize = true;
             this.label_Rotation.Location = new System.Drawing.Point(755, 206);
             this.label_Rotation.Name = "label_Rotation";
-            this.label_Rotation.Size = new System.Drawing.Size(59, 13);
+            this.label_Rotation.Size = new System.Drawing.Size(47, 13);
             this.label_Rotation.TabIndex = 31;
-            this.label_Rotation.Text = "Rotation(?)";
+            this.label_Rotation.Text = "Rotation";
             // 
             // label_Size
             // 
             this.label_Size.AutoSize = true;
-            this.label_Size.Location = new System.Drawing.Point(887, 206);
+            this.label_Size.Location = new System.Drawing.Point(853, 206);
             this.label_Size.Name = "label_Size";
             this.label_Size.Size = new System.Drawing.Size(39, 13);
             this.label_Size.TabIndex = 32;
             this.label_Size.Text = "Size(?)";
             // 
+            // drawTest1
+            // 
+            this.drawTest1.Location = new System.Drawing.Point(12, 36);
+            this.drawTest1.MouseHoverUpdatesOnly = false;
+            this.drawTest1.Name = "drawTest1";
+            this.drawTest1.Size = new System.Drawing.Size(566, 444);
+            this.drawTest1.TabIndex = 0;
+            this.drawTest1.Text = "drawTest1";
+            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
+            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
+            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 521);
+            this.ClientSize = new System.Drawing.Size(923, 521);
             this.Controls.Add(this.label_Size);
             this.Controls.Add(this.label_Rotation);
             this.Controls.Add(this.label4);
