@@ -56,9 +56,6 @@ namespace MP6Editor
                 {
                     textBox.Enabled = true;
                 }
-                //textBox_X.Enabled = true;
-                //textBox_Y.Enabled = true;
-                //textBox_Z.Enabled = true;
                 comboBox_Type.Enabled = true;
                 listView_Links.Enabled = true;
                 btn_AddLink.Enabled = true;
@@ -179,7 +176,6 @@ namespace MP6Editor
         private void Position_WasModified(object sender, EventArgs e)
         {
             TextBox sendingBox = (TextBox)sender;
-            // UpdateSpaceInfo(drawTest1.SelectedSpace);
             sendingBox.Modified = false;
 
             if (float.TryParse(sendingBox.Text, out float result))

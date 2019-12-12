@@ -46,12 +46,10 @@ namespace MP6Editor
         {
             if(mpVersion == 4 || mpVersion == 5)
             {
-                //crapCount = 29;
                 crapCount = 5;
             }
             else
             {
-                //crapCount = 31;
                 crapCount = 7;
             }
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
