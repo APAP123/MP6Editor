@@ -99,6 +99,12 @@ namespace MP6Editor
             drawTest1.Board[space].Y = float.Parse(textBox_Y.Text);
             drawTest1.Board[space].Z = float.Parse(textBox_Z.Text);
 
+            // Rotation
+            // TODO
+
+            // Scaling
+            // TODO
+
             // type
             drawTest1.Board[space].type = comboBox_Type.SelectedIndex;
 

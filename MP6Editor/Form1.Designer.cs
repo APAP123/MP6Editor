@@ -63,6 +63,20 @@
             this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
             this.btn_DeleteSpace = new System.Windows.Forms.Button();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_Rot_Z = new System.Windows.Forms.TextBox();
+            this.textBox_Rot_Y = new System.Windows.Forms.TextBox();
+            this.textBox_Rot_X = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_Size_Z = new System.Windows.Forms.TextBox();
+            this.textBox_Size_Y = new System.Windows.Forms.TextBox();
+            this.textBox_Size_X = new System.Windows.Forms.TextBox();
+            this.label_Rotation = new System.Windows.Forms.Label();
+            this.label_Size = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -181,7 +195,7 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(972, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -360,11 +374,151 @@
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(735, 281);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Z:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(735, 255);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Y:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(735, 225);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "X:";
+            // 
+            // textBox_Rot_Z
+            // 
+            this.textBox_Rot_Z.Enabled = false;
+            this.textBox_Rot_Z.Location = new System.Drawing.Point(758, 274);
+            this.textBox_Rot_Z.MaxLength = 30;
+            this.textBox_Rot_Z.Name = "textBox_Rot_Z";
+            this.textBox_Rot_Z.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Rot_Z.TabIndex = 21;
+            // 
+            // textBox_Rot_Y
+            // 
+            this.textBox_Rot_Y.Enabled = false;
+            this.textBox_Rot_Y.Location = new System.Drawing.Point(758, 248);
+            this.textBox_Rot_Y.MaxLength = 30;
+            this.textBox_Rot_Y.Name = "textBox_Rot_Y";
+            this.textBox_Rot_Y.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Rot_Y.TabIndex = 20;
+            // 
+            // textBox_Rot_X
+            // 
+            this.textBox_Rot_X.Enabled = false;
+            this.textBox_Rot_X.Location = new System.Drawing.Point(758, 222);
+            this.textBox_Rot_X.MaxLength = 30;
+            this.textBox_Rot_X.Name = "textBox_Rot_X";
+            this.textBox_Rot_X.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Rot_X.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(868, 281);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 13);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Z:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(868, 255);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Y:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(868, 225);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "X:";
+            // 
+            // textBox_Size_Z
+            // 
+            this.textBox_Size_Z.Enabled = false;
+            this.textBox_Size_Z.Location = new System.Drawing.Point(891, 274);
+            this.textBox_Size_Z.MaxLength = 30;
+            this.textBox_Size_Z.Name = "textBox_Size_Z";
+            this.textBox_Size_Z.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Size_Z.TabIndex = 27;
+            // 
+            // textBox_Size_Y
+            // 
+            this.textBox_Size_Y.Enabled = false;
+            this.textBox_Size_Y.Location = new System.Drawing.Point(891, 248);
+            this.textBox_Size_Y.MaxLength = 30;
+            this.textBox_Size_Y.Name = "textBox_Size_Y";
+            this.textBox_Size_Y.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Size_Y.TabIndex = 26;
+            // 
+            // textBox_Size_X
+            // 
+            this.textBox_Size_X.Enabled = false;
+            this.textBox_Size_X.Location = new System.Drawing.Point(891, 222);
+            this.textBox_Size_X.MaxLength = 30;
+            this.textBox_Size_X.Name = "textBox_Size_X";
+            this.textBox_Size_X.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Size_X.TabIndex = 25;
+            // 
+            // label_Rotation
+            // 
+            this.label_Rotation.AutoSize = true;
+            this.label_Rotation.Location = new System.Drawing.Point(755, 206);
+            this.label_Rotation.Name = "label_Rotation";
+            this.label_Rotation.Size = new System.Drawing.Size(59, 13);
+            this.label_Rotation.TabIndex = 31;
+            this.label_Rotation.Text = "Rotation(?)";
+            // 
+            // label_Size
+            // 
+            this.label_Size.AutoSize = true;
+            this.label_Size.Location = new System.Drawing.Point(887, 206);
+            this.label_Size.Name = "label_Size";
+            this.label_Size.Size = new System.Drawing.Size(39, 13);
+            this.label_Size.TabIndex = 32;
+            this.label_Size.Text = "Size(?)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 521);
+            this.ClientSize = new System.Drawing.Size(972, 521);
+            this.Controls.Add(this.label_Size);
+            this.Controls.Add(this.label_Rotation);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox_Size_Z);
+            this.Controls.Add(this.textBox_Size_Y);
+            this.Controls.Add(this.textBox_Size_X);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox_Rot_Z);
+            this.Controls.Add(this.textBox_Rot_Y);
+            this.Controls.Add(this.textBox_Rot_X);
             this.Controls.Add(this.btn_DeleteSpace);
             this.Controls.Add(this.btn_CreateSpace);
             this.Controls.Add(this.listView_Links);
@@ -428,6 +582,20 @@
         private System.Windows.Forms.ToolStripMenuItem marioParty6binToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marioParty7BoardToolStripMenuItem;
         private System.Windows.Forms.Button btn_DeleteSpace;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_Rot_Z;
+        private System.Windows.Forms.TextBox textBox_Rot_Y;
+        private System.Windows.Forms.TextBox textBox_Rot_X;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_Size_Z;
+        private System.Windows.Forms.TextBox textBox_Size_Y;
+        private System.Windows.Forms.TextBox textBox_Size_X;
+        private System.Windows.Forms.Label label_Rotation;
+        private System.Windows.Forms.Label label_Size;
     }
 }
 
