@@ -72,9 +72,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox_Size_Z = new System.Windows.Forms.TextBox();
-            this.textBox_Size_Y = new System.Windows.Forms.TextBox();
-            this.textBox_Size_X = new System.Windows.Forms.TextBox();
+            this.textBox_Scale_Z = new System.Windows.Forms.TextBox();
+            this.textBox_Scale_Y = new System.Windows.Forms.TextBox();
+            this.textBox_Scale_X = new System.Windows.Forms.TextBox();
             this.label_Rotation = new System.Windows.Forms.Label();
             this.label_Size = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -455,32 +455,32 @@
             this.label6.TabIndex = 28;
             this.label6.Text = "X:";
             // 
-            // textBox_Size_Z
+            // textBox_Scale_Z
             // 
-            this.textBox_Size_Z.Enabled = false;
-            this.textBox_Size_Z.Location = new System.Drawing.Point(891, 274);
-            this.textBox_Size_Z.MaxLength = 30;
-            this.textBox_Size_Z.Name = "textBox_Size_Z";
-            this.textBox_Size_Z.Size = new System.Drawing.Size(55, 20);
-            this.textBox_Size_Z.TabIndex = 27;
+            this.textBox_Scale_Z.Enabled = false;
+            this.textBox_Scale_Z.Location = new System.Drawing.Point(891, 274);
+            this.textBox_Scale_Z.MaxLength = 30;
+            this.textBox_Scale_Z.Name = "textBox_Scale_Z";
+            this.textBox_Scale_Z.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Scale_Z.TabIndex = 27;
             // 
-            // textBox_Size_Y
+            // textBox_Scale_Y
             // 
-            this.textBox_Size_Y.Enabled = false;
-            this.textBox_Size_Y.Location = new System.Drawing.Point(891, 248);
-            this.textBox_Size_Y.MaxLength = 30;
-            this.textBox_Size_Y.Name = "textBox_Size_Y";
-            this.textBox_Size_Y.Size = new System.Drawing.Size(55, 20);
-            this.textBox_Size_Y.TabIndex = 26;
+            this.textBox_Scale_Y.Enabled = false;
+            this.textBox_Scale_Y.Location = new System.Drawing.Point(891, 248);
+            this.textBox_Scale_Y.MaxLength = 30;
+            this.textBox_Scale_Y.Name = "textBox_Scale_Y";
+            this.textBox_Scale_Y.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Scale_Y.TabIndex = 26;
             // 
-            // textBox_Size_X
+            // textBox_Scale_X
             // 
-            this.textBox_Size_X.Enabled = false;
-            this.textBox_Size_X.Location = new System.Drawing.Point(891, 222);
-            this.textBox_Size_X.MaxLength = 30;
-            this.textBox_Size_X.Name = "textBox_Size_X";
-            this.textBox_Size_X.Size = new System.Drawing.Size(55, 20);
-            this.textBox_Size_X.TabIndex = 25;
+            this.textBox_Scale_X.Enabled = false;
+            this.textBox_Scale_X.Location = new System.Drawing.Point(891, 222);
+            this.textBox_Scale_X.MaxLength = 30;
+            this.textBox_Scale_X.Name = "textBox_Scale_X";
+            this.textBox_Scale_X.Size = new System.Drawing.Size(55, 20);
+            this.textBox_Scale_X.TabIndex = 25;
             // 
             // label_Rotation
             // 
@@ -510,9 +510,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox_Size_Z);
-            this.Controls.Add(this.textBox_Size_Y);
-            this.Controls.Add(this.textBox_Size_X);
+            this.Controls.Add(this.textBox_Scale_Z);
+            this.Controls.Add(this.textBox_Scale_Y);
+            this.Controls.Add(this.textBox_Scale_X);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -591,9 +591,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox_Size_Z;
-        private System.Windows.Forms.TextBox textBox_Size_Y;
-        private System.Windows.Forms.TextBox textBox_Size_X;
+        private System.Windows.Forms.TextBox textBox_Scale_Z;
+        private System.Windows.Forms.TextBox textBox_Scale_Y;
+        private System.Windows.Forms.TextBox textBox_Scale_X;
         private System.Windows.Forms.Label label_Rotation;
         private System.Windows.Forms.Label label_Size;
     }
