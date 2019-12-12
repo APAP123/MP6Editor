@@ -242,13 +242,15 @@ namespace MP6Editor
         // Converts passed world position to relative screen position
         Vector2 ToRelativePosition(Vector2 pos)
         {
+            //int testo = (int)Editor.Cam.Zoom;
+            //return (pos * Editor.Cam.Zoom) - ((Editor.Cam.Position*Editor.Cam.Zoom) - (trueCenter*Editor.Cam.Zoom));
             return pos - (Editor.Cam.Position - trueCenter);
         }// end ToRelativePosition()
 
         // Converts passed relative screen position to world position
         Vector2 ToGlobalPosition(Vector2 pos)
         {
-            return pos + (Editor.Cam.Position - trueCenter);
+            return pos + ((Editor.Cam.Position - trueCenter)*Editor.Cam.Zoom);
         }// end ToGlobalPosition()
 
         // Determines if passed position is over a space
@@ -256,9 +258,12 @@ namespace MP6Editor
         {
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 newPos = ToRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
-                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
-                if (area.Contains(point))
+                Vector2 newPos = ToRelativePosition(new Vector2((int)(Positions[i].X*Editor.Cam.Zoom), (int)(Positions[i].Y*Editor.Cam.Zoom)));
+                //newPos = newPos * Editor.Cam.Zoom;
+                Point newPoint = new Point((int)(point.X * Editor.Cam.Zoom), (int)(point.Y * Editor.Cam.Zoom));
+                //Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
+                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(8*Editor.Cam.Zoom), (int)(8*Editor.Cam.Zoom));
+                if (area.Contains(newPoint))
                 {
                     return i;
                 }
@@ -315,6 +320,31 @@ namespace MP6Editor
             Editor.EndCamera2D();
         }// end InitPositions()
 
+        // Removes the passed space from the board and updates IDs of all other spaces to reflect this.
+        public void RemoveSpace(int spaceNum)
+        {
+            //Positions.RemoveAt(spaceNum);
+            Board.RemoveAt(spaceNum);
+
+             // iterate through all Spaces.
+            for(int i = 0; i < Board.Count(); i++)
+            {
+                // iterate through all links of an individual Space.
+                for(int j = 0; j < Board[i].links.Count; j++)
+                {
+                    if(Board[i].links[j] == spaceNum)
+                    {
+                        Board[i].links.RemoveAt(j);
+                    }
+                    else if(Board[i].links[j] > spaceNum)
+                    {
+                        Board[i].links[j]--;
+                    }
+                }
+            }
+            InitPositions();
+        } // end RemoveSpace()
+
         // Draws a moving path between linked spaces
         public void UpdatePath()
         {
@@ -327,7 +357,7 @@ namespace MP6Editor
             {
                 for (int i = 0; i < Board.Count; i++)
                 {
-                    foreach (int link in Board[i].links)
+                    foreach (int link in Board[i].links.Where(link => link < Board.Count))
                     {
                         Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 

@@ -62,6 +62,7 @@
             this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.btn_DeleteSpace = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
@@ -205,7 +206,7 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
@@ -239,14 +240,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -348,11 +349,22 @@
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // btn_DeleteSpace
+            // 
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(608, 487);
+            this.btn_DeleteSpace.Name = "btn_DeleteSpace";
+            this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
+            this.btn_DeleteSpace.TabIndex = 18;
+            this.btn_DeleteSpace.Text = "Delete Space";
+            this.btn_DeleteSpace.UseVisualStyleBackColor = true;
+            this.btn_DeleteSpace.Click += new System.EventHandler(this.btn_DeleteSpace_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 513);
+            this.ClientSize = new System.Drawing.Size(800, 521);
+            this.Controls.Add(this.btn_DeleteSpace);
             this.Controls.Add(this.btn_CreateSpace);
             this.Controls.Add(this.listView_Links);
             this.Controls.Add(this.btn_RemoveLink);
@@ -414,6 +426,7 @@
         private System.Windows.Forms.ToolStripMenuItem marioParty5binToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marioParty6binToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marioParty7BoardToolStripMenuItem;
+        private System.Windows.Forms.Button btn_DeleteSpace;
     }
 }
 

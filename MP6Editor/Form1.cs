@@ -296,5 +296,14 @@ namespace MP6Editor
             ToolStripMenuItem sendingItem = (ToolStripMenuItem)sender;
             drawTest1.fontDraw = sendingItem.Checked;
         }// end displaySpaceIDsToolStripMenuItem_CheckedChanged()
+
+        // Deletes currently selected Space
+        private void btn_DeleteSpace_Click(object sender, EventArgs e)
+        {
+            if(drawTest1.SelectedSpace > -1)
+            {
+                drawTest1.RemoveSpace(drawTest1.SelectedSpace);
+            }
+        } // end btn_DeleteSpace_Click()
     }
 }
