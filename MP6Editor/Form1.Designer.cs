@@ -76,9 +76,18 @@
             this.textBox_Scale_X = new System.Windows.Forms.TextBox();
             this.label_Rotation = new System.Windows.Forms.Label();
             this.label_Size = new System.Windows.Forms.Label();
+            this.groupBox_flags = new System.Windows.Forms.GroupBox();
+            this.textBox_flag1 = new System.Windows.Forms.TextBox();
+            this.textBox_flag2 = new System.Windows.Forms.TextBox();
+            this.textBox_flag3 = new System.Windows.Forms.TextBox();
+            this.textBox_flag4 = new System.Windows.Forms.TextBox();
+            this.textBox_flag5 = new System.Windows.Forms.TextBox();
+            this.textBox_flag6 = new System.Windows.Forms.TextBox();
+            this.textBox_flag7 = new System.Windows.Forms.TextBox();
             this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
+            this.groupBox_flags.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_SelectedSpace
@@ -168,7 +177,7 @@
             this.comboBox_Type.Name = "comboBox_Type";
             this.comboBox_Type.Size = new System.Drawing.Size(104, 21);
             this.comboBox_Type.TabIndex = 8;
-            this.comboBox_Type.SelectedIndexChanged += new System.EventHandler(this.type_WasModified);
+            this.comboBox_Type.SelectionChangeCommitted += new System.EventHandler(this.type_WasModified);
             // 
             // label_Type
             // 
@@ -195,7 +204,7 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(923, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(932, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -302,7 +311,7 @@
             // btn_AddLink
             // 
             this.btn_AddLink.Enabled = false;
-            this.btn_AddLink.Location = new System.Drawing.Point(758, 354);
+            this.btn_AddLink.Location = new System.Drawing.Point(752, 354);
             this.btn_AddLink.Name = "btn_AddLink";
             this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
             this.btn_AddLink.TabIndex = 14;
@@ -313,7 +322,7 @@
             // btn_RemoveLink
             // 
             this.btn_RemoveLink.Enabled = false;
-            this.btn_RemoveLink.Location = new System.Drawing.Point(758, 383);
+            this.btn_RemoveLink.Location = new System.Drawing.Point(752, 383);
             this.btn_RemoveLink.Name = "btn_RemoveLink";
             this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
             this.btn_RemoveLink.TabIndex = 15;
@@ -326,7 +335,7 @@
             this.listView_Links.Enabled = false;
             this.listView_Links.HideSelection = false;
             this.listView_Links.LabelEdit = true;
-            this.listView_Links.Location = new System.Drawing.Point(608, 354);
+            this.listView_Links.Location = new System.Drawing.Point(602, 354);
             this.listView_Links.MultiSelect = false;
             this.listView_Links.Name = "listView_Links";
             this.listView_Links.Size = new System.Drawing.Size(144, 97);
@@ -343,7 +352,7 @@
             // btn_CreateSpace
             // 
             this.btn_CreateSpace.Enabled = false;
-            this.btn_CreateSpace.Location = new System.Drawing.Point(608, 457);
+            this.btn_CreateSpace.Location = new System.Drawing.Point(602, 457);
             this.btn_CreateSpace.Name = "btn_CreateSpace";
             this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_CreateSpace.TabIndex = 17;
@@ -354,7 +363,7 @@
             // btn_DeleteSpace
             // 
             this.btn_DeleteSpace.Enabled = false;
-            this.btn_DeleteSpace.Location = new System.Drawing.Point(608, 487);
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(602, 487);
             this.btn_DeleteSpace.Name = "btn_DeleteSpace";
             this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_DeleteSpace.TabIndex = 18;
@@ -501,6 +510,85 @@
             this.label_Size.Text = "Size(?)";
             this.label_Size.Visible = false;
             // 
+            // groupBox_flags
+            // 
+            this.groupBox_flags.Controls.Add(this.textBox_flag7);
+            this.groupBox_flags.Controls.Add(this.textBox_flag6);
+            this.groupBox_flags.Controls.Add(this.textBox_flag5);
+            this.groupBox_flags.Controls.Add(this.textBox_flag4);
+            this.groupBox_flags.Controls.Add(this.textBox_flag3);
+            this.groupBox_flags.Controls.Add(this.textBox_flag2);
+            this.groupBox_flags.Controls.Add(this.textBox_flag1);
+            this.groupBox_flags.Location = new System.Drawing.Point(752, 412);
+            this.groupBox_flags.Name = "groupBox_flags";
+            this.groupBox_flags.Size = new System.Drawing.Size(171, 52);
+            this.groupBox_flags.TabIndex = 35;
+            this.groupBox_flags.TabStop = false;
+            this.groupBox_flags.Text = "Flags";
+            // 
+            // textBox_flag1
+            // 
+            this.textBox_flag1.Enabled = false;
+            this.textBox_flag1.Location = new System.Drawing.Point(6, 19);
+            this.textBox_flag1.MaxLength = 2;
+            this.textBox_flag1.Name = "textBox_flag1";
+            this.textBox_flag1.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag1.TabIndex = 0;
+            // 
+            // textBox_flag2
+            // 
+            this.textBox_flag2.Enabled = false;
+            this.textBox_flag2.Location = new System.Drawing.Point(29, 19);
+            this.textBox_flag2.MaxLength = 2;
+            this.textBox_flag2.Name = "textBox_flag2";
+            this.textBox_flag2.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag2.TabIndex = 1;
+            // 
+            // textBox_flag3
+            // 
+            this.textBox_flag3.Enabled = false;
+            this.textBox_flag3.Location = new System.Drawing.Point(52, 19);
+            this.textBox_flag3.MaxLength = 2;
+            this.textBox_flag3.Name = "textBox_flag3";
+            this.textBox_flag3.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag3.TabIndex = 2;
+            // 
+            // textBox_flag4
+            // 
+            this.textBox_flag4.Enabled = false;
+            this.textBox_flag4.Location = new System.Drawing.Point(75, 19);
+            this.textBox_flag4.MaxLength = 2;
+            this.textBox_flag4.Name = "textBox_flag4";
+            this.textBox_flag4.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag4.TabIndex = 3;
+            // 
+            // textBox_flag5
+            // 
+            this.textBox_flag5.Enabled = false;
+            this.textBox_flag5.Location = new System.Drawing.Point(98, 19);
+            this.textBox_flag5.MaxLength = 2;
+            this.textBox_flag5.Name = "textBox_flag5";
+            this.textBox_flag5.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag5.TabIndex = 4;
+            // 
+            // textBox_flag6
+            // 
+            this.textBox_flag6.Enabled = false;
+            this.textBox_flag6.Location = new System.Drawing.Point(121, 19);
+            this.textBox_flag6.MaxLength = 2;
+            this.textBox_flag6.Name = "textBox_flag6";
+            this.textBox_flag6.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag6.TabIndex = 5;
+            // 
+            // textBox_flag7
+            // 
+            this.textBox_flag7.Enabled = false;
+            this.textBox_flag7.Location = new System.Drawing.Point(144, 19);
+            this.textBox_flag7.MaxLength = 2;
+            this.textBox_flag7.Name = "textBox_flag7";
+            this.textBox_flag7.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag7.TabIndex = 6;
+            // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 36);
@@ -517,7 +605,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 521);
+            this.ClientSize = new System.Drawing.Size(932, 524);
+            this.Controls.Add(this.groupBox_flags);
             this.Controls.Add(this.label_Size);
             this.Controls.Add(this.label_Rotation);
             this.Controls.Add(this.label4);
@@ -555,6 +644,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).EndInit();
+            this.groupBox_flags.ResumeLayout(false);
+            this.groupBox_flags.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,6 +700,14 @@
         private System.Windows.Forms.TextBox textBox_Scale_X;
         private System.Windows.Forms.Label label_Rotation;
         private System.Windows.Forms.Label label_Size;
+        private System.Windows.Forms.GroupBox groupBox_flags;
+        private System.Windows.Forms.TextBox textBox_flag7;
+        private System.Windows.Forms.TextBox textBox_flag6;
+        private System.Windows.Forms.TextBox textBox_flag5;
+        private System.Windows.Forms.TextBox textBox_flag4;
+        private System.Windows.Forms.TextBox textBox_flag3;
+        private System.Windows.Forms.TextBox textBox_flag2;
+        private System.Windows.Forms.TextBox textBox_flag1;
     }
 }
 

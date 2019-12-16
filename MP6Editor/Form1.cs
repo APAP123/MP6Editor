@@ -67,12 +67,14 @@ namespace MP6Editor
         // Updates on-screen information.
         private void UpdateDisplayInfo()
         {
-            // Clear previous links.
+            // Clear listViews.
             listView_Links.Items.Clear();
 
             if(drawTest1.SelectedSpace > -1)
             {
                 label_SelectedSpace.Text = "ID#: " + drawTest1.SelectedSpace;
+
+                pictureBox_Space.Image = GetSpaceImage(drawTest1.Board[drawTest1.SelectedSpace].type);
 
                 // Position
                 textBox_X.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].X;
@@ -95,12 +97,21 @@ namespace MP6Editor
                 listView_Links.LargeImageList = null;
                 listView_Links.LargeImageList = imageList;
 
-                //  Add SelectedSpace's links to the listBox.
+                //  Add SelectedSpace's links to the listView.
                 for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].links.Count; i++)
                 {
                     listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
                 }
-                
+
+                List<byte> tempList = new List<byte>(drawTest1.Board[drawTest1.SelectedSpace].crap);
+                tempList.Reverse();
+
+                // Populate flag textBoxes with SelectedSpace's flags.
+                for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].crap.Count; i++)
+                {
+                    groupBox_flags.Controls[i].Enabled = true;
+                    groupBox_flags.Controls[i].Text = tempList[i].ToString("X2");
+                }
             }
         }// end updateDisplayInfo()
 
@@ -129,7 +140,32 @@ namespace MP6Editor
             drawTest1.Board[space].linkAmount = drawTest1.Board[space].links.Count;
 
             pictureBox_Space.Image = GetSpaceImage(drawTest1.Board[drawTest1.SelectedSpace].type);
+
+            // flags
+            drawTest1.Board[space].crap = UpdateFlags(space);
         }// end updateSpaceInfo()
+
+        // Updates the flags of the selected space.
+        public List<byte> UpdateFlags(int space)
+        {
+            List<byte> newFlags = new List<byte>(drawTest1.Board[space].crap);
+
+            for(int i = 0; i < drawTest1.Board[space].crap.Count; i++)
+            {
+                if(groupBox_flags.Controls[i].Text != "")
+                {
+                    newFlags[i] = StringToByte(groupBox_flags.Controls[drawTest1.Board[space].crap.Count-1-i].Text);
+                }
+            }
+            return newFlags;
+        } // end UpdateFlags()
+
+        // Converts a two-char string of hex to a byte array.
+        private byte StringToByte(string hex)
+        {
+            byte byt = Convert.ToByte(hex, 16);
+            return byt;
+        }// end StringToByteArray()
 
         // Updates the passed space's links
         private void UpdateSpaceLinks(int space)
