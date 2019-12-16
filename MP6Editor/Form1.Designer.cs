@@ -422,58 +422,64 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(834, 281);
+            this.label4.Location = new System.Drawing.Point(760, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 30;
             this.label4.Text = "Z:";
+            this.label4.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(834, 255);
+            this.label5.Location = new System.Drawing.Point(760, 121);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 29;
             this.label5.Text = "Y:";
+            this.label5.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(834, 225);
+            this.label6.Location = new System.Drawing.Point(760, 91);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 13);
             this.label6.TabIndex = 28;
             this.label6.Text = "X:";
+            this.label6.Visible = false;
             // 
             // textBox_Scale_Z
             // 
             this.textBox_Scale_Z.Enabled = false;
-            this.textBox_Scale_Z.Location = new System.Drawing.Point(857, 274);
+            this.textBox_Scale_Z.Location = new System.Drawing.Point(783, 140);
             this.textBox_Scale_Z.MaxLength = 30;
             this.textBox_Scale_Z.Name = "textBox_Scale_Z";
             this.textBox_Scale_Z.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_Z.TabIndex = 27;
+            this.textBox_Scale_Z.Visible = false;
             this.textBox_Scale_Z.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // textBox_Scale_Y
             // 
             this.textBox_Scale_Y.Enabled = false;
-            this.textBox_Scale_Y.Location = new System.Drawing.Point(857, 248);
+            this.textBox_Scale_Y.Location = new System.Drawing.Point(783, 114);
             this.textBox_Scale_Y.MaxLength = 30;
             this.textBox_Scale_Y.Name = "textBox_Scale_Y";
             this.textBox_Scale_Y.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_Y.TabIndex = 26;
+            this.textBox_Scale_Y.Visible = false;
             this.textBox_Scale_Y.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // textBox_Scale_X
             // 
             this.textBox_Scale_X.Enabled = false;
-            this.textBox_Scale_X.Location = new System.Drawing.Point(857, 222);
+            this.textBox_Scale_X.Location = new System.Drawing.Point(783, 88);
             this.textBox_Scale_X.MaxLength = 30;
             this.textBox_Scale_X.Name = "textBox_Scale_X";
             this.textBox_Scale_X.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_X.TabIndex = 25;
+            this.textBox_Scale_X.Visible = false;
             this.textBox_Scale_X.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
             // 
             // label_Rotation
@@ -488,11 +494,12 @@
             // label_Size
             // 
             this.label_Size.AutoSize = true;
-            this.label_Size.Location = new System.Drawing.Point(853, 206);
+            this.label_Size.Location = new System.Drawing.Point(779, 72);
             this.label_Size.Name = "label_Size";
             this.label_Size.Size = new System.Drawing.Size(39, 13);
             this.label_Size.TabIndex = 32;
             this.label_Size.Text = "Size(?)";
+            this.label_Size.Visible = false;
             // 
             // drawTest1
             // 
