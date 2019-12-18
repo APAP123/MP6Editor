@@ -41,7 +41,10 @@ namespace MP6Editor
         int offset;
         List<Space> Board = new List<Space>();
 
-        // Reads decompressed board file
+        /// <summary>
+        /// Reads decompressed board file.
+        /// </summary>
+        /// <returns>List of Spaces read from file.</returns>
         public List<Space> ReadFile()
         {
             if(mpVersion == 4 || mpVersion == 5)
@@ -74,7 +77,11 @@ namespace MP6Editor
             return Board;
         }// end ReadFile()
 
-        // Reads the next space in
+        /// <summary>
+        /// Reads the next Space in the board file.
+        /// </summary>
+        /// <param name="fileStream">Stream of file currently being read.</param>
+        /// <returns>Next space in the board file.</returns>
         private Space ReadSpace(FileStream fileStream)
         {
             Space space = new Space();
@@ -146,7 +153,11 @@ namespace MP6Editor
             }
         }// end getSpaceTexture()
 
-        // Converts the next 4 bytes into a float
+        /// <summary>
+        /// Converts the next 4 bytes into a float.
+        /// </summary>
+        /// <param name="fileStream">Stream of file currently being read.</param>
+        /// <returns>Float conversion of a 4-byte position value.</returns>
         private float GetPosition(FileStream fileStream)
         {
             byte[] position = new byte[4];
@@ -160,7 +171,12 @@ namespace MP6Editor
             return System.BitConverter.ToSingle(position, 0);
         }// end getPosition()
 
-        // Get the information between the end of the positions and before the typing
+        /// <summary>
+        /// Get flags of Space being currently read.
+        /// </summary>
+        /// <param name="fileStream">Stream of file currently being read.</param>
+        /// <param name="crapAmount">Amount of flags in Space (differs from game-to-game).</param>
+        /// <returns></returns>
         private byte[] GetCrap(FileStream fileStream, int crapAmount)
         {
             byte[] crap = new byte[crapAmount];
@@ -171,7 +187,10 @@ namespace MP6Editor
             return crap;
         }// end getCrap()
 
-        // Converts current board to MP6 board format
+        /// <summary>
+        /// Converts current board to MP6 board format.
+        /// </summary>
+        /// <param name="nuBoard">Board to be saved to file.</param>
         public void SaveBoardLayout(List<Space> nuBoard)
         {
             // TODO: Clean it up, it's a mess
@@ -245,7 +264,11 @@ namespace MP6Editor
             fileStream.Dispose();
         }// end SaveBoardLayout()
 
-        // Calls cline quickbms to extract/import the files
+        /// <summary>
+        /// Calls cline quickbms to extract/import the files.
+        /// </summary>
+        /// <param name="filePath">Path to file to be extracted/imported.</param>
+        /// <param name="reimport">True if reimporting; false if not.</param>
         public void QuickExtract(string filePath, bool reimport)
         {
             string args = "-Y ";
@@ -269,7 +292,12 @@ namespace MP6Editor
 
         }//end QuickExtract()
 
-        // Repacks the files into the .bin and appends the modified 0.dat to the end
+        /// <summary>
+        /// Repacks the files into the .bin and inserts the modified layout file.
+        /// </summary>
+        /// <param name="newFileName">New file name.</param>
+        /// <param name="packedFileName">Old file name.</param>
+        /// <param name="oldOffsets">Offsets of .bin before inserting new layout file.</param>
         public void RepackFile(string newFileName, string packedFileName, List<byte[]> oldOffsets)
         {
             // TODO: replace hardcoded filenames with variables
@@ -342,7 +370,11 @@ namespace MP6Editor
             packedFileStream.Dispose();
         }// end RepackFile()
 
-        // Gets file header (data offsets) from board file
+        /// <summary>
+        /// Gets file header (data offsets) from board file.
+        /// </summary>
+        /// <param name="fileName">Path to file.</param>
+        /// <returns>Byte List of offsets.</returns>
         public List<byte[]> GetFileHeader(string fileName)
         {
             FileStream boardFileStream = new FileStream(fileName, FileMode.Open);
@@ -364,7 +396,12 @@ namespace MP6Editor
             return offsets;
         }// end GetFileHeader()
 
-        // Changes offsets to match new file layout
+        /// <summary>
+        /// Changes offsets to match new file layout.
+        /// </summary>
+        /// <param name="offsets">Old offsets before inserting new layout file.</param>
+        /// <param name="newSize">New size of the file.</param>
+        /// <returns></returns>
         public List<int> AdjustFileHeader(List<byte[]> offsets, int newSize)
         {
             List<int> intList = ByteListToInt(offsets);
@@ -378,7 +415,11 @@ namespace MP6Editor
             return intList;
         }// end AdjustFileHeader()
 
-        // Does exactly what it says on the can
+        /// <summary>
+        /// Converts a List of bytes to a List of ints.
+        /// </summary>
+        /// <param name="byteList">Byte List to be converted.</param>
+        /// <returns>Converted List of ints.</returns>
         List<int> ByteListToInt(List<byte[]> byteList)
         {
             List<int> intList = new List<int>();

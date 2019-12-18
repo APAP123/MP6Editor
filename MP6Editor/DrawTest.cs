@@ -239,7 +239,11 @@ namespace MP6Editor
 
         #endregion
 
-        // Converts passed world position to relative screen position
+        /// <summary>
+        /// Converts passed world position to relative screen position.
+        /// </summary>
+        /// <param name="pos">World position to be converted.</param>
+        /// <returns>Relative position of passed world position.</returns>
         Vector2 ToRelativePosition(Vector2 pos)
         {
             //int testo = (int)Editor.Cam.Zoom;
@@ -253,7 +257,11 @@ namespace MP6Editor
             return pos + ((Editor.Cam.Position - trueCenter)*Editor.Cam.Zoom);
         }// end ToGlobalPosition()
 
-        // Determines if passed position is over a space
+        /// <summary>
+        /// Determines if passed position is over a Space.
+        /// </summary>
+        /// <param name="point">Position to be checked.</param>
+        /// <returns>Returns ID # of Space position is over; returns -1 if over no Space.</returns>
         int IsOverSpace(Point point)
         {
             for (int i = 0; i < Board.Count; i++)
@@ -271,7 +279,11 @@ namespace MP6Editor
             return -1;
         }// end isOverSpace()
 
-        // Get this type's matching texture
+        /// <summary>
+        /// Get this type's matching texture.
+        /// </summary>
+        /// <param name="type">Type of Space.</param>
+        /// <returns>Appropriate Texture for passed type; "X" Texture if unrecognized type.</returns>
         Texture2D getSpaceTexture(int type)
         {
             switch (type)
@@ -299,7 +311,9 @@ namespace MP6Editor
             }
         }// end getSpaceTexture()
 
-        // Sets the initial visual space positions read from the Board
+        /// <summary>
+        /// Sets the initial visual space positions read from the Board.
+        /// </summary>
         public void InitPositions()
         {
             Editor.BeginCamera2D();
@@ -320,7 +334,10 @@ namespace MP6Editor
             Editor.EndCamera2D();
         }// end InitPositions()
 
-        // Removes the passed space from the board and updates IDs of all other spaces to reflect this.
+        /// <summary>
+        /// Removes the passed space from the board and updates IDs of all other spaces to reflect this.
+        /// </summary>
+        /// <param name="spaceNum">ID of Space to be removed.</param>
         public void RemoveSpace(int spaceNum)
         {
             //Positions.RemoveAt(spaceNum);
@@ -345,7 +362,9 @@ namespace MP6Editor
             InitPositions();
         } // end RemoveSpace()
 
-        // Draws a moving path between linked spaces
+        /// <summary>
+        /// Draws a moving path between linked Spaces.
+        /// </summary>
         public void UpdatePath()
         {
             PathTimer++;

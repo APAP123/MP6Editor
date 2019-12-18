@@ -64,7 +64,9 @@ namespace MP6Editor
             UpdateDisplayInfo();
         }
 
-        // Updates on-screen information.
+        /// <summary>
+        /// Updates form information.
+        /// </summary>
         private void UpdateDisplayInfo()
         {
             // Clear listViews.
@@ -115,7 +117,10 @@ namespace MP6Editor
             }
         }// end updateDisplayInfo()
 
-        // Updates the board visuals to match the entered text
+        /// <summary>
+        /// Updates the information on the selected Space to match the info in the forms.
+        /// </summary>
+        /// <param name="space">ID # of space to update.</param>
         private void UpdateSpaceInfo(int space)
         {
             // Position
@@ -145,7 +150,11 @@ namespace MP6Editor
             drawTest1.Board[space].crap = UpdateFlags(space);
         }// end updateSpaceInfo()
 
-        // Updates the flags of the selected space.
+        /// <summary>
+        /// Updates the flags of the selected Space.
+        /// </summary>
+        /// <param name="space">ID # of space to update.</param>
+        /// <returns>List of bytes with updated flags.</returns>
         public List<byte> UpdateFlags(int space)
         {
             List<byte> newFlags = new List<byte>(drawTest1.Board[space].crap);
@@ -160,14 +169,21 @@ namespace MP6Editor
             return newFlags;
         } // end UpdateFlags()
 
-        // Converts a two-char string of hex to a byte array.
+        /// <summary>
+        /// Converts a two-char string of hex to a byte array.
+        /// </summary>
+        /// <param name="hex">Two-char string of hex.</param>
+        /// <returns>byte-converted string.</returns>
         private byte StringToByte(string hex)
         {
             byte byt = Convert.ToByte(hex, 16);
             return byt;
         }// end StringToByteArray()
 
-        // Updates the passed space's links
+        /// <summary>
+        /// Updates the passed space's links.
+        /// </summary>
+        /// <param name="space">ID # of space to update.</param>
         private void UpdateSpaceLinks(int space)
         {
             if (listView_Links.Items.Count > 0)
@@ -208,7 +224,11 @@ namespace MP6Editor
             }
         }// end GetSpaceImage()
 
-        // Updates visual information if space position was changed
+        /// <summary>
+        /// Updates visual information if space position was changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Position_WasModified(object sender, EventArgs e)
         {
             TextBox sendingBox = (TextBox)sender;
@@ -249,7 +269,12 @@ namespace MP6Editor
             ImportFile(sender, e, 6);
         }// end ImportType2_Click()
 
-        // Opens the file openFileDialog to select the w##.bin file
+        /// <summary>
+        /// Opens the openFileDialog to select the w##.bin file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="version">MP version of board currently being opened.</param>
         private void ImportFile(object sender, EventArgs e, int version)
         {
             string filePath = string.Empty;
