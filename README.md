@@ -1,2 +1,2 @@
 # MP6Editor
-Hopefully you'll be able to edit Mario Party 6 boards with this at some point.
+WIP Editor for Mario Party 6 boards, with experimental support for 4, 5, and 7.
