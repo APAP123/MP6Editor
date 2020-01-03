@@ -213,8 +213,8 @@ namespace MP6Editor
             // Clicking and dragging to move a space.
             if (SpaceMouseDown)
             {
-                int xFollow = (SelectFirstMouseDownPosition.X - e.Location.X)*SCALE;
-                int yFollow = (SelectFirstMouseDownPosition.Y - e.Location.Y)*SCALE;
+                int xFollow = (int)((SelectFirstMouseDownPosition.X - e.Location.X)*SCALE / Editor.Cam.Zoom);
+                int yFollow = (int)((SelectFirstMouseDownPosition.Y - e.Location.Y)*SCALE / Editor.Cam.Zoom);
 
                 Vector2 newPos = new Vector2(xFollow, yFollow);
                 Board[SelectedSpace].X -= newPos.X;
@@ -246,23 +246,14 @@ namespace MP6Editor
         /// <returns>Relative position of passed world position.</returns>
         Vector2 ToRelativePosition(Vector2 pos)
         {
-            //int testo = (int)Editor.Cam.Zoom;
-            //return (pos * Editor.Cam.Zoom) - ((Editor.Cam.Position*Editor.Cam.Zoom) - (trueCenter*Editor.Cam.Zoom));
             return pos - (Editor.Cam.Position - trueCenter);
-            //return pos - (Editor.Cam.Position - CamCenterOffset());
         }// end ToRelativePosition()
 
         // Converts passed relative screen position to world position
         Vector2 ToGlobalPosition(Vector2 pos)
         {
-            return pos + (Editor.Cam.Position - CamCenterOffset());
+            return pos + (Editor.Cam.Position - trueCenter);
         }// end ToGlobalPosition()
-
-        //Offsets any cam location by a zoom scaled window bounds
-        Vector2 CamCenterOffset()
-        {
-            return new Vector2((Editor.graphics.Viewport.Width * Editor.Cam.Zoom) * 0.5f, (Editor.graphics.Viewport.Height * Editor.Cam.Zoom) * 0.5f);
-        }// end CamCenterOffset()
 
         /// <summary>
         /// Determines if passed position is over a Space.
@@ -273,16 +264,10 @@ namespace MP6Editor
         {
             for (int i = 0; i < Board.Count; i++)
             {
-                //Vector2 newPos = ToRelativePosition(new Vector2((int)(Positions[i].X*Editor.Cam.Zoom), (int)(Positions[i].Y*Editor.Cam.Zoom)));
-                //Vector2 newPos = ToRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
                 Vector2 newPos = (new Vector2((int)Positions[i].X, (int)Positions[i].Y));
                 newPos = Vector2.Transform(newPos, Editor.Cam.Transform);
-                //newPos = newPos * Editor.Cam.Zoom;
-                //Point newPoint = new Point((int)(point.X * Editor.Cam.Zoom), (int)(point.Y * Editor.Cam.Zoom));
-                Point newPoint = new Point((int)(point.X), (int)(point.Y));
-                //Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
                 Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(8*Editor.Cam.Zoom), (int)(8*Editor.Cam.Zoom));
-                if (area.Contains(newPoint))
+                if (area.Contains(point))
                 {
                     return i;
                 }
@@ -328,7 +313,6 @@ namespace MP6Editor
         public void InitPositions()
         {
             Editor.BeginCamera2D();
-            // Editor.spriteBatch.Begin();
 
             Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
             trueCenter = center;
@@ -339,7 +323,6 @@ namespace MP6Editor
                 Positions.Add(spot);
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
                 Board[i].texture = getSpaceTexture(Board[i].type);
-                // Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
             }
 
             Editor.EndCamera2D();
