@@ -59,8 +59,6 @@
             this.saveFileDialog_wbin = new System.Windows.Forms.SaveFileDialog();
             this.btn_CreateSpace = new System.Windows.Forms.Button();
             this.toolTip_AddLink = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip_RemoveLink = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip_CreateSpaceButton = new System.Windows.Forms.ToolTip(this.components);
             this.btn_DeleteSpace = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,13 +75,13 @@
             this.label_Rotation = new System.Windows.Forms.Label();
             this.label_Size = new System.Windows.Forms.Label();
             this.groupBox_flags = new System.Windows.Forms.GroupBox();
-            this.textBox_flag1 = new System.Windows.Forms.TextBox();
-            this.textBox_flag2 = new System.Windows.Forms.TextBox();
-            this.textBox_flag3 = new System.Windows.Forms.TextBox();
-            this.textBox_flag4 = new System.Windows.Forms.TextBox();
-            this.textBox_flag5 = new System.Windows.Forms.TextBox();
-            this.textBox_flag6 = new System.Windows.Forms.TextBox();
             this.textBox_flag7 = new System.Windows.Forms.TextBox();
+            this.textBox_flag6 = new System.Windows.Forms.TextBox();
+            this.textBox_flag5 = new System.Windows.Forms.TextBox();
+            this.textBox_flag4 = new System.Windows.Forms.TextBox();
+            this.textBox_flag3 = new System.Windows.Forms.TextBox();
+            this.textBox_flag2 = new System.Windows.Forms.TextBox();
+            this.textBox_flag1 = new System.Windows.Forms.TextBox();
             this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
@@ -526,50 +524,14 @@
             this.groupBox_flags.TabStop = false;
             this.groupBox_flags.Text = "Flags";
             // 
-            // textBox_flag1
+            // textBox_flag7
             // 
-            this.textBox_flag1.Enabled = false;
-            this.textBox_flag1.Location = new System.Drawing.Point(6, 19);
-            this.textBox_flag1.MaxLength = 2;
-            this.textBox_flag1.Name = "textBox_flag1";
-            this.textBox_flag1.Size = new System.Drawing.Size(20, 20);
-            this.textBox_flag1.TabIndex = 0;
-            // 
-            // textBox_flag2
-            // 
-            this.textBox_flag2.Enabled = false;
-            this.textBox_flag2.Location = new System.Drawing.Point(29, 19);
-            this.textBox_flag2.MaxLength = 2;
-            this.textBox_flag2.Name = "textBox_flag2";
-            this.textBox_flag2.Size = new System.Drawing.Size(20, 20);
-            this.textBox_flag2.TabIndex = 1;
-            // 
-            // textBox_flag3
-            // 
-            this.textBox_flag3.Enabled = false;
-            this.textBox_flag3.Location = new System.Drawing.Point(52, 19);
-            this.textBox_flag3.MaxLength = 2;
-            this.textBox_flag3.Name = "textBox_flag3";
-            this.textBox_flag3.Size = new System.Drawing.Size(20, 20);
-            this.textBox_flag3.TabIndex = 2;
-            // 
-            // textBox_flag4
-            // 
-            this.textBox_flag4.Enabled = false;
-            this.textBox_flag4.Location = new System.Drawing.Point(75, 19);
-            this.textBox_flag4.MaxLength = 2;
-            this.textBox_flag4.Name = "textBox_flag4";
-            this.textBox_flag4.Size = new System.Drawing.Size(20, 20);
-            this.textBox_flag4.TabIndex = 3;
-            // 
-            // textBox_flag5
-            // 
-            this.textBox_flag5.Enabled = false;
-            this.textBox_flag5.Location = new System.Drawing.Point(98, 19);
-            this.textBox_flag5.MaxLength = 2;
-            this.textBox_flag5.Name = "textBox_flag5";
-            this.textBox_flag5.Size = new System.Drawing.Size(20, 20);
-            this.textBox_flag5.TabIndex = 4;
+            this.textBox_flag7.Enabled = false;
+            this.textBox_flag7.Location = new System.Drawing.Point(144, 19);
+            this.textBox_flag7.MaxLength = 2;
+            this.textBox_flag7.Name = "textBox_flag7";
+            this.textBox_flag7.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag7.TabIndex = 6;
             // 
             // textBox_flag6
             // 
@@ -580,14 +542,50 @@
             this.textBox_flag6.Size = new System.Drawing.Size(20, 20);
             this.textBox_flag6.TabIndex = 5;
             // 
-            // textBox_flag7
+            // textBox_flag5
             // 
-            this.textBox_flag7.Enabled = false;
-            this.textBox_flag7.Location = new System.Drawing.Point(144, 19);
-            this.textBox_flag7.MaxLength = 2;
-            this.textBox_flag7.Name = "textBox_flag7";
-            this.textBox_flag7.Size = new System.Drawing.Size(20, 20);
-            this.textBox_flag7.TabIndex = 6;
+            this.textBox_flag5.Enabled = false;
+            this.textBox_flag5.Location = new System.Drawing.Point(98, 19);
+            this.textBox_flag5.MaxLength = 2;
+            this.textBox_flag5.Name = "textBox_flag5";
+            this.textBox_flag5.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag5.TabIndex = 4;
+            // 
+            // textBox_flag4
+            // 
+            this.textBox_flag4.Enabled = false;
+            this.textBox_flag4.Location = new System.Drawing.Point(75, 19);
+            this.textBox_flag4.MaxLength = 2;
+            this.textBox_flag4.Name = "textBox_flag4";
+            this.textBox_flag4.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag4.TabIndex = 3;
+            // 
+            // textBox_flag3
+            // 
+            this.textBox_flag3.Enabled = false;
+            this.textBox_flag3.Location = new System.Drawing.Point(52, 19);
+            this.textBox_flag3.MaxLength = 2;
+            this.textBox_flag3.Name = "textBox_flag3";
+            this.textBox_flag3.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag3.TabIndex = 2;
+            // 
+            // textBox_flag2
+            // 
+            this.textBox_flag2.Enabled = false;
+            this.textBox_flag2.Location = new System.Drawing.Point(29, 19);
+            this.textBox_flag2.MaxLength = 2;
+            this.textBox_flag2.Name = "textBox_flag2";
+            this.textBox_flag2.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag2.TabIndex = 1;
+            // 
+            // textBox_flag1
+            // 
+            this.textBox_flag1.Enabled = false;
+            this.textBox_flag1.Location = new System.Drawing.Point(6, 19);
+            this.textBox_flag1.MaxLength = 2;
+            this.textBox_flag1.Name = "textBox_flag1";
+            this.textBox_flag1.Size = new System.Drawing.Size(20, 20);
+            this.textBox_flag1.TabIndex = 0;
             // 
             // drawTest1
             // 
@@ -679,8 +677,6 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
         private System.Windows.Forms.ToolStripMenuItem displaySpaceIDsToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip_AddLink;
-        private System.Windows.Forms.ToolTip toolTip_RemoveLink;
-        private System.Windows.Forms.ToolTip toolTip_CreateSpaceButton;
         private System.Windows.Forms.ToolStripMenuItem marioParty4binToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marioParty5binToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marioParty6binToolStripMenuItem;

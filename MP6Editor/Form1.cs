@@ -33,8 +33,8 @@ namespace MP6Editor
         private void AddToolTips()
         {
             toolTip_AddLink.SetToolTip(btn_AddLink, "Adds a new link to the currently selected space.");
-            toolTip_RemoveLink.SetToolTip(btn_RemoveLink, "Removes the currently selected link from the selected space.");
-            toolTip_CreateSpaceButton.SetToolTip(btn_CreateSpace, "Adds a new Space to the Board.");
+            toolTip_AddLink.SetToolTip(btn_RemoveLink, "Removes the currently selected link from the selected space.");
+            toolTip_AddLink.SetToolTip(btn_CreateSpace, "Adds a new Space to the Board.");
         }
 
         private void DrawTest1_OnMouseWheelUpwards(MouseEventArgs e)
