@@ -25,8 +25,8 @@ namespace MP6Editor
 
         int fileSize = 0;
 
-        public int mpVersion = 0; // 4 == MP4, 5 == MP5, all else == MP6
-        private int crapCount = 0;
+        public int mpVersion = 0; // 4 == MP4, 5 == MP5, etc.
+        private int flag_Count = 0; // MP4 and MP5 have 5 flags per space, MP6 and MP7 have 7 flags per space.
 
         private readonly string S_QUICKBMS = "quickbms.exe";
         private readonly string S_MP6SCRIPT = "mario_party_6_alt.bms";
@@ -36,7 +36,7 @@ namespace MP6Editor
         private readonly string S_0_COMPRESSED_OUT = "0_compressed.dat";
         private readonly string S_BOARD_LAYOUT = "board_layout_raw";
 
-        private readonly byte[] FLAGS = { 0x00, 0x00, 0x00, 0x01 };
+        private readonly byte[] BIN_FLAGS = { 0x00, 0x00, 0x00, 0x01 };
 
         int offset;
         List<Space> Board = new List<Space>();
@@ -49,11 +49,11 @@ namespace MP6Editor
         {
             if(mpVersion == 4 || mpVersion == 5)
             {
-                crapCount = 5;
+                flag_Count = 5;
             }
             else
             {
-                crapCount = 7;
+                flag_Count = 7;
             }
             FileStream fileStream = new FileStream(fileName, FileMode.Open);
 
@@ -101,7 +101,7 @@ namespace MP6Editor
             space.scale_Z = GetPosition(fileStream);
 
             // Crap
-            space.crap = GetCrap(fileStream, crapCount).ToList();
+            space.flags = GetCrap(fileStream, flag_Count).ToList();
 
             // Type
             space.type = fileStream.ReadByte();
@@ -245,8 +245,8 @@ namespace MP6Editor
                 Array.Reverse(posArray);
                 fileStream.Write(posArray, 0, 4);
 
-                // "crap"
-                fileStream.Write(nuBoard[i].crap.ToArray(), 0, nuBoard[i].crap.Count);
+                // "flags"
+                fileStream.Write(nuBoard[i].flags.ToArray(), 0, nuBoard[i].flags.Count);
                 // type
                 fileStream.WriteByte((byte)nuBoard[i].type);
                 // padding
@@ -330,7 +330,7 @@ namespace MP6Editor
 
             // Write w01.bin with uncomp size (4 bytes long), then flags (00 00 00 01)
             packedFileStream.Write(SIZE, 0, SIZE.Length);
-            packedFileStream.Write(FLAGS, 0, FLAGS.Length);
+            packedFileStream.Write(BIN_FLAGS, 0, BIN_FLAGS.Length);
 
             // Write compressed 0.dat to w01.bin
             layoutFileStream = new FileStream(S_RECOMPRESS_OUT_FOLDER + "\\" + S_0_COMPRESSED_OUT, FileMode.Open);
