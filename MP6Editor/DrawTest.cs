@@ -249,13 +249,20 @@ namespace MP6Editor
             //int testo = (int)Editor.Cam.Zoom;
             //return (pos * Editor.Cam.Zoom) - ((Editor.Cam.Position*Editor.Cam.Zoom) - (trueCenter*Editor.Cam.Zoom));
             return pos - (Editor.Cam.Position - trueCenter);
+            //return pos - (Editor.Cam.Position - CamCenterOffset());
         }// end ToRelativePosition()
 
         // Converts passed relative screen position to world position
         Vector2 ToGlobalPosition(Vector2 pos)
         {
-            return pos + ((Editor.Cam.Position - trueCenter)*Editor.Cam.Zoom);
+            return pos + (Editor.Cam.Position - CamCenterOffset());
         }// end ToGlobalPosition()
+
+        //Offsets any cam location by a zoom scaled window bounds
+        Vector2 CamCenterOffset()
+        {
+            return new Vector2((Editor.graphics.Viewport.Width * Editor.Cam.Zoom) * 0.5f, (Editor.graphics.Viewport.Height * Editor.Cam.Zoom) * 0.5f);
+        }// end CamCenterOffset()
 
         /// <summary>
         /// Determines if passed position is over a Space.
@@ -266,9 +273,13 @@ namespace MP6Editor
         {
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 newPos = ToRelativePosition(new Vector2((int)(Positions[i].X*Editor.Cam.Zoom), (int)(Positions[i].Y*Editor.Cam.Zoom)));
+                //Vector2 newPos = ToRelativePosition(new Vector2((int)(Positions[i].X*Editor.Cam.Zoom), (int)(Positions[i].Y*Editor.Cam.Zoom)));
+                //Vector2 newPos = ToRelativePosition(new Vector2((int)Positions[i].X, (int)Positions[i].Y));
+                Vector2 newPos = (new Vector2((int)Positions[i].X, (int)Positions[i].Y));
+                newPos = Vector2.Transform(newPos, Editor.Cam.Transform);
                 //newPos = newPos * Editor.Cam.Zoom;
-                Point newPoint = new Point((int)(point.X * Editor.Cam.Zoom), (int)(point.Y * Editor.Cam.Zoom));
+                //Point newPoint = new Point((int)(point.X * Editor.Cam.Zoom), (int)(point.Y * Editor.Cam.Zoom));
+                Point newPoint = new Point((int)(point.X), (int)(point.Y));
                 //Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, 8, 8);
                 Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(8*Editor.Cam.Zoom), (int)(8*Editor.Cam.Zoom));
                 if (area.Contains(newPoint))
