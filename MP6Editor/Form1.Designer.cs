@@ -227,48 +227,52 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
             // 
             this.marioParty4binToolStripMenuItem.Name = "marioParty4binToolStripMenuItem";
             this.marioParty4binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty4binToolStripMenuItem.Tag = "4";
             this.marioParty4binToolStripMenuItem.Text = "Mario Party 4 board...";
-            this.marioParty4binToolStripMenuItem.Click += new System.EventHandler(this.ImportType1_Click);
+            this.marioParty4binToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
             // 
             // marioParty5binToolStripMenuItem
             // 
             this.marioParty5binToolStripMenuItem.Name = "marioParty5binToolStripMenuItem";
             this.marioParty5binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty5binToolStripMenuItem.Tag = "5";
             this.marioParty5binToolStripMenuItem.Text = "Mario Party 5 board...";
-            this.marioParty5binToolStripMenuItem.Click += new System.EventHandler(this.ImportType1_Click);
+            this.marioParty5binToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
             // 
             // marioParty6binToolStripMenuItem
             // 
             this.marioParty6binToolStripMenuItem.Name = "marioParty6binToolStripMenuItem";
             this.marioParty6binToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty6binToolStripMenuItem.Tag = "6";
             this.marioParty6binToolStripMenuItem.Text = "Mario Party 6 board...";
-            this.marioParty6binToolStripMenuItem.Click += new System.EventHandler(this.ImportType2_Click);
+            this.marioParty6binToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
             // 
             // marioParty7BoardToolStripMenuItem
             // 
             this.marioParty7BoardToolStripMenuItem.Name = "marioParty7BoardToolStripMenuItem";
             this.marioParty7BoardToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.marioParty7BoardToolStripMenuItem.Tag = "7";
             this.marioParty7BoardToolStripMenuItem.Text = "Mario Party 7 board...";
-            this.marioParty7BoardToolStripMenuItem.Click += new System.EventHandler(this.ImportType2_Click);
+            this.marioParty7BoardToolStripMenuItem.Click += new System.EventHandler(this.ImportFile);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 

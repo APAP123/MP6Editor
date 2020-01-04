@@ -105,11 +105,11 @@ namespace MP6Editor
                     listView_Links.Items.Add(drawTest1.Board[drawTest1.SelectedSpace].links[i].ToString(), drawTest1.Board[drawTest1.Board[drawTest1.SelectedSpace].links[i]].type);
                 }
 
-                List<byte> tempList = new List<byte>(drawTest1.Board[drawTest1.SelectedSpace].crap);
+                List<byte> tempList = new List<byte>(drawTest1.Board[drawTest1.SelectedSpace].flags);
                 tempList.Reverse();
 
                 // Populate flag textBoxes with SelectedSpace's flags.
-                for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].crap.Count; i++)
+                for (int i = 0; i < drawTest1.Board[drawTest1.SelectedSpace].flags.Count; i++)
                 {
                     groupBox_flags.Controls[i].Enabled = true;
                     groupBox_flags.Controls[i].Text = tempList[i].ToString("X2");
@@ -147,7 +147,7 @@ namespace MP6Editor
             pictureBox_Space.Image = GetSpaceImage(drawTest1.Board[drawTest1.SelectedSpace].type);
 
             // flags
-            drawTest1.Board[space].crap = UpdateFlags(space);
+            drawTest1.Board[space].flags = UpdateFlags(space);
         }// end updateSpaceInfo()
 
         /// <summary>
@@ -157,13 +157,13 @@ namespace MP6Editor
         /// <returns>List of bytes with updated flags.</returns>
         public List<byte> UpdateFlags(int space)
         {
-            List<byte> newFlags = new List<byte>(drawTest1.Board[space].crap);
+            List<byte> newFlags = new List<byte>(drawTest1.Board[space].flags);
 
-            for(int i = 0; i < drawTest1.Board[space].crap.Count; i++)
+            for(int i = 0; i < drawTest1.Board[space].flags.Count; i++)
             {
                 if(groupBox_flags.Controls[i].Text != "")
                 {
-                    newFlags[i] = StringToByte(groupBox_flags.Controls[drawTest1.Board[space].crap.Count-1-i].Text);
+                    newFlags[i] = StringToByte(groupBox_flags.Controls[drawTest1.Board[space].flags.Count-1-i].Text);
                 }
             }
             return newFlags;
@@ -257,26 +257,17 @@ namespace MP6Editor
             UpdateSpaceInfo(drawTest1.SelectedSpace);
         }// end type_WasModified()
 
-        // MP4 and MP5
-        private void ImportType1_Click(object sender, EventArgs e)
-        {
-            ImportFile(sender, e, 4);
-        }// end ImportType1_Click()
-
-        // MP6 and MP7
-        private void ImportType2_Click(object sender, EventArgs e)
-        {
-            ImportFile(sender, e, 6);
-        }// end ImportType2_Click()
-
         /// <summary>
         /// Opens the openFileDialog to select the w##.bin file.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="version">MP version of board currently being opened.</param>
-        private void ImportFile(object sender, EventArgs e, int version)
+        private void ImportFile(object sender, EventArgs e)
         {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            int version = int.Parse(item.Tag.ToString());
+
             string filePath = string.Empty;
             openFileDialog_wbin.Filter = "Mario Party " + version + " board files|*.bin|All files|*.*";
             // if openFileDialog was successful
