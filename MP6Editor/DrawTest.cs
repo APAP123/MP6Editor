@@ -374,8 +374,8 @@ namespace MP6Editor
                     {
                         Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
-                        Vector2 start = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
-                        Vector2 end = new Vector2(center.X + (Board[link].X / SCALE), center.Y + (Board[link].Z / SCALE));
+                        Vector2 start = new Vector2(center.X + (Board[i].X / SCALE)+2, center.Y + (Board[i].Z / SCALE)+2);
+                        Vector2 end = new Vector2(center.X + (Board[link].X / SCALE)+2, center.Y + (Board[link].Z / SCALE)+2);
 
                         Path path = new Path(start, end);
 
