@@ -22,7 +22,7 @@ namespace MP6Editor
             InitializeComponent();
 
             // Populate imageList.
-            foreach (string spaceType in Enum.GetNames(typeof(Space.Types)))
+            foreach (string spaceType in Enum.GetNames(typeof(Space.MP6_Types)))
             {
                 imageList.Images.Add("Blank", Image.FromFile("thumbs\\" + spaceType + ".png"));
             }
