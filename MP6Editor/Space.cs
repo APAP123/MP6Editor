@@ -75,7 +75,7 @@ namespace MP6Editor
         }
 
         
-        public enum Types
+        public enum MP6_Types
         {
             Blank = 0x00,
             Blue = 0x01,
@@ -103,7 +103,7 @@ namespace MP6Editor
             Jump3 = 0x0003,
             ClimbEnd = 0x0004,
             ClimbStart = 0x08, //For climb to work, the next space must be marked with a ClimbEnd flag
-            HomeSpace = 0x8000 //(starting at flags[24])Space #63 (home) is marked with this, and when it's removed, the paths on the map screen stop being drawn.
+            HomeSpace = 0x8000 //(starting at flags[1])Space #63 (home) is marked with this, and when it's removed, the paths on the map screen stop being drawn.
             
         }
     }
