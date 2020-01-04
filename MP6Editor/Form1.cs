@@ -21,12 +21,6 @@ namespace MP6Editor
         {
             InitializeComponent();
 
-            // Populate imageList.
-            foreach (string spaceType in Enum.GetNames(typeof(Space.MP6_Types)))
-            {
-                imageList.Images.Add("Blank", Image.FromFile("thumbs\\" + spaceType + ".png"));
-            }
-
             AddToolTips();
         }
 
@@ -195,33 +189,20 @@ namespace MP6Editor
             }
         }// end UpdateSpaceLinks()
 
+        private void PopulateImageList(int version)
+        {
+            imageList.Images.Clear();
+
+            foreach(string name in NameRetriever.GetTextureNames(version))
+            {
+                imageList.Images.Add(Image.FromFile(@"Content/" + name + ".png"));
+            }
+        } // end PopulateImageList()
+
         // Returns image of passed space type
-        // TODO: can possibly move to Space.cs; could also do this with enums (see constructor)
         private Image GetSpaceImage(int type)
         {
-            switch (type)
-            {
-                case 0: // Blank
-                    return MP6Editor.Properties.Resources.Blank;
-                case 1: // Blue
-                    return MP6Editor.Properties.Resources.Blue;
-                case 2: // Red
-                    return MP6Editor.Properties.Resources.Red;
-                case 3: // Happening
-                    return MP6Editor.Properties.Resources.Happening;
-                case 4: // Miracle
-                    return MP6Editor.Properties.Resources.Miracle;
-                case 5: // Duel
-                    return MP6Editor.Properties.Resources.Dueling;
-                case 6: // DK/Bowser
-                    return MP6Editor.Properties.Resources.DK;
-                case 8: // Orb
-                    return MP6Editor.Properties.Resources.Orb;
-                case 9: // Shop
-                    return MP6Editor.Properties.Resources.Shop;
-                default: // Everything else
-                    return MP6Editor.Properties.Resources.Other;
-            }
+            return imageList.Images[type];
         }// end GetSpaceImage()
 
         /// <summary>
@@ -260,9 +241,6 @@ namespace MP6Editor
         /// <summary>
         /// Opens the openFileDialog to select the w##.bin file.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <param name="version">MP version of board currently being opened.</param>
         private void ImportFile(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -285,11 +263,14 @@ namespace MP6Editor
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.LoadVersionTextures(version);
                 drawTest1.InitPositions();
+
+                PopulateTypeComboBox(version);
+                PopulateImageList(version);
+
                 btn_CreateSpace.Enabled = true;
                 btn_DeleteSpace.Enabled = true;
             }
         }// end ImportFile()
-
 
         // Opposite 
         private void ExportFile(object sender, EventArgs e)
@@ -305,6 +286,22 @@ namespace MP6Editor
                 extractor.RepackFile(filePath, packedFileName, oldOffsets);
             }
         }// end ExportFile()
+
+        /// <summary>
+        /// Populate the type comboBox with the valid space types.
+        /// </summary>
+        /// <param name="version">Version of Mario Party being loaded.</param>
+        private void PopulateTypeComboBox(int version)
+        {
+            comboBox_Type.Items.Clear();
+
+            List<string> names = NameRetriever.GetSpaceNames(version);
+
+            for(int i = 0; i < names.Count; i++)
+            {
+                comboBox_Type.Items.Add(names[i] + " (" + i + ")");
+            }
+        }// end PopulateTypeComboBox()
 
         // Saves current board to MP6 format.
         private void SaveBoard(object sender, EventArgs e)

@@ -79,15 +79,15 @@ namespace MP6Editor
             Blank = 0x00,
             Blue = 0x01,
             Red = 0x02,
-            Bowser = 0x03,   // By default, No event will occur upon landing.
+            Bowser = 0x03,
             Item = 0x04,
             Battle = 0x05,
             Happening = 0x06, // Does not function on it's own.
             Miracle = 0x07,
             Star = 0x08, 
             Spring = 0x09,        
-            Unused = 0x0A,
-            Unused2 = 0x0B
+            //Unused = 0x0A,
+            //Unused2 = 0x0B
         }
 
         public enum MP5_Types

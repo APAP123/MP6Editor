@@ -83,9 +83,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Space.cs" />
-    <Compile Include="TextureRetriever.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="NameRetriever.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,37 +108,54 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Blank.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\DK.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Dueling.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Happening.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Miracle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Orb.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Shop.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Other.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\textures\MP6\Other.png" />
+    <None Include="Content\textures\spaces\Blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Bowser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\DK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\DKBowser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Dueling.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Happening.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Miracle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Orb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Shop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\textures\spaces\Ztar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\textures\spaces\Item.png" />
+    <Content Include="Content\textures\spaces\Mic.png" />
+    <Content Include="Content\textures\spaces\Spring.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

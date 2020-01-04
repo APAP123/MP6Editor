@@ -160,6 +160,17 @@
   <metadata name="toolTip_AddLink.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>448, 17</value>
   </metadata>
+  <data name="pictureBox_Space.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAARlJREFUWEfV0kGyhCAMhGHufy0P5hjKtgL8QRBn4av6FhM7TRYvHX+7t23bX9Xv
+        HZoBLr6B3jrgEAtW0BsnHGZU9AR1X+4Cddks6pT8fTT4BHXJlZldGEUdUuT8jzyABamzEdqVJlsP8hAW
+        hfIe7QjmaWioQChvKCuUN+EBhopkJet1DzBUKDOZyO0BhopHUFdt6ABDD/RQBxk+wNBDhHYjUwcYetCj
+        nZ5vHUAPEtqNfOOfkB4YQV212wOoWGYyke4BVCgrWS88gIqE8oayQnmDB1CBUN6jHcF8M4BFqbMR2pUm
+        W/yABfG5EdQhRW52YRT1SJGbCc+iPnEZDhhf9hT1yvk9/vgW6nfaIZWsondO5YCW31K/lVLaf+9Yh53R
+        mdFpAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>49</value>
   </metadata>
