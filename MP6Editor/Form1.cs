@@ -283,6 +283,7 @@ namespace MP6Editor
                 oldOffsets = extractor.GetFileHeader(filePath);
                 extractor.QuickExtract(filePath, false);
                 drawTest1.Board = extractor.ReadFile();
+                drawTest1.LoadVersionTextures(version);
                 drawTest1.InitPositions();
                 btn_CreateSpace.Enabled = true;
                 btn_DeleteSpace.Enabled = true;

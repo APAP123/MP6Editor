@@ -14,6 +14,9 @@ namespace MP6Editor
     //class DrawTest : InvalidationControl
     class DrawTest : MonoGameControl
     {
+        // Mario Party version
+        public int MP_version = 6;
+
         /* scaling factor */
         private readonly int SCALE = 16;
 
@@ -48,6 +51,10 @@ namespace MP6Editor
         Vector2 trueCenter = new Vector2();
 
         Rectangle rectangle;
+
+        /* Retrieves textures depending on MP version loaded */
+        private List<Texture2D> textures = new List<Texture2D>();
+
         Texture2D blankSpace;    //0
         Texture2D blueSpace;     //1
         Texture2D redSpace;      //2
@@ -65,17 +72,17 @@ namespace MP6Editor
         {
             base.Initialize();
 
-            blankSpace = Editor.Content.Load<Texture2D>(@"Blank");         //0
-            blueSpace = Editor.Content.Load<Texture2D>(@"Blue");           //1
-            redSpace = Editor.Content.Load<Texture2D>(@"Red");             //2
-            happeningSpace = Editor.Content.Load<Texture2D>(@"Happening"); //3
-            miracleSpace = Editor.Content.Load<Texture2D>(@"Miracle");     //4
-            duelSpace = Editor.Content.Load<Texture2D>(@"Dueling");        //5
-            DKSpace = Editor.Content.Load<Texture2D>(@"DK");               //6
+            blankSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Blank");         //0
+            blueSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Blue");           //1
+            redSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Red");             //2
+            happeningSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Happening"); //3
+            miracleSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Miracle");     //4
+            duelSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Dueling");        //5
+            DKSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/DK");               //6
                                                                            //7
-            orbSpace = Editor.Content.Load<Texture2D>(@"Orb");             //8
-            shopSpace = Editor.Content.Load<Texture2D>(@"Shop");           //9
-            otherSpace = Editor.Content.Load<Texture2D>(@"Other");         //Others
+            orbSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Orb");             //8
+            shopSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Shop");           //9
+            otherSpace = Editor.Content.Load<Texture2D>(@"textures/spaces/Other");         //Others
 
             font = Editor.Content.Load<SpriteFont>(@"SpaceIDs");
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");        //Path sprite placeholder
@@ -282,30 +289,40 @@ namespace MP6Editor
         /// <returns>Appropriate Texture for passed type; "X" Texture if unrecognized type.</returns>
         Texture2D getSpaceTexture(int type)
         {
-            switch (type)
-            {
-                case 0: // Blank
-                    return blankSpace;
-                case 1: // Blue
-                    return blueSpace;
-                case 2: // Red
-                    return redSpace;
-                case 3: // Happening
-                    return happeningSpace;
-                case 4: // Miracle
-                    return miracleSpace;
-                case 5: // Duel
-                    return duelSpace;
-                case 6: // DK/Bowser
-                    return DKSpace;
-                case 8: // Orb
-                    return orbSpace;
-                case 9: // Shop
-                    return shopSpace;
-                default: // Everything else
-                    return otherSpace;
-            }
+                switch (type)
+                {
+                    case 0: // Blank
+                        return blankSpace;
+                    case 1: // Blue
+                        return blueSpace;
+                    case 2: // Red
+                        return redSpace;
+                    case 3: // Happening
+                        return happeningSpace;
+                    case 4: // Miracle
+                        return miracleSpace;
+                    case 5: // Duel
+                        return duelSpace;
+                    case 6: // DK/Bowser
+                        return DKSpace;
+                    case 8: // Orb
+                        return orbSpace;
+                    case 9: // Shop
+                        return shopSpace;
+                    default: // Everything else
+                        return otherSpace;
+                }   
         }// end getSpaceTexture()
+
+        /// <summary>
+        /// Loads Space textures based on the current Mario Party version.
+        /// </summary>
+        /// /// <param name="version">Version of Mario Party being loaded.</param>
+        public void LoadVersionTextures(int version)
+        {
+            TextureRetriever retriever = new TextureRetriever();
+            textures = retriever.GetSpaceTexture(version);
+        }
 
         /// <summary>
         /// Sets the initial visual space positions read from the Board.

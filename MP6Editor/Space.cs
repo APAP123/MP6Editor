@@ -37,7 +37,7 @@ namespace MP6Editor
         public int type;
         public Texture2D texture;
         public byte typePad; // Padding after the type byte; This probably isn't neccessary.
-        public int linkAmount; // TODO: This variable is redundant (just do links.Count) and should be removed.
+        public int linkAmount;
         public List<int> links = new List<int>(); // IDs of the spaces linked to.
 
         public Space()
@@ -57,7 +57,7 @@ namespace MP6Editor
             this.links = links;
         }
 
-        public Space(int crapAmount)
+        public Space(int flagCount)
         {
             X = 0;
             Y = 0;
@@ -68,13 +68,45 @@ namespace MP6Editor
             scale_X = 1f;
             scale_Y = 1f;
             scale_Z = 1f;
-            flags = new byte[crapAmount].ToList();
+            flags = new byte[flagCount].ToList();
             type = 0;
             typePad = 0x00;
             links = new List<int>();
         }
 
-        
+        public enum MP4_Types
+        {
+            Blank = 0x00,
+            Blue = 0x01,
+            Red = 0x02,
+            Bowser = 0x03,   // By default, No event will occur upon landing.
+            Item = 0x04,
+            Battle = 0x05,
+            Happening = 0x06, // Does not function on it's own.
+            Miracle = 0x07,
+            Star = 0x08, 
+            Spring = 0x09,        
+            Unused = 0x0A,
+            Unused2 = 0x0B
+        }
+
+        public enum MP5_Types
+        {
+            Blank = 0x00,
+            Blue = 0x01,
+            Red = 0x02,
+            Bowser = 0x03,
+            Happening = 0x04, // Does not function on it's own.
+            Star = 0x05, // Represents POSSIBLE star spawn locations; is a blue Space otherwise.
+            Happening2 = 0x06, // Does not function on it's own. Not sure why there's two Happening entries...
+            Dueling = 0x07, 
+            DK = 0x08,
+            Unused = 0x09,
+            Unused2 = 0x0A,
+            Unused3 = 0x0B
+        }
+
+
         public enum MP6_Types
         {
             Blank = 0x00,
@@ -88,7 +120,23 @@ namespace MP6Editor
             Orb = 0x08,
             Shop = 0x09,        // Does not function on it's own.
             Ztar = 0x0A,        // Does not funtion on it's own.
-            Other = 0x0B   // Used by MP7.
+            Other = 0x0B
+        }
+
+        public enum MP7_Types
+        {
+            Blank = 0x00,
+            Blue = 0x01,
+            Red = 0x02,
+            Happening = 0x03,   // By default, No event will occur upon landing.
+            Bowser = 0x04,
+            Dueling = 0x05,
+            DK = 0x06,
+            Star = 0x07,    // Softlocks the game when hardcoded; should check flags of legit star Spaces.
+            Orb = 0x08,
+            Shop = 0x09,        // Does not function on it's own.
+            Ztar = 0x0A,        // Does not funtion on it's own.
+            Mic = 0x0B
         }
 
         /* Some data in "flags[0]" correlates to flags that
@@ -103,7 +151,7 @@ namespace MP6Editor
             Jump3 = 0x0003,
             ClimbEnd = 0x0004,
             ClimbStart = 0x08, //For climb to work, the next space must be marked with a ClimbEnd flag
-            HomeSpace = 0x8000 //(starting at flags[1])Space #63 (home) is marked with this, and when it's removed, the paths on the map screen stop being drawn.
+            HomeSpace = 0x8000 //(starting at flags[0])Space #63 (home) is marked with this, and when it's removed, the paths on the map screen stop being drawn.
             
         }
     }

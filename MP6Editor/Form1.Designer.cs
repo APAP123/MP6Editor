@@ -227,7 +227,7 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
@@ -265,14 +265,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -376,7 +376,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(735, 281);
+            this.label1.Location = new System.Drawing.Point(760, 281);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 24;
@@ -385,7 +385,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(735, 255);
+            this.label2.Location = new System.Drawing.Point(760, 255);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 13);
             this.label2.TabIndex = 23;
@@ -394,7 +394,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(735, 225);
+            this.label3.Location = new System.Drawing.Point(760, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 22;
@@ -403,7 +403,7 @@
             // textBox_Rot_Z
             // 
             this.textBox_Rot_Z.Enabled = false;
-            this.textBox_Rot_Z.Location = new System.Drawing.Point(758, 274);
+            this.textBox_Rot_Z.Location = new System.Drawing.Point(783, 274);
             this.textBox_Rot_Z.MaxLength = 30;
             this.textBox_Rot_Z.Name = "textBox_Rot_Z";
             this.textBox_Rot_Z.Size = new System.Drawing.Size(55, 20);
@@ -413,7 +413,7 @@
             // textBox_Rot_Y
             // 
             this.textBox_Rot_Y.Enabled = false;
-            this.textBox_Rot_Y.Location = new System.Drawing.Point(758, 248);
+            this.textBox_Rot_Y.Location = new System.Drawing.Point(783, 248);
             this.textBox_Rot_Y.MaxLength = 30;
             this.textBox_Rot_Y.Name = "textBox_Rot_Y";
             this.textBox_Rot_Y.Size = new System.Drawing.Size(55, 20);
@@ -423,7 +423,7 @@
             // textBox_Rot_X
             // 
             this.textBox_Rot_X.Enabled = false;
-            this.textBox_Rot_X.Location = new System.Drawing.Point(758, 222);
+            this.textBox_Rot_X.Location = new System.Drawing.Point(783, 222);
             this.textBox_Rot_X.MaxLength = 30;
             this.textBox_Rot_X.Name = "textBox_Rot_X";
             this.textBox_Rot_X.Size = new System.Drawing.Size(55, 20);
@@ -496,7 +496,7 @@
             // label_Rotation
             // 
             this.label_Rotation.AutoSize = true;
-            this.label_Rotation.Location = new System.Drawing.Point(755, 206);
+            this.label_Rotation.Location = new System.Drawing.Point(780, 206);
             this.label_Rotation.Name = "label_Rotation";
             this.label_Rotation.Size = new System.Drawing.Size(47, 13);
             this.label_Rotation.TabIndex = 31;
@@ -593,10 +593,10 @@
             // 
             // drawTest1
             // 
-            this.drawTest1.Location = new System.Drawing.Point(12, 36);
+            this.drawTest1.Location = new System.Drawing.Point(12, 28);
             this.drawTest1.MouseHoverUpdatesOnly = false;
             this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(566, 444);
+            this.drawTest1.Size = new System.Drawing.Size(566, 452);
             this.drawTest1.TabIndex = 0;
             this.drawTest1.Text = "drawTest1";
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);

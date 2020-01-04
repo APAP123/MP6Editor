@@ -100,7 +100,7 @@ namespace MP6Editor
             space.scale_Y = GetPosition(fileStream);
             space.scale_Z = GetPosition(fileStream);
 
-            // Crap
+            // Flags
             space.flags = GetCrap(fileStream, flag_Count).ToList();
 
             // Type
@@ -123,35 +123,6 @@ namespace MP6Editor
 
             return space;
         }// end readSpace()
-
-        // Get the passed type's matching texture
-        // TODO: Don't even remember what I was going to use this method for
-        Texture2D GetSpaceTexture(int type)
-        {
-            switch (type)
-            {
-                case 0: // Blank
-                    return Editor.Content.Load<Texture2D>(@"Blank");
-                case 1: // Blue
-                    return Editor.Content.Load<Texture2D>(@"Blue");
-                case 2: // Red
-                    return Editor.Content.Load<Texture2D>(@"Red");
-                case 3: // Happening
-                    return Editor.Content.Load<Texture2D>(@"Happening");
-                case 4: // Miracle
-                    return Editor.Content.Load<Texture2D>(@"Miracle");
-                case 5: // Duel
-                    return Editor.Content.Load<Texture2D>(@"Dueling");
-                case 6: // DK/Bowser
-                    return Editor.Content.Load<Texture2D>(@"DK");
-                case 8: // Orb
-                    return Editor.Content.Load<Texture2D>(@"Orb");
-                case 9: // Shop
-                    return Editor.Content.Load<Texture2D>(@"Shop");
-                default: // Everything else
-                    return Editor.Content.Load<Texture2D>(@"Other");
-            }
-        }// end getSpaceTexture()
 
         /// <summary>
         /// Converts the next 4 bytes into a float.
