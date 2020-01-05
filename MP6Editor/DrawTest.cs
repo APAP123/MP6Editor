@@ -102,8 +102,9 @@ namespace MP6Editor
                 Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
                 //Positions.Add(spot);
                 Positions[i] = spot;
-                rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
-               // Board[i].texture = getSpaceTexture(Board[i].type);
+                //rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, SCALE, SCALE);
+                // Board[i].texture = getSpaceTexture(Board[i].type);
                 Board[i].texture = textures[Board[i].type];
 
                 Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
@@ -340,8 +341,8 @@ namespace MP6Editor
                     {
                         Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
-                        Vector2 start = new Vector2(center.X + (Board[i].X / SCALE)+2, center.Y + (Board[i].Z / SCALE)+2);
-                        Vector2 end = new Vector2(center.X + (Board[link].X / SCALE)+2, center.Y + (Board[link].Z / SCALE)+2);
+                        Vector2 start = new Vector2(center.X + (Board[i].X / SCALE) + (SCALE / 4), center.Y + (Board[i].Z / SCALE) + (SCALE / 4));
+                        Vector2 end = new Vector2(center.X + (Board[link].X / SCALE) + (SCALE / 4), center.Y + (Board[link].Z / SCALE) + (SCALE / 4));
 
                         Path path = new Path(start, end);
 
