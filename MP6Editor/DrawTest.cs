@@ -252,7 +252,7 @@ namespace MP6Editor
             {
                 Vector2 newPos = (new Vector2((int)Positions[i].X, (int)Positions[i].Y));
                 newPos = Vector2.Transform(newPos, Editor.Cam.Transform);
-                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(8*Editor.Cam.Zoom), (int)(8*Editor.Cam.Zoom));
+                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(SCALE*Editor.Cam.Zoom), (int)(SCALE*Editor.Cam.Zoom));
                 if (area.Contains(point))
                 {
                     return i;
