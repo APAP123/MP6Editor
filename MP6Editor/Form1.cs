@@ -87,7 +87,6 @@ namespace MP6Editor
                 textBox_Scale_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Y;
                 textBox_Scale_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Z;
 
-                // TODO: Implement the adding of unrecognized types to comboBox Items List on the fly.
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
 
                 listView_Links.LargeImageList = null;
@@ -379,5 +378,11 @@ namespace MP6Editor
                 drawTest1.RemoveSpace(drawTest1.SelectedSpace);
             }
         } // end btn_DeleteSpace_Click()
+
+        // Updates info on flag modification
+        private void textBox_flags_WasModified(object sender, EventArgs e)
+        {
+            UpdateSpaceInfo(drawTest1.SelectedSpace);
+        }
     }
 }
