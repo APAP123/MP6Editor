@@ -139,20 +139,34 @@ namespace MP6Editor
             Mic = 0x0B
         }
 
-        /* Some data in "flags[0]" correlates to flags that
-         * change how the player traverses the environment;
-         * Currently just putting these here for reference.
+        /*
+         * flags[0]
+         */
+        public enum PathFlags
+        {
+            None = 0x00,
+            Untraversable = 0x20,
+            Whomp = 0x40,
+            WhompUntraversable = 0x60,
+            Home = 0x80 // Marks the Space players start the game on.
+        }
+
+        /* 
+         * flags[1]
          */
         public enum TraversalFlags
         {
-            NoUnique = 0x0000,
-            Jump1 = 0x0001, //Maybe a height difference between the two jumps?
-            Activation = 0x0002,
-            Jump3 = 0x0003,
-            ClimbEnd = 0x0004,
-            ClimbStart = 0x08, //For climb to work, the next space must be marked with a ClimbEnd flag
-            HomeSpace = 0x8000 //(starting at flags[0])Space #63 (home) is marked with this, and when it's removed, the paths on the map screen stop being drawn.
-            
+            Walk = 0x00,
+            JumpEndBig = 0x01,
+            JumpBegin = 0x02,
+            JumpEndSmall = 0x03,
+            ClimbEnd = 0x04,
+            ClimbStart = 0x08, // For climb to work, the next space must be marked with a ClimbEnd flag    
+            ClimbStartAlt = 0x09,
+            Shop = 0x20, // Why the developers decide to put this with flags relating to animations I really don't know.
         }
+
+
+
     }
 }
