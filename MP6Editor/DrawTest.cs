@@ -247,13 +247,14 @@ namespace MP6Editor
         /// <param name="point">Position to be checked.</param>
         /// <returns>Returns ID # of Space position is over; returns -1 if over no Space.</returns>
         int IsOverSpace(Point point)
-        {
-            for (int i = 0; i < Board.Count; i++)
+        {            
+            for(int i = 0; i < Board.Count; i++)
             {
-                Vector2 newPos = (new Vector2((int)Positions[i].X, (int)Positions[i].Y));
+                Vector2 newPos = new Vector2((int)Positions[i].X + (SCALE/2), (int)Positions[i].Y + (SCALE / 2));
                 newPos = Vector2.Transform(newPos, Editor.Cam.Transform);
-                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(SCALE*Editor.Cam.Zoom), (int)(SCALE*Editor.Cam.Zoom));
-                if (area.Contains(point))
+                Circle area = new Circle((int)newPos.X, (int)newPos.Y, (int)((SCALE/2) * Editor.Cam.Zoom));
+
+                if (area.ContainsPoint(point))
                 {
                     return i;
                 }
@@ -288,7 +289,7 @@ namespace MP6Editor
             {
                 Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
                 Positions.Add(spot);
-                rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
+                rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, SCALE, SCALE);
                 Board[i].texture = textures[Board[i].type];
             }
 
@@ -341,9 +342,9 @@ namespace MP6Editor
                     {
                         Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
-                        Vector2 start = new Vector2(center.X + (Board[i].X / SCALE) + (SCALE / 4), center.Y + (Board[i].Z / SCALE) + (SCALE / 4));
-                        Vector2 end = new Vector2(center.X + (Board[link].X / SCALE) + (SCALE / 4), center.Y + (Board[link].Z / SCALE) + (SCALE / 4));
-
+                        Vector2 start = new Vector2(Positions[i].X - 2 + (SCALE / 2), Positions[i].Y - 2 + (SCALE / 2));
+                        Vector2 end = new Vector2(Positions[link].X - 2 + (SCALE / 2), Positions[link].Y - 2 + (SCALE / 2));
+                        
                         Path path = new Path(start, end);
 
                         path.bigPixel = bigPixel;
