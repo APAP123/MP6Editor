@@ -105,5 +105,25 @@ namespace MP6Editor
             }
             return names;
         }
+
+        static public List<string> MP6_GetPathFlags()
+        {
+            List<string> names = new List<string>();
+            foreach(string name in Enum.GetNames(typeof(Space.PathFlags)))
+            {
+                names.Add(name);
+            }
+            return names;
+        }
+
+        static public List<string> MP6_GetTraversalFlags()
+        {
+            List<string> names = new List<string>();
+            foreach (string name in Enum.GetNames(typeof(Space.TraversalFlags)))
+            {
+                names.Add(name);
+            }
+            return names;
+        }
     }
 }
