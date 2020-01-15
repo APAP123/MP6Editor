@@ -144,7 +144,7 @@ namespace MP6Editor
          */
         public enum PathFlags
         {
-            None = 0x00,
+            Normal = 0x00,
             Untraversable = 0x20,
             Whomp = 0x40,
             WhompUntraversable = 0x60,
