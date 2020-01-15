@@ -50,7 +50,11 @@ namespace MP6Editor
                 {
                     textBox.Enabled = true;
                 }
-                comboBox_Type.Enabled = true;
+
+                foreach(ComboBox comboBox in Controls.OfType<ComboBox>())
+                {
+                    comboBox.Enabled = true;
+                }
                 listView_Links.Enabled = true;
                 btn_AddLink.Enabled = true;
                 btn_RemoveLink.Enabled = true;
@@ -87,6 +91,7 @@ namespace MP6Editor
                 textBox_Scale_Y.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Y;
                 textBox_Scale_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Z;
 
+                // ComboBoxes
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
                 comboBox_PathFlag.SelectedIndex = FlagToIndex<Space.PathFlags>(drawTest1.Board[drawTest1.SelectedSpace].flags[0]);
                 comboBox_TravelFlag.SelectedIndex = FlagToIndex<Space.TraversalFlags>(drawTest1.Board[drawTest1.SelectedSpace].flags[1]);
@@ -138,11 +143,13 @@ namespace MP6Editor
 
             // links
             drawTest1.Board[space].linkAmount = drawTest1.Board[space].links.Count;
-
             pictureBox_Space.Image = GetSpaceImage(drawTest1.Board[drawTest1.SelectedSpace].type);
 
             // flags
             drawTest1.Board[space].flags = UpdateFlags(space);
+
+            drawTest1.Board[space].flags[0] = (byte)IndexToFlag<Space.PathFlags>(comboBox_PathFlag.SelectedIndex);
+            drawTest1.Board[space].flags[1] = (byte)IndexToFlag<Space.TraversalFlags>(comboBox_TravelFlag.SelectedIndex);
         }// end updateSpaceInfo()
 
         /// <summary>
@@ -234,10 +241,10 @@ namespace MP6Editor
         }// end Position_WasModified()
 
         // Updates space type if changed
-        private void type_WasModified(object sender, EventArgs e)
+        private void SpaceWasModified(object sender, EventArgs e)
         {
             UpdateSpaceInfo(drawTest1.SelectedSpace);
-        }// end type_WasModified()
+        }// end SpaceWasModified()
 
         /// <summary>
         /// Opens the openFileDialog to select the w##.bin file.
@@ -323,6 +330,16 @@ namespace MP6Editor
         {
             return Array.IndexOf((Enum.GetValues(typeof(T)) as int[]), flag);
         }// end PathFlagToIndex()
+
+        /// <summary>
+        /// Returns Enum value based on passed selected index value.
+        /// </summary>
+        /// <param name="index">Selected index value of comboBox.</param>
+        /// <returns></returns>
+        private int IndexToFlag<T>(int index)
+        {
+            return (Enum.GetValues(typeof(T)) as int[])[index];
+        }// end IndexToFlag()
 
         // Saves current board to MP6 format.
         private void SaveBoard(object sender, EventArgs e)

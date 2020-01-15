@@ -82,11 +82,11 @@
             this.textBox_flag2 = new System.Windows.Forms.TextBox();
             this.textBox_flag1 = new System.Windows.Forms.TextBox();
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.comboBox_PathFlag = new System.Windows.Forms.ComboBox();
             this.comboBox_TravelFlag = new System.Windows.Forms.ComboBox();
             this.label_PathFlag = new System.Windows.Forms.Label();
             this.label_TravelFlag = new System.Windows.Forms.Label();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
@@ -179,7 +179,7 @@
             this.comboBox_Type.Name = "comboBox_Type";
             this.comboBox_Type.Size = new System.Drawing.Size(104, 21);
             this.comboBox_Type.TabIndex = 8;
-            this.comboBox_Type.SelectionChangeCommitted += new System.EventHandler(this.type_WasModified);
+            this.comboBox_Type.SelectionChangeCommitted += new System.EventHandler(this.SpaceWasModified);
             // 
             // label_Type
             // 
@@ -231,7 +231,7 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
@@ -269,14 +269,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -602,33 +602,25 @@
             this.pictureBox_Space.TabIndex = 13;
             this.pictureBox_Space.TabStop = false;
             // 
-            // drawTest1
-            // 
-            this.drawTest1.Location = new System.Drawing.Point(12, 28);
-            this.drawTest1.MouseHoverUpdatesOnly = false;
-            this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(609, 565);
-            this.drawTest1.TabIndex = 0;
-            this.drawTest1.Text = "drawTest1";
-            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
-            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
-            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
-            // 
             // comboBox_PathFlag
             // 
+            this.comboBox_PathFlag.Enabled = false;
             this.comboBox_PathFlag.FormattingEnabled = true;
             this.comboBox_PathFlag.Location = new System.Drawing.Point(646, 484);
             this.comboBox_PathFlag.Name = "comboBox_PathFlag";
             this.comboBox_PathFlag.Size = new System.Drawing.Size(104, 21);
             this.comboBox_PathFlag.TabIndex = 36;
+            this.comboBox_PathFlag.SelectionChangeCommitted += new System.EventHandler(this.SpaceWasModified);
             // 
             // comboBox_TravelFlag
             // 
+            this.comboBox_TravelFlag.Enabled = false;
             this.comboBox_TravelFlag.FormattingEnabled = true;
             this.comboBox_TravelFlag.Location = new System.Drawing.Point(646, 533);
             this.comboBox_TravelFlag.Name = "comboBox_TravelFlag";
             this.comboBox_TravelFlag.Size = new System.Drawing.Size(104, 21);
             this.comboBox_TravelFlag.TabIndex = 37;
+            this.comboBox_TravelFlag.SelectionChangeCommitted += new System.EventHandler(this.SpaceWasModified);
             // 
             // label_PathFlag
             // 
@@ -647,6 +639,18 @@
             this.label_TravelFlag.Size = new System.Drawing.Size(97, 13);
             this.label_TravelFlag.TabIndex = 39;
             this.label_TravelFlag.Text = "Animation Settings:";
+            // 
+            // drawTest1
+            // 
+            this.drawTest1.Location = new System.Drawing.Point(12, 28);
+            this.drawTest1.MouseHoverUpdatesOnly = false;
+            this.drawTest1.Name = "drawTest1";
+            this.drawTest1.Size = new System.Drawing.Size(609, 565);
+            this.drawTest1.TabIndex = 0;
+            this.drawTest1.Text = "drawTest1";
+            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
+            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
+            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
             // Form1
             // 
