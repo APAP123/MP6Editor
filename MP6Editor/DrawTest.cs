@@ -247,14 +247,13 @@ namespace MP6Editor
         /// <param name="point">Position to be checked.</param>
         /// <returns>Returns ID # of Space position is over; returns -1 if over no Space.</returns>
         int IsOverSpace(Point point)
-        {            
-            for(int i = 0; i < Board.Count; i++)
+        {
+            for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 newPos = new Vector2((int)Positions[i].X + (SCALE/2), (int)Positions[i].Y + (SCALE / 2));
+                Vector2 newPos = (new Vector2((int)Positions[i].X, (int)Positions[i].Y));
                 newPos = Vector2.Transform(newPos, Editor.Cam.Transform);
-                Circle area = new Circle((int)newPos.X, (int)newPos.Y, (int)((SCALE/2) * Editor.Cam.Zoom));
-
-                if (area.ContainsPoint(point))
+                Rectangle area = new Rectangle((int)newPos.X, (int)newPos.Y, (int)(SCALE * Editor.Cam.Zoom), (int)(SCALE * Editor.Cam.Zoom));
+                if (area.Contains(point))
                 {
                     return i;
                 }
