@@ -83,6 +83,10 @@
             this.textBox_flag1 = new System.Windows.Forms.TextBox();
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.comboBox_PathFlag = new System.Windows.Forms.ComboBox();
+            this.comboBox_TravelFlag = new System.Windows.Forms.ComboBox();
+            this.label_PathFlag = new System.Windows.Forms.Label();
+            this.label_TravelFlag = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
@@ -91,7 +95,7 @@
             // label_SelectedSpace
             // 
             this.label_SelectedSpace.AutoSize = true;
-            this.label_SelectedSpace.Location = new System.Drawing.Point(605, 188);
+            this.label_SelectedSpace.Location = new System.Drawing.Point(641, 188);
             this.label_SelectedSpace.Name = "label_SelectedSpace";
             this.label_SelectedSpace.Size = new System.Drawing.Size(130, 13);
             this.label_SelectedSpace.TabIndex = 1;
@@ -100,7 +104,7 @@
             // textBox_X
             // 
             this.textBox_X.Enabled = false;
-            this.textBox_X.Location = new System.Drawing.Point(628, 222);
+            this.textBox_X.Location = new System.Drawing.Point(664, 222);
             this.textBox_X.MaxLength = 30;
             this.textBox_X.Name = "textBox_X";
             this.textBox_X.Size = new System.Drawing.Size(55, 20);
@@ -110,7 +114,7 @@
             // textBox_Y
             // 
             this.textBox_Y.Enabled = false;
-            this.textBox_Y.Location = new System.Drawing.Point(628, 248);
+            this.textBox_Y.Location = new System.Drawing.Point(664, 248);
             this.textBox_Y.MaxLength = 30;
             this.textBox_Y.Name = "textBox_Y";
             this.textBox_Y.Size = new System.Drawing.Size(55, 20);
@@ -120,7 +124,7 @@
             // textBox_Z
             // 
             this.textBox_Z.Enabled = false;
-            this.textBox_Z.Location = new System.Drawing.Point(628, 274);
+            this.textBox_Z.Location = new System.Drawing.Point(664, 274);
             this.textBox_Z.MaxLength = 30;
             this.textBox_Z.Name = "textBox_Z";
             this.textBox_Z.Size = new System.Drawing.Size(55, 20);
@@ -130,7 +134,7 @@
             // label_X
             // 
             this.label_X.AutoSize = true;
-            this.label_X.Location = new System.Drawing.Point(605, 225);
+            this.label_X.Location = new System.Drawing.Point(641, 225);
             this.label_X.Name = "label_X";
             this.label_X.Size = new System.Drawing.Size(17, 13);
             this.label_X.TabIndex = 5;
@@ -139,7 +143,7 @@
             // label_Y
             // 
             this.label_Y.AutoSize = true;
-            this.label_Y.Location = new System.Drawing.Point(605, 255);
+            this.label_Y.Location = new System.Drawing.Point(641, 255);
             this.label_Y.Name = "label_Y";
             this.label_Y.Size = new System.Drawing.Size(17, 13);
             this.label_Y.TabIndex = 6;
@@ -148,7 +152,7 @@
             // label_Z
             // 
             this.label_Z.AutoSize = true;
-            this.label_Z.Location = new System.Drawing.Point(605, 281);
+            this.label_Z.Location = new System.Drawing.Point(641, 281);
             this.label_Z.Name = "label_Z";
             this.label_Z.Size = new System.Drawing.Size(17, 13);
             this.label_Z.TabIndex = 7;
@@ -171,7 +175,7 @@
             "Shop (9)",
             "Unknown (10)",
             "Unknown (11)"});
-            this.comboBox_Type.Location = new System.Drawing.Point(628, 300);
+            this.comboBox_Type.Location = new System.Drawing.Point(664, 300);
             this.comboBox_Type.Name = "comboBox_Type";
             this.comboBox_Type.Size = new System.Drawing.Size(104, 21);
             this.comboBox_Type.TabIndex = 8;
@@ -180,7 +184,7 @@
             // label_Type
             // 
             this.label_Type.AutoSize = true;
-            this.label_Type.Location = new System.Drawing.Point(588, 308);
+            this.label_Type.Location = new System.Drawing.Point(624, 308);
             this.label_Type.Name = "label_Type";
             this.label_Type.Size = new System.Drawing.Size(34, 13);
             this.label_Type.TabIndex = 9;
@@ -189,7 +193,7 @@
             // label_Links
             // 
             this.label_Links.AutoSize = true;
-            this.label_Links.Location = new System.Drawing.Point(588, 338);
+            this.label_Links.Location = new System.Drawing.Point(624, 338);
             this.label_Links.Name = "label_Links";
             this.label_Links.Size = new System.Drawing.Size(51, 13);
             this.label_Links.TabIndex = 11;
@@ -202,7 +206,7 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(932, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1129, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -227,7 +231,7 @@
             this.marioParty6binToolStripMenuItem,
             this.marioParty7BoardToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Import";
             // 
             // marioParty4binToolStripMenuItem
@@ -265,14 +269,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportFile);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveBoard);
             // 
@@ -303,7 +307,7 @@
             // btn_AddLink
             // 
             this.btn_AddLink.Enabled = false;
-            this.btn_AddLink.Location = new System.Drawing.Point(752, 354);
+            this.btn_AddLink.Location = new System.Drawing.Point(787, 354);
             this.btn_AddLink.Name = "btn_AddLink";
             this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
             this.btn_AddLink.TabIndex = 14;
@@ -314,7 +318,7 @@
             // btn_RemoveLink
             // 
             this.btn_RemoveLink.Enabled = false;
-            this.btn_RemoveLink.Location = new System.Drawing.Point(752, 383);
+            this.btn_RemoveLink.Location = new System.Drawing.Point(788, 383);
             this.btn_RemoveLink.Name = "btn_RemoveLink";
             this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
             this.btn_RemoveLink.TabIndex = 15;
@@ -327,7 +331,7 @@
             this.listView_Links.Enabled = false;
             this.listView_Links.HideSelection = false;
             this.listView_Links.LabelEdit = true;
-            this.listView_Links.Location = new System.Drawing.Point(602, 354);
+            this.listView_Links.Location = new System.Drawing.Point(638, 354);
             this.listView_Links.MultiSelect = false;
             this.listView_Links.Name = "listView_Links";
             this.listView_Links.Size = new System.Drawing.Size(144, 97);
@@ -344,7 +348,7 @@
             // btn_CreateSpace
             // 
             this.btn_CreateSpace.Enabled = false;
-            this.btn_CreateSpace.Location = new System.Drawing.Point(602, 457);
+            this.btn_CreateSpace.Location = new System.Drawing.Point(946, 500);
             this.btn_CreateSpace.Name = "btn_CreateSpace";
             this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_CreateSpace.TabIndex = 17;
@@ -355,7 +359,7 @@
             // btn_DeleteSpace
             // 
             this.btn_DeleteSpace.Enabled = false;
-            this.btn_DeleteSpace.Location = new System.Drawing.Point(602, 487);
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(946, 529);
             this.btn_DeleteSpace.Name = "btn_DeleteSpace";
             this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_DeleteSpace.TabIndex = 18;
@@ -366,7 +370,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(760, 281);
+            this.label1.Location = new System.Drawing.Point(878, 315);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 24;
@@ -375,7 +379,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(760, 255);
+            this.label2.Location = new System.Drawing.Point(878, 289);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 13);
             this.label2.TabIndex = 23;
@@ -384,7 +388,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(760, 225);
+            this.label3.Location = new System.Drawing.Point(878, 259);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 22;
@@ -393,7 +397,7 @@
             // textBox_Rot_Z
             // 
             this.textBox_Rot_Z.Enabled = false;
-            this.textBox_Rot_Z.Location = new System.Drawing.Point(783, 274);
+            this.textBox_Rot_Z.Location = new System.Drawing.Point(901, 308);
             this.textBox_Rot_Z.MaxLength = 30;
             this.textBox_Rot_Z.Name = "textBox_Rot_Z";
             this.textBox_Rot_Z.Size = new System.Drawing.Size(55, 20);
@@ -403,7 +407,7 @@
             // textBox_Rot_Y
             // 
             this.textBox_Rot_Y.Enabled = false;
-            this.textBox_Rot_Y.Location = new System.Drawing.Point(783, 248);
+            this.textBox_Rot_Y.Location = new System.Drawing.Point(901, 282);
             this.textBox_Rot_Y.MaxLength = 30;
             this.textBox_Rot_Y.Name = "textBox_Rot_Y";
             this.textBox_Rot_Y.Size = new System.Drawing.Size(55, 20);
@@ -413,7 +417,7 @@
             // textBox_Rot_X
             // 
             this.textBox_Rot_X.Enabled = false;
-            this.textBox_Rot_X.Location = new System.Drawing.Point(783, 222);
+            this.textBox_Rot_X.Location = new System.Drawing.Point(901, 256);
             this.textBox_Rot_X.MaxLength = 30;
             this.textBox_Rot_X.Name = "textBox_Rot_X";
             this.textBox_Rot_X.Size = new System.Drawing.Size(55, 20);
@@ -423,7 +427,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(760, 147);
+            this.label4.Location = new System.Drawing.Point(975, 315);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 30;
@@ -433,7 +437,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(760, 121);
+            this.label5.Location = new System.Drawing.Point(975, 289);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 29;
@@ -443,7 +447,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(760, 91);
+            this.label6.Location = new System.Drawing.Point(975, 259);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 13);
             this.label6.TabIndex = 28;
@@ -453,7 +457,7 @@
             // textBox_Scale_Z
             // 
             this.textBox_Scale_Z.Enabled = false;
-            this.textBox_Scale_Z.Location = new System.Drawing.Point(783, 140);
+            this.textBox_Scale_Z.Location = new System.Drawing.Point(998, 308);
             this.textBox_Scale_Z.MaxLength = 30;
             this.textBox_Scale_Z.Name = "textBox_Scale_Z";
             this.textBox_Scale_Z.Size = new System.Drawing.Size(55, 20);
@@ -464,7 +468,7 @@
             // textBox_Scale_Y
             // 
             this.textBox_Scale_Y.Enabled = false;
-            this.textBox_Scale_Y.Location = new System.Drawing.Point(783, 114);
+            this.textBox_Scale_Y.Location = new System.Drawing.Point(998, 282);
             this.textBox_Scale_Y.MaxLength = 30;
             this.textBox_Scale_Y.Name = "textBox_Scale_Y";
             this.textBox_Scale_Y.Size = new System.Drawing.Size(55, 20);
@@ -475,7 +479,7 @@
             // textBox_Scale_X
             // 
             this.textBox_Scale_X.Enabled = false;
-            this.textBox_Scale_X.Location = new System.Drawing.Point(783, 88);
+            this.textBox_Scale_X.Location = new System.Drawing.Point(998, 256);
             this.textBox_Scale_X.MaxLength = 30;
             this.textBox_Scale_X.Name = "textBox_Scale_X";
             this.textBox_Scale_X.Size = new System.Drawing.Size(55, 20);
@@ -486,7 +490,7 @@
             // label_Rotation
             // 
             this.label_Rotation.AutoSize = true;
-            this.label_Rotation.Location = new System.Drawing.Point(780, 206);
+            this.label_Rotation.Location = new System.Drawing.Point(898, 240);
             this.label_Rotation.Name = "label_Rotation";
             this.label_Rotation.Size = new System.Drawing.Size(47, 13);
             this.label_Rotation.TabIndex = 31;
@@ -495,7 +499,7 @@
             // label_Size
             // 
             this.label_Size.AutoSize = true;
-            this.label_Size.Location = new System.Drawing.Point(779, 72);
+            this.label_Size.Location = new System.Drawing.Point(994, 240);
             this.label_Size.Name = "label_Size";
             this.label_Size.Size = new System.Drawing.Size(39, 13);
             this.label_Size.TabIndex = 32;
@@ -511,7 +515,7 @@
             this.groupBox_flags.Controls.Add(this.textBox_flag3);
             this.groupBox_flags.Controls.Add(this.textBox_flag2);
             this.groupBox_flags.Controls.Add(this.textBox_flag1);
-            this.groupBox_flags.Location = new System.Drawing.Point(752, 412);
+            this.groupBox_flags.Location = new System.Drawing.Point(946, 442);
             this.groupBox_flags.Name = "groupBox_flags";
             this.groupBox_flags.Size = new System.Drawing.Size(171, 52);
             this.groupBox_flags.TabIndex = 35;
@@ -591,7 +595,7 @@
             // pictureBox_Space
             // 
             this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
-            this.pictureBox_Space.Location = new System.Drawing.Point(591, 28);
+            this.pictureBox_Space.Location = new System.Drawing.Point(962, 62);
             this.pictureBox_Space.Name = "pictureBox_Space";
             this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
             this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -603,18 +607,56 @@
             this.drawTest1.Location = new System.Drawing.Point(12, 28);
             this.drawTest1.MouseHoverUpdatesOnly = false;
             this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(566, 452);
+            this.drawTest1.Size = new System.Drawing.Size(609, 565);
             this.drawTest1.TabIndex = 0;
             this.drawTest1.Text = "drawTest1";
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // comboBox_PathFlag
+            // 
+            this.comboBox_PathFlag.FormattingEnabled = true;
+            this.comboBox_PathFlag.Location = new System.Drawing.Point(646, 484);
+            this.comboBox_PathFlag.Name = "comboBox_PathFlag";
+            this.comboBox_PathFlag.Size = new System.Drawing.Size(104, 21);
+            this.comboBox_PathFlag.TabIndex = 36;
+            // 
+            // comboBox_TravelFlag
+            // 
+            this.comboBox_TravelFlag.FormattingEnabled = true;
+            this.comboBox_TravelFlag.Location = new System.Drawing.Point(646, 533);
+            this.comboBox_TravelFlag.Name = "comboBox_TravelFlag";
+            this.comboBox_TravelFlag.Size = new System.Drawing.Size(104, 21);
+            this.comboBox_TravelFlag.TabIndex = 37;
+            // 
+            // label_PathFlag
+            // 
+            this.label_PathFlag.AutoSize = true;
+            this.label_PathFlag.Location = new System.Drawing.Point(635, 468);
+            this.label_PathFlag.Name = "label_PathFlag";
+            this.label_PathFlag.Size = new System.Drawing.Size(73, 13);
+            this.label_PathFlag.TabIndex = 38;
+            this.label_PathFlag.Text = "Path Settings:";
+            // 
+            // label_TravelFlag
+            // 
+            this.label_TravelFlag.AutoSize = true;
+            this.label_TravelFlag.Location = new System.Drawing.Point(635, 518);
+            this.label_TravelFlag.Name = "label_TravelFlag";
+            this.label_TravelFlag.Size = new System.Drawing.Size(97, 13);
+            this.label_TravelFlag.TabIndex = 39;
+            this.label_TravelFlag.Text = "Animation Settings:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 524);
+            this.ClientSize = new System.Drawing.Size(1129, 605);
+            this.Controls.Add(this.label_TravelFlag);
+            this.Controls.Add(this.label_PathFlag);
+            this.Controls.Add(this.comboBox_TravelFlag);
+            this.Controls.Add(this.comboBox_PathFlag);
             this.Controls.Add(this.groupBox_flags);
             this.Controls.Add(this.label_Size);
             this.Controls.Add(this.label_Rotation);
@@ -715,6 +757,10 @@
         private System.Windows.Forms.TextBox textBox_flag3;
         private System.Windows.Forms.TextBox textBox_flag2;
         private System.Windows.Forms.TextBox textBox_flag1;
+        private System.Windows.Forms.ComboBox comboBox_PathFlag;
+        private System.Windows.Forms.ComboBox comboBox_TravelFlag;
+        private System.Windows.Forms.Label label_PathFlag;
+        private System.Windows.Forms.Label label_TravelFlag;
     }
 }
 

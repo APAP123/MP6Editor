@@ -64,10 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circle.cs" />
     <Compile Include="DrawTest.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Extractor.cs" />
+    <Compile Include="Extractor.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

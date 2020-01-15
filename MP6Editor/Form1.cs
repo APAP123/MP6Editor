@@ -88,6 +88,8 @@ namespace MP6Editor
                 textBox_Scale_Z.Text = "" + drawTest1.Board[drawTest1.SelectedSpace].scale_Z;
 
                 comboBox_Type.SelectedIndex = drawTest1.Board[drawTest1.SelectedSpace].type;
+                comboBox_PathFlag.SelectedIndex = FlagToIndex<Space.PathFlags>(drawTest1.Board[drawTest1.SelectedSpace].flags[0]);
+                comboBox_TravelFlag.SelectedIndex = FlagToIndex<Space.TraversalFlags>(drawTest1.Board[drawTest1.SelectedSpace].flags[1]);
 
                 listView_Links.LargeImageList = null;
                 listView_Links.LargeImageList = imageList;
@@ -263,7 +265,18 @@ namespace MP6Editor
                 drawTest1.LoadVersionTextures(version);
                 drawTest1.InitPositions();
 
-                PopulateTypeComboBox(version);
+                // Type ComboBox
+                List<string> names = NameRetriever.GetSpaceNames(version);
+                PopulateComboBox(version, comboBox_Type, names);
+
+                // Path ComboBox
+                names = NameRetriever.MP6_GetPathFlags();
+                PopulateComboBox(version, comboBox_PathFlag, names);
+
+                // Traversal ComboBox
+                names = NameRetriever.MP6_GetTraversalFlags();
+                PopulateComboBox(version, comboBox_TravelFlag, names);
+
                 PopulateImageList(version);
 
                 btn_CreateSpace.Enabled = true;
@@ -287,20 +300,29 @@ namespace MP6Editor
         }// end ExportFile()
 
         /// <summary>
-        /// Populate the type comboBox with the valid space types.
+        /// Populates the passed comboBox with the passed string List.
         /// </summary>
         /// <param name="version">Version of Mario Party being loaded.</param>
-        private void PopulateTypeComboBox(int version)
+        /// <param name="comboBox">ComboBox to populate.</param>
+        /// <param name="names">List of items to populate comboBox with.</param>
+        private void PopulateComboBox(int version, ComboBox comboBox, List<string> names)
         {
-            comboBox_Type.Items.Clear();
-
-            List<string> names = NameRetriever.GetSpaceNames(version);
-
+            comboBox.Items.Clear();
             for(int i = 0; i < names.Count; i++)
             {
-                comboBox_Type.Items.Add(names[i] + " (" + i + ")");
+                comboBox.Items.Add(names[i] + " (" + i + ")");
             }
         }// end PopulateTypeComboBox()
+
+        /// <summary>
+        /// Returns comboBox index value based on passed flag value.
+        /// </summary>
+        /// <param name="flag">Value of flag.</param>
+        /// <returns></returns>
+        private int FlagToIndex<T>(int flag)
+        {
+            return Array.IndexOf((Enum.GetValues(typeof(T)) as int[]), flag);
+        }// end PathFlagToIndex()
 
         // Saves current board to MP6 format.
         private void SaveBoard(object sender, EventArgs e)
