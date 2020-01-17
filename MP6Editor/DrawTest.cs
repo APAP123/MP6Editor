@@ -91,9 +91,6 @@ namespace MP6Editor
             Editor.BeginCamera2D();
             //Editor.spriteBatch.Begin();
 
-            Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
-            trueCenter = center;
-
             // Path drawing
             foreach (Path path in Paths)
             {
@@ -102,7 +99,7 @@ namespace MP6Editor
 
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 spot = new Vector2(center.X + (Board[i].X / (SCALE/4)), center.Y + (Board[i].Z / (SCALE/4)));
+                Vector2 spot = new Vector2(trueCenter.X + (Board[i].X / (SCALE/4)), trueCenter.Y + (Board[i].Z / (SCALE/4)));
                 Positions[i] = spot;
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, SCALE, SCALE);
                 Board[i].texture = spaceTextures[Board[i].type];
@@ -367,12 +364,11 @@ namespace MP6Editor
         {
             Editor.BeginCamera2D();
 
-            Vector2 center = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
-            trueCenter = center;
+            trueCenter = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
+                Vector2 spot = new Vector2(trueCenter.X + (Board[i].X / SCALE), trueCenter.Y + (Board[i].Z / SCALE));
                 Positions.Add(spot);
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, SCALE, SCALE);
                 Board[i].texture = spaceTextures[Board[i].type];
@@ -412,7 +408,7 @@ namespace MP6Editor
         /// <summary>
         /// Draws a moving path between linked Spaces.
         /// </summary>
-        public void UpdatePath()
+        private void UpdatePath()
         {
             PathTimer++;
             if (PathTimer >= TIMERMAX)
