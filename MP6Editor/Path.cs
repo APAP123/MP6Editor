@@ -22,7 +22,7 @@ namespace MP6Editor
         private Vector2 position;
         private Vector2 start;
         private Vector2 end;
-        private float speed = 20;
+        private float speed = 40;
         private float elapsed = 0.01f;
 
         private float distance;
