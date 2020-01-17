@@ -576,7 +576,7 @@
             // pictureBox_Space
             // 
             this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
-            this.pictureBox_Space.Location = new System.Drawing.Point(7, 24);
+            this.pictureBox_Space.Location = new System.Drawing.Point(0, 19);
             this.pictureBox_Space.Name = "pictureBox_Space";
             this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
             this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
