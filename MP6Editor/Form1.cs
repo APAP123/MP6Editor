@@ -43,24 +43,41 @@ namespace MP6Editor
 
         private void DrawTest1_MouseClick(object sender, MouseEventArgs e)
         {
+            List<Control> controls = GetAllControls(groupBox_spaceProperties);
+
             drawTest1.Board_OnMouseClick(e);
             if(drawTest1.SelectedSpace > -1)
             {
-                foreach(TextBox textBox in Controls.OfType<TextBox>())
+                foreach (Control control in controls)
                 {
-                    textBox.Enabled = true;
+                    
+                    control.Enabled = true;
                 }
 
-                foreach(ComboBox comboBox in Controls.OfType<ComboBox>())
-                {
-                    comboBox.Enabled = true;
-                }
-                listView_Links.Enabled = true;
-                btn_AddLink.Enabled = true;
-                btn_RemoveLink.Enabled = true;
             }
             UpdateDisplayInfo();
         }
+
+        /// <summary>
+        /// Returns a list of all controls (including GroupBox nested ones) in the passed container.
+        /// </summary>
+        /// <param name="container">Container to return controls from.</param>
+        private List<Control> GetAllControls(Control container)
+        {
+            List<Control> controls = new List<Control>();
+            foreach(Control c in container.Controls)
+            {
+                if(c is GroupBox)
+                {
+                    controls.AddRange(GetAllControls(c));
+                }
+                else
+                {
+                    controls.Add(c);
+                }
+            }
+            return controls;
+        } // end GetAllControls()
 
         /// <summary>
         /// Updates form information.
