@@ -11,12 +11,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MP6Editor
 {
-    //class DrawTest : InvalidationControl
     class DrawTest : MonoGameControl
     {
-        // Mario Party version
-        public int MP_version = 6;
-
         /* scaling factor */
         private readonly int SCALE = 32;
 
@@ -41,6 +37,8 @@ namespace MP6Editor
         // Font drawing vars
         private SpriteFont font;
         public bool fontDraw = false;
+        private bool isLoaded = false;
+        private readonly string welcomeText = "Open a Board to begin Editing!";
 
         List<Path> Paths = new List<Path>();
 
@@ -62,6 +60,7 @@ namespace MP6Editor
         {
             base.Initialize();
 
+            trueCenter = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
             font = Editor.Content.Load<SpriteFont>(@"SpaceIDs");
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");        //Path sprite placeholder
             highlight = Editor.Content.Load<Texture2D>(@"Selected");
@@ -87,9 +86,16 @@ namespace MP6Editor
         protected override void Draw()
         {
             base.Draw();
-
             Editor.BeginCamera2D();
-            //Editor.spriteBatch.Begin();
+
+            if (!isLoaded)
+            {
+                Vector2 stringSize = font.MeasureString(welcomeText);
+                Vector2 centeredSpot = new Vector2(trueCenter.X - (stringSize.X / 2), trueCenter.Y - (stringSize.Y / 2));
+                Editor.spriteBatch.DrawString(font, welcomeText, centeredSpot + new Vector2(-1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Editor.spriteBatch.DrawString(font, welcomeText, centeredSpot + new Vector2(1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                Editor.spriteBatch.DrawString(font, welcomeText, centeredSpot, Color.White);
+            }
 
             // Path drawing
             foreach (Path path in Paths)
@@ -125,7 +131,6 @@ namespace MP6Editor
                 }
             }
 
-            //Editor.spriteBatch.End();
             Editor.EndCamera2D();
         }// end Draw()
 
@@ -364,9 +369,8 @@ namespace MP6Editor
         /// </summary>
         public void InitPositions()
         {
+            isLoaded = true;
             Editor.BeginCamera2D();
-
-            trueCenter = new Vector2((Editor.graphics.Viewport.Width / 2), (Editor.graphics.Viewport.Height / 2));
 
             for (int i = 0; i < Board.Count; i++)
             {
