@@ -15,6 +15,7 @@ namespace MP6Editor
     {
         ImageList imageList = new ImageList();
         string packedFileName = "";
+        int mp_version;
         List<byte[]> oldOffsets;
 
         public Form1()
@@ -270,6 +271,7 @@ namespace MP6Editor
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             int version = int.Parse(item.Tag.ToString());
+            mp_version = version;
 
             string filePath = string.Empty;
             openFileDialog_wbin.Filter = "Mario Party " + version + " board files|*.bin|All files|*.*";
@@ -414,8 +416,7 @@ namespace MP6Editor
         // Creates a new Space connected to the currently selected one.
         private void btn_CreateSpace_Click(object sender, EventArgs e)
         {
-            //drawTest1.Board.Add(new Space(0, 0, 0, 29, 0x00, new List<int>()));
-            drawTest1.Board.Add(new Space(5));
+            drawTest1.Board.Add(new Space(mp_version));
             drawTest1.InitPositions();
         }
 
