@@ -117,9 +117,11 @@ namespace MP6Editor
                 if (fontDraw)
                 {
                     string text = ""+i;
-                    //Editor.spriteBatch.DrawString(font, text, spot + new Vector2(-1f, -1f), Color.White);
-                    //Editor.spriteBatch.DrawString(font, text, spot + new Vector2(1f, -1f), Color.White);
-                    Editor.spriteBatch.DrawString(font, text, spot + new Vector2(-10, 0), Color.Black);
+                    Vector2 stringSize = font.MeasureString(text);
+                    spot = new Vector2(spot.X + (rectangle.Width/2) - (stringSize.X/2), spot.Y + (rectangle.Height/2) - (stringSize.Y/2));
+                    Editor.spriteBatch.DrawString(font, text, spot + new Vector2(-1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    Editor.spriteBatch.DrawString(font, text, spot + new Vector2(1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    Editor.spriteBatch.DrawString(font, text, spot, Color.White);
                 }
             }
 

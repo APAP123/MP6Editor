@@ -88,8 +88,8 @@
             this.groupBox_rotation = new System.Windows.Forms.GroupBox();
             this.groupBox_size = new System.Windows.Forms.GroupBox();
             this.groupBox_type = new System.Windows.Forms.GroupBox();
-            this.drawTest1 = new MP6Editor.DrawTest();
             this.groupBox_spaceProperties = new System.Windows.Forms.GroupBox();
+            this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
@@ -678,6 +678,7 @@
             this.groupBox_size.TabIndex = 43;
             this.groupBox_size.TabStop = false;
             this.groupBox_size.Text = "Size(?)";
+            this.groupBox_size.Visible = false;
             // 
             // groupBox_type
             // 
@@ -688,18 +689,6 @@
             this.groupBox_type.TabIndex = 44;
             this.groupBox_type.TabStop = false;
             this.groupBox_type.Text = "Type";
-            // 
-            // drawTest1
-            // 
-            this.drawTest1.Location = new System.Drawing.Point(12, 28);
-            this.drawTest1.MouseHoverUpdatesOnly = false;
-            this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(716, 664);
-            this.drawTest1.TabIndex = 0;
-            this.drawTest1.Text = "drawTest1";
-            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
-            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
-            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
             // groupBox_spaceProperties
             // 
@@ -723,6 +712,18 @@
             this.groupBox_spaceProperties.TabIndex = 45;
             this.groupBox_spaceProperties.TabStop = false;
             this.groupBox_spaceProperties.Text = "Space Properties";
+            // 
+            // drawTest1
+            // 
+            this.drawTest1.Location = new System.Drawing.Point(12, 28);
+            this.drawTest1.MouseHoverUpdatesOnly = false;
+            this.drawTest1.Name = "drawTest1";
+            this.drawTest1.Size = new System.Drawing.Size(716, 664);
+            this.drawTest1.TabIndex = 0;
+            this.drawTest1.Text = "drawTest1";
+            this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
+            this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
+            this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
             // Form1
             // 
