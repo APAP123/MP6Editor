@@ -38,7 +38,6 @@
             this.label_Y = new System.Windows.Forms.Label();
             this.label_Z = new System.Windows.Forms.Label();
             this.comboBox_Type = new System.Windows.Forms.ComboBox();
-            this.label_Type = new System.Windows.Forms.Label();
             this.label_Links = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -71,8 +70,6 @@
             this.textBox_Scale_Z = new System.Windows.Forms.TextBox();
             this.textBox_Scale_Y = new System.Windows.Forms.TextBox();
             this.textBox_Scale_X = new System.Windows.Forms.TextBox();
-            this.label_Rotation = new System.Windows.Forms.Label();
-            this.label_Size = new System.Windows.Forms.Label();
             this.groupBox_flags = new System.Windows.Forms.GroupBox();
             this.textBox_flag7 = new System.Windows.Forms.TextBox();
             this.textBox_flag6 = new System.Windows.Forms.TextBox();
@@ -87,15 +84,25 @@
             this.label_PathFlag = new System.Windows.Forms.Label();
             this.label_TravelFlag = new System.Windows.Forms.Label();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.groupBox_position = new System.Windows.Forms.GroupBox();
+            this.groupBox_flagCombo = new System.Windows.Forms.GroupBox();
+            this.groupBox_rotation = new System.Windows.Forms.GroupBox();
+            this.groupBox_size = new System.Windows.Forms.GroupBox();
+            this.groupBox_type = new System.Windows.Forms.GroupBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
+            this.groupBox_position.SuspendLayout();
+            this.groupBox_flagCombo.SuspendLayout();
+            this.groupBox_rotation.SuspendLayout();
+            this.groupBox_size.SuspendLayout();
+            this.groupBox_type.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_SelectedSpace
             // 
             this.label_SelectedSpace.AutoSize = true;
-            this.label_SelectedSpace.Location = new System.Drawing.Point(641, 188);
+            this.label_SelectedSpace.Location = new System.Drawing.Point(734, 193);
             this.label_SelectedSpace.Name = "label_SelectedSpace";
             this.label_SelectedSpace.Size = new System.Drawing.Size(130, 13);
             this.label_SelectedSpace.TabIndex = 1;
@@ -104,7 +111,7 @@
             // textBox_X
             // 
             this.textBox_X.Enabled = false;
-            this.textBox_X.Location = new System.Drawing.Point(664, 222);
+            this.textBox_X.Location = new System.Drawing.Point(25, 17);
             this.textBox_X.MaxLength = 30;
             this.textBox_X.Name = "textBox_X";
             this.textBox_X.Size = new System.Drawing.Size(55, 20);
@@ -114,7 +121,7 @@
             // textBox_Y
             // 
             this.textBox_Y.Enabled = false;
-            this.textBox_Y.Location = new System.Drawing.Point(664, 248);
+            this.textBox_Y.Location = new System.Drawing.Point(25, 43);
             this.textBox_Y.MaxLength = 30;
             this.textBox_Y.Name = "textBox_Y";
             this.textBox_Y.Size = new System.Drawing.Size(55, 20);
@@ -124,7 +131,7 @@
             // textBox_Z
             // 
             this.textBox_Z.Enabled = false;
-            this.textBox_Z.Location = new System.Drawing.Point(664, 274);
+            this.textBox_Z.Location = new System.Drawing.Point(25, 69);
             this.textBox_Z.MaxLength = 30;
             this.textBox_Z.Name = "textBox_Z";
             this.textBox_Z.Size = new System.Drawing.Size(55, 20);
@@ -134,7 +141,7 @@
             // label_X
             // 
             this.label_X.AutoSize = true;
-            this.label_X.Location = new System.Drawing.Point(641, 225);
+            this.label_X.Location = new System.Drawing.Point(6, 20);
             this.label_X.Name = "label_X";
             this.label_X.Size = new System.Drawing.Size(17, 13);
             this.label_X.TabIndex = 5;
@@ -143,7 +150,7 @@
             // label_Y
             // 
             this.label_Y.AutoSize = true;
-            this.label_Y.Location = new System.Drawing.Point(641, 255);
+            this.label_Y.Location = new System.Drawing.Point(6, 46);
             this.label_Y.Name = "label_Y";
             this.label_Y.Size = new System.Drawing.Size(17, 13);
             this.label_Y.TabIndex = 6;
@@ -152,7 +159,7 @@
             // label_Z
             // 
             this.label_Z.AutoSize = true;
-            this.label_Z.Location = new System.Drawing.Point(641, 281);
+            this.label_Z.Location = new System.Drawing.Point(6, 72);
             this.label_Z.Name = "label_Z";
             this.label_Z.Size = new System.Drawing.Size(17, 13);
             this.label_Z.TabIndex = 7;
@@ -175,25 +182,16 @@
             "Shop (9)",
             "Unknown (10)",
             "Unknown (11)"});
-            this.comboBox_Type.Location = new System.Drawing.Point(664, 300);
+            this.comboBox_Type.Location = new System.Drawing.Point(6, 19);
             this.comboBox_Type.Name = "comboBox_Type";
-            this.comboBox_Type.Size = new System.Drawing.Size(104, 21);
+            this.comboBox_Type.Size = new System.Drawing.Size(82, 21);
             this.comboBox_Type.TabIndex = 8;
             this.comboBox_Type.SelectionChangeCommitted += new System.EventHandler(this.SpaceWasModified);
-            // 
-            // label_Type
-            // 
-            this.label_Type.AutoSize = true;
-            this.label_Type.Location = new System.Drawing.Point(624, 308);
-            this.label_Type.Name = "label_Type";
-            this.label_Type.Size = new System.Drawing.Size(34, 13);
-            this.label_Type.TabIndex = 9;
-            this.label_Type.Text = "Type:";
             // 
             // label_Links
             // 
             this.label_Links.AutoSize = true;
-            this.label_Links.Location = new System.Drawing.Point(624, 338);
+            this.label_Links.Location = new System.Drawing.Point(734, 361);
             this.label_Links.Name = "label_Links";
             this.label_Links.Size = new System.Drawing.Size(51, 13);
             this.label_Links.TabIndex = 11;
@@ -206,7 +204,7 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1129, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1048, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -307,7 +305,7 @@
             // btn_AddLink
             // 
             this.btn_AddLink.Enabled = false;
-            this.btn_AddLink.Location = new System.Drawing.Point(787, 354);
+            this.btn_AddLink.Location = new System.Drawing.Point(897, 377);
             this.btn_AddLink.Name = "btn_AddLink";
             this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
             this.btn_AddLink.TabIndex = 14;
@@ -318,7 +316,7 @@
             // btn_RemoveLink
             // 
             this.btn_RemoveLink.Enabled = false;
-            this.btn_RemoveLink.Location = new System.Drawing.Point(788, 383);
+            this.btn_RemoveLink.Location = new System.Drawing.Point(897, 406);
             this.btn_RemoveLink.Name = "btn_RemoveLink";
             this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
             this.btn_RemoveLink.TabIndex = 15;
@@ -331,7 +329,7 @@
             this.listView_Links.Enabled = false;
             this.listView_Links.HideSelection = false;
             this.listView_Links.LabelEdit = true;
-            this.listView_Links.Location = new System.Drawing.Point(638, 354);
+            this.listView_Links.Location = new System.Drawing.Point(748, 377);
             this.listView_Links.MultiSelect = false;
             this.listView_Links.Name = "listView_Links";
             this.listView_Links.Size = new System.Drawing.Size(144, 97);
@@ -348,7 +346,7 @@
             // btn_CreateSpace
             // 
             this.btn_CreateSpace.Enabled = false;
-            this.btn_CreateSpace.Location = new System.Drawing.Point(946, 500);
+            this.btn_CreateSpace.Location = new System.Drawing.Point(734, 654);
             this.btn_CreateSpace.Name = "btn_CreateSpace";
             this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_CreateSpace.TabIndex = 17;
@@ -359,7 +357,7 @@
             // btn_DeleteSpace
             // 
             this.btn_DeleteSpace.Enabled = false;
-            this.btn_DeleteSpace.Location = new System.Drawing.Point(946, 529);
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(734, 625);
             this.btn_DeleteSpace.Name = "btn_DeleteSpace";
             this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_DeleteSpace.TabIndex = 18;
@@ -370,7 +368,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(878, 315);
+            this.label1.Location = new System.Drawing.Point(7, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 24;
@@ -379,7 +377,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(878, 289);
+            this.label2.Location = new System.Drawing.Point(7, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 13);
             this.label2.TabIndex = 23;
@@ -388,7 +386,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(878, 259);
+            this.label3.Location = new System.Drawing.Point(7, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 22;
@@ -397,7 +395,7 @@
             // textBox_Rot_Z
             // 
             this.textBox_Rot_Z.Enabled = false;
-            this.textBox_Rot_Z.Location = new System.Drawing.Point(901, 308);
+            this.textBox_Rot_Z.Location = new System.Drawing.Point(25, 69);
             this.textBox_Rot_Z.MaxLength = 30;
             this.textBox_Rot_Z.Name = "textBox_Rot_Z";
             this.textBox_Rot_Z.Size = new System.Drawing.Size(55, 20);
@@ -407,7 +405,7 @@
             // textBox_Rot_Y
             // 
             this.textBox_Rot_Y.Enabled = false;
-            this.textBox_Rot_Y.Location = new System.Drawing.Point(901, 282);
+            this.textBox_Rot_Y.Location = new System.Drawing.Point(25, 43);
             this.textBox_Rot_Y.MaxLength = 30;
             this.textBox_Rot_Y.Name = "textBox_Rot_Y";
             this.textBox_Rot_Y.Size = new System.Drawing.Size(55, 20);
@@ -417,7 +415,7 @@
             // textBox_Rot_X
             // 
             this.textBox_Rot_X.Enabled = false;
-            this.textBox_Rot_X.Location = new System.Drawing.Point(901, 256);
+            this.textBox_Rot_X.Location = new System.Drawing.Point(25, 17);
             this.textBox_Rot_X.MaxLength = 30;
             this.textBox_Rot_X.Name = "textBox_Rot_X";
             this.textBox_Rot_X.Size = new System.Drawing.Size(55, 20);
@@ -427,7 +425,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(975, 315);
+            this.label4.Location = new System.Drawing.Point(7, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 30;
@@ -437,7 +435,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(975, 289);
+            this.label5.Location = new System.Drawing.Point(7, 46);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 13);
             this.label5.TabIndex = 29;
@@ -447,7 +445,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(975, 259);
+            this.label6.Location = new System.Drawing.Point(7, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 13);
             this.label6.TabIndex = 28;
@@ -457,7 +455,7 @@
             // textBox_Scale_Z
             // 
             this.textBox_Scale_Z.Enabled = false;
-            this.textBox_Scale_Z.Location = new System.Drawing.Point(998, 308);
+            this.textBox_Scale_Z.Location = new System.Drawing.Point(25, 69);
             this.textBox_Scale_Z.MaxLength = 30;
             this.textBox_Scale_Z.Name = "textBox_Scale_Z";
             this.textBox_Scale_Z.Size = new System.Drawing.Size(55, 20);
@@ -468,7 +466,7 @@
             // textBox_Scale_Y
             // 
             this.textBox_Scale_Y.Enabled = false;
-            this.textBox_Scale_Y.Location = new System.Drawing.Point(998, 282);
+            this.textBox_Scale_Y.Location = new System.Drawing.Point(25, 43);
             this.textBox_Scale_Y.MaxLength = 30;
             this.textBox_Scale_Y.Name = "textBox_Scale_Y";
             this.textBox_Scale_Y.Size = new System.Drawing.Size(55, 20);
@@ -479,32 +477,13 @@
             // textBox_Scale_X
             // 
             this.textBox_Scale_X.Enabled = false;
-            this.textBox_Scale_X.Location = new System.Drawing.Point(998, 256);
+            this.textBox_Scale_X.Location = new System.Drawing.Point(25, 17);
             this.textBox_Scale_X.MaxLength = 30;
             this.textBox_Scale_X.Name = "textBox_Scale_X";
             this.textBox_Scale_X.Size = new System.Drawing.Size(55, 20);
             this.textBox_Scale_X.TabIndex = 25;
             this.textBox_Scale_X.Visible = false;
             this.textBox_Scale_X.ModifiedChanged += new System.EventHandler(this.Position_WasModified);
-            // 
-            // label_Rotation
-            // 
-            this.label_Rotation.AutoSize = true;
-            this.label_Rotation.Location = new System.Drawing.Point(898, 240);
-            this.label_Rotation.Name = "label_Rotation";
-            this.label_Rotation.Size = new System.Drawing.Size(47, 13);
-            this.label_Rotation.TabIndex = 31;
-            this.label_Rotation.Text = "Rotation";
-            // 
-            // label_Size
-            // 
-            this.label_Size.AutoSize = true;
-            this.label_Size.Location = new System.Drawing.Point(994, 240);
-            this.label_Size.Name = "label_Size";
-            this.label_Size.Size = new System.Drawing.Size(39, 13);
-            this.label_Size.TabIndex = 32;
-            this.label_Size.Text = "Size(?)";
-            this.label_Size.Visible = false;
             // 
             // groupBox_flags
             // 
@@ -515,7 +494,7 @@
             this.groupBox_flags.Controls.Add(this.textBox_flag3);
             this.groupBox_flags.Controls.Add(this.textBox_flag2);
             this.groupBox_flags.Controls.Add(this.textBox_flag1);
-            this.groupBox_flags.Location = new System.Drawing.Point(946, 442);
+            this.groupBox_flags.Location = new System.Drawing.Point(737, 567);
             this.groupBox_flags.Name = "groupBox_flags";
             this.groupBox_flags.Size = new System.Drawing.Size(171, 52);
             this.groupBox_flags.TabIndex = 35;
@@ -595,7 +574,7 @@
             // pictureBox_Space
             // 
             this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
-            this.pictureBox_Space.Location = new System.Drawing.Point(962, 62);
+            this.pictureBox_Space.Location = new System.Drawing.Point(737, 28);
             this.pictureBox_Space.Name = "pictureBox_Space";
             this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
             this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -606,7 +585,7 @@
             // 
             this.comboBox_PathFlag.Enabled = false;
             this.comboBox_PathFlag.FormattingEnabled = true;
-            this.comboBox_PathFlag.Location = new System.Drawing.Point(646, 484);
+            this.comboBox_PathFlag.Location = new System.Drawing.Point(90, 19);
             this.comboBox_PathFlag.Name = "comboBox_PathFlag";
             this.comboBox_PathFlag.Size = new System.Drawing.Size(104, 21);
             this.comboBox_PathFlag.TabIndex = 36;
@@ -616,7 +595,7 @@
             // 
             this.comboBox_TravelFlag.Enabled = false;
             this.comboBox_TravelFlag.FormattingEnabled = true;
-            this.comboBox_TravelFlag.Location = new System.Drawing.Point(646, 533);
+            this.comboBox_TravelFlag.Location = new System.Drawing.Point(90, 53);
             this.comboBox_TravelFlag.Name = "comboBox_TravelFlag";
             this.comboBox_TravelFlag.Size = new System.Drawing.Size(104, 21);
             this.comboBox_TravelFlag.TabIndex = 37;
@@ -625,7 +604,7 @@
             // label_PathFlag
             // 
             this.label_PathFlag.AutoSize = true;
-            this.label_PathFlag.Location = new System.Drawing.Point(635, 468);
+            this.label_PathFlag.Location = new System.Drawing.Point(6, 22);
             this.label_PathFlag.Name = "label_PathFlag";
             this.label_PathFlag.Size = new System.Drawing.Size(73, 13);
             this.label_PathFlag.TabIndex = 38;
@@ -634,48 +613,103 @@
             // label_TravelFlag
             // 
             this.label_TravelFlag.AutoSize = true;
-            this.label_TravelFlag.Location = new System.Drawing.Point(635, 518);
+            this.label_TravelFlag.Location = new System.Drawing.Point(6, 56);
             this.label_TravelFlag.Name = "label_TravelFlag";
-            this.label_TravelFlag.Size = new System.Drawing.Size(97, 13);
+            this.label_TravelFlag.Size = new System.Drawing.Size(81, 13);
             this.label_TravelFlag.TabIndex = 39;
-            this.label_TravelFlag.Text = "Animation Settings:";
+            this.label_TravelFlag.Text = "Travel Settings:";
             // 
             // drawTest1
             // 
             this.drawTest1.Location = new System.Drawing.Point(12, 28);
             this.drawTest1.MouseHoverUpdatesOnly = false;
             this.drawTest1.Name = "drawTest1";
-            this.drawTest1.Size = new System.Drawing.Size(609, 565);
+            this.drawTest1.Size = new System.Drawing.Size(716, 664);
             this.drawTest1.TabIndex = 0;
             this.drawTest1.Text = "drawTest1";
             this.drawTest1.OnMouseWheelUpwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelUpwardsEvent(this.DrawTest1_OnMouseWheelUpwards);
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // groupBox_position
+            // 
+            this.groupBox_position.Controls.Add(this.textBox_X);
+            this.groupBox_position.Controls.Add(this.textBox_Y);
+            this.groupBox_position.Controls.Add(this.textBox_Z);
+            this.groupBox_position.Controls.Add(this.label_X);
+            this.groupBox_position.Controls.Add(this.label_Y);
+            this.groupBox_position.Controls.Add(this.label_Z);
+            this.groupBox_position.Location = new System.Drawing.Point(737, 209);
+            this.groupBox_position.Name = "groupBox_position";
+            this.groupBox_position.Size = new System.Drawing.Size(94, 98);
+            this.groupBox_position.TabIndex = 40;
+            this.groupBox_position.TabStop = false;
+            this.groupBox_position.Text = "Position";
+            // 
+            // groupBox_flagCombo
+            // 
+            this.groupBox_flagCombo.Controls.Add(this.comboBox_PathFlag);
+            this.groupBox_flagCombo.Controls.Add(this.comboBox_TravelFlag);
+            this.groupBox_flagCombo.Controls.Add(this.label_TravelFlag);
+            this.groupBox_flagCombo.Controls.Add(this.label_PathFlag);
+            this.groupBox_flagCombo.Location = new System.Drawing.Point(737, 480);
+            this.groupBox_flagCombo.Name = "groupBox_flagCombo";
+            this.groupBox_flagCombo.Size = new System.Drawing.Size(200, 81);
+            this.groupBox_flagCombo.TabIndex = 41;
+            this.groupBox_flagCombo.TabStop = false;
+            this.groupBox_flagCombo.Text = "Special Flags";
+            // 
+            // groupBox_rotation
+            // 
+            this.groupBox_rotation.Controls.Add(this.textBox_Rot_Z);
+            this.groupBox_rotation.Controls.Add(this.textBox_Rot_X);
+            this.groupBox_rotation.Controls.Add(this.textBox_Rot_Y);
+            this.groupBox_rotation.Controls.Add(this.label3);
+            this.groupBox_rotation.Controls.Add(this.label2);
+            this.groupBox_rotation.Controls.Add(this.label1);
+            this.groupBox_rotation.Location = new System.Drawing.Point(837, 209);
+            this.groupBox_rotation.Name = "groupBox_rotation";
+            this.groupBox_rotation.Size = new System.Drawing.Size(94, 98);
+            this.groupBox_rotation.TabIndex = 42;
+            this.groupBox_rotation.TabStop = false;
+            this.groupBox_rotation.Text = "Rotation";
+            // 
+            // groupBox_size
+            // 
+            this.groupBox_size.Controls.Add(this.textBox_Scale_Z);
+            this.groupBox_size.Controls.Add(this.textBox_Scale_X);
+            this.groupBox_size.Controls.Add(this.textBox_Scale_Y);
+            this.groupBox_size.Controls.Add(this.label6);
+            this.groupBox_size.Controls.Add(this.label5);
+            this.groupBox_size.Controls.Add(this.label4);
+            this.groupBox_size.Location = new System.Drawing.Point(937, 209);
+            this.groupBox_size.Name = "groupBox_size";
+            this.groupBox_size.Size = new System.Drawing.Size(94, 98);
+            this.groupBox_size.TabIndex = 43;
+            this.groupBox_size.TabStop = false;
+            this.groupBox_size.Text = "Size(?)";
+            // 
+            // groupBox_type
+            // 
+            this.groupBox_type.Controls.Add(this.comboBox_Type);
+            this.groupBox_type.Location = new System.Drawing.Point(737, 309);
+            this.groupBox_type.Name = "groupBox_type";
+            this.groupBox_type.Size = new System.Drawing.Size(94, 46);
+            this.groupBox_type.TabIndex = 44;
+            this.groupBox_type.TabStop = false;
+            this.groupBox_type.Text = "Type";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 605);
-            this.Controls.Add(this.label_TravelFlag);
-            this.Controls.Add(this.label_PathFlag);
-            this.Controls.Add(this.comboBox_TravelFlag);
-            this.Controls.Add(this.comboBox_PathFlag);
+            this.ClientSize = new System.Drawing.Size(1048, 704);
+            this.Controls.Add(this.groupBox_type);
+            this.Controls.Add(this.groupBox_size);
+            this.Controls.Add(this.groupBox_rotation);
+            this.Controls.Add(this.groupBox_flagCombo);
+            this.Controls.Add(this.groupBox_position);
             this.Controls.Add(this.groupBox_flags);
-            this.Controls.Add(this.label_Size);
-            this.Controls.Add(this.label_Rotation);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox_Scale_Z);
-            this.Controls.Add(this.textBox_Scale_Y);
-            this.Controls.Add(this.textBox_Scale_X);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox_Rot_Z);
-            this.Controls.Add(this.textBox_Rot_Y);
-            this.Controls.Add(this.textBox_Rot_X);
             this.Controls.Add(this.btn_DeleteSpace);
             this.Controls.Add(this.btn_CreateSpace);
             this.Controls.Add(this.listView_Links);
@@ -684,14 +718,6 @@
             this.Controls.Add(this.pictureBox_Space);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label_Links);
-            this.Controls.Add(this.label_Type);
-            this.Controls.Add(this.comboBox_Type);
-            this.Controls.Add(this.label_Z);
-            this.Controls.Add(this.label_Y);
-            this.Controls.Add(this.label_X);
-            this.Controls.Add(this.textBox_Z);
-            this.Controls.Add(this.textBox_Y);
-            this.Controls.Add(this.textBox_X);
             this.Controls.Add(this.label_SelectedSpace);
             this.Controls.Add(this.drawTest1);
             this.Name = "Form1";
@@ -701,6 +727,15 @@
             this.groupBox_flags.ResumeLayout(false);
             this.groupBox_flags.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).EndInit();
+            this.groupBox_position.ResumeLayout(false);
+            this.groupBox_position.PerformLayout();
+            this.groupBox_flagCombo.ResumeLayout(false);
+            this.groupBox_flagCombo.PerformLayout();
+            this.groupBox_rotation.ResumeLayout(false);
+            this.groupBox_rotation.PerformLayout();
+            this.groupBox_size.ResumeLayout(false);
+            this.groupBox_size.PerformLayout();
+            this.groupBox_type.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -717,7 +752,6 @@
         private System.Windows.Forms.Label label_Y;
         private System.Windows.Forms.Label label_Z;
         private System.Windows.Forms.ComboBox comboBox_Type;
-        private System.Windows.Forms.Label label_Type;
         private System.Windows.Forms.Label label_Links;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.PictureBox pictureBox_Space;
@@ -751,8 +785,6 @@
         private System.Windows.Forms.TextBox textBox_Scale_Z;
         private System.Windows.Forms.TextBox textBox_Scale_Y;
         private System.Windows.Forms.TextBox textBox_Scale_X;
-        private System.Windows.Forms.Label label_Rotation;
-        private System.Windows.Forms.Label label_Size;
         private System.Windows.Forms.GroupBox groupBox_flags;
         private System.Windows.Forms.TextBox textBox_flag7;
         private System.Windows.Forms.TextBox textBox_flag6;
@@ -765,6 +797,11 @@
         private System.Windows.Forms.ComboBox comboBox_TravelFlag;
         private System.Windows.Forms.Label label_PathFlag;
         private System.Windows.Forms.Label label_TravelFlag;
+        private System.Windows.Forms.GroupBox groupBox_position;
+        private System.Windows.Forms.GroupBox groupBox_flagCombo;
+        private System.Windows.Forms.GroupBox groupBox_rotation;
+        private System.Windows.Forms.GroupBox groupBox_size;
+        private System.Windows.Forms.GroupBox groupBox_type;
     }
 }
 
