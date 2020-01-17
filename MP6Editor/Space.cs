@@ -22,7 +22,7 @@ namespace MP6Editor
         public float Y; // Y position
         public float Z; // Z position
 
-        // Rotation values
+        // Rotation values; unused in official Boards but fully functional.
         public float rot_X;
         public float rot_Y;
         public float rot_Z;
@@ -33,7 +33,6 @@ namespace MP6Editor
         public float scale_Z;
 
         public List<byte> flags = new List<byte>();
-        //public byte[] flags = new byte[31]; // Not sure what this info means yet, but it's probably important.
         public int type;
         public Texture2D texture;
         public byte typePad; // Padding after the type byte; This probably isn't neccessary.
@@ -45,19 +44,19 @@ namespace MP6Editor
 
         }
 
-        public Space(float X, float Y, float Z, int crapAmount, int type, List<int> links)
+        public Space(float X, float Y, float Z, int flagCount, int type, List<int> links)
         {
             this.X = X;
             this.Y = Y;
             this.Z = Z;
-            flags = new byte[crapAmount].ToList();
+            flags = new byte[flagCount].ToList();
             this.type = type;
             typePad = 0x00;
             //this.linkAmount = linkAmount;
             this.links = links;
         }
 
-        public Space(int flagCount)
+        public Space(int mp_version)
         {
             X = 0;
             Y = 0;
@@ -68,7 +67,20 @@ namespace MP6Editor
             scale_X = 1f;
             scale_Y = 1f;
             scale_Z = 1f;
-            flags = new byte[flagCount].ToList();
+            if(mp_version == 4 || mp_version == 5)
+            {
+                flags = new byte[5].ToList();
+            }
+            else
+            {
+                flags = new byte[7].ToList();
+            }
+
+            for (int i = 0; i < flags.Count(); i++)
+            {
+                flags[i] = 0x00;
+            }
+            
             type = 0;
             typePad = 0x00;
             links = new List<int>();
@@ -132,7 +144,7 @@ namespace MP6Editor
             Bowser = 0x04,
             Dueling = 0x05,
             DK = 0x06,
-            Star = 0x07,    // Softlocks the game when hardcoded; should check flags of legit star Spaces.
+            Star = 0x07,    // Softlocks when passed; instead set flags[5] to 0x80 to mark a space as a star spawn.
             Orb = 0x08,
             Shop = 0x09,        // Does not function on it's own.
             Ztar = 0x0A,        // Does not funtion on it's own.
