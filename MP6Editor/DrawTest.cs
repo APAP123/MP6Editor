@@ -18,7 +18,7 @@ namespace MP6Editor
         public int MP_version = 6;
 
         /* scaling factor */
-        private readonly int SCALE = 16;
+        private readonly int SCALE = 32;
 
         /* Camera variables */
         private bool CamMouseDown = false;
@@ -53,9 +53,10 @@ namespace MP6Editor
         Rectangle rectangle;
 
         /* Retrieves textures depending on MP version loaded */
-        private List<Texture2D> textures = new List<Texture2D>();
+        private List<Texture2D> spaceTextures = new List<Texture2D>();
 
         Texture2D bigPixel;      //Path sprite placeholder
+        Texture2D highlight;
 
         protected override void Initialize()
         {
@@ -63,6 +64,8 @@ namespace MP6Editor
 
             font = Editor.Content.Load<SpriteFont>(@"SpaceIDs");
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");        //Path sprite placeholder
+            highlight = Editor.Content.Load<Texture2D>(@"Selected");
+
         }//end Initialize()
 
         protected override void Update(GameTime gameTime)
@@ -99,15 +102,20 @@ namespace MP6Editor
 
             for (int i = 0; i < Board.Count; i++)
             {
-                Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
-                //Positions.Add(spot);
+                Vector2 spot = new Vector2(center.X + (Board[i].X / (SCALE/4)), center.Y + (Board[i].Z / (SCALE/4)));
                 Positions[i] = spot;
-                //rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, 8, 8);
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, SCALE, SCALE);
-                // Board[i].texture = getSpaceTexture(Board[i].type);
-                Board[i].texture = textures[Board[i].type];
+                Board[i].texture = spaceTextures[Board[i].type];
+
+                // draw selection highlight
+                if(i == SelectedSpace)
+                {
+                    Rectangle highRect = new Rectangle(rectangle.X - 4, rectangle.Y - 4, SCALE + 8, SCALE + 8);
+                    Editor.spriteBatch.Draw(highlight, highRect, Color.White);
+                }
 
                 Editor.spriteBatch.Draw(Board[i].texture, rectangle, Color.White);
+                DrawBadges(Editor.spriteBatch, Board[i]);
 
                 if (fontDraw)
                 {
@@ -121,6 +129,84 @@ namespace MP6Editor
             //Editor.spriteBatch.End();
             Editor.EndCamera2D();
         }// end Draw()
+
+        /// <summary>
+        /// Draws badges near Spaces to represent flag values.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        private void DrawBadges(SpriteBatch spriteBatch, Space space)
+        {
+            Texture2D badge = null;
+            Rectangle badgeTangle = new Rectangle(rectangle.X + 24, rectangle.Y + 20, SCALE / 2, SCALE / 2);
+
+            // Path badge
+            switch (space.flags[0])
+            {
+                case 0x00:
+                    break;
+                case 0x20:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/Untraversable");
+                    break;
+                case 0x40:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/Whomp");
+                    break;
+                case 0x60:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/Whomp");
+                    break;
+                case 0x80:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/Home");
+                    break;
+            }
+
+            if(badge != null)
+            {
+                spriteBatch.Draw(badge, badgeTangle, Color.White);
+                badgeTangle = new Rectangle(badgeTangle.X, badgeTangle.Y - 16, badgeTangle.Width, badgeTangle.Height);
+            }
+
+            badge = null;
+
+            // Travel badge
+            switch (space.flags[1])
+            {
+                case 0x00:
+                    break;
+                case 0x01:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/JumpEndBig");
+                    break;
+                case 0x02:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/JumpBegin");
+                    break;
+                case 0x03:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/JumpEndSmall");
+                    break;
+                case 0x04:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/ClimbEnd");
+                    break;
+                case 0x08:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/ClimbStart");
+                    break;
+                case 0x09:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/ClimbStartAlt");
+                    break;
+                case 0x20:
+                    badge = Editor.Content.Load<Texture2D>(@"textures/badges/Shop");
+                    break;
+            }
+
+            if (badge != null)
+            {
+                spriteBatch.Draw(badge, badgeTangle, Color.White);
+            }
+
+            // Star-hosting badge
+            if(space.flags[5] == 0x80)
+            {
+                badge = Editor.Content.Load<Texture2D>(@"textures/badges/Star");
+                badgeTangle = new Rectangle(rectangle.X - 8, rectangle.Y + 20, badgeTangle.Width, badgeTangle.Height);
+                spriteBatch.Draw(badge, badgeTangle, Color.White);
+            }
+        }// end DrawBadges()
 
         #region Mouse Input Events
 
@@ -199,8 +285,8 @@ namespace MP6Editor
             // Clicking and dragging to move a space.
             if (SpaceMouseDown)
             {
-                int xFollow = (int)((SelectFirstMouseDownPosition.X - e.Location.X)*SCALE / Editor.Cam.Zoom);
-                int yFollow = (int)((SelectFirstMouseDownPosition.Y - e.Location.Y)*SCALE / Editor.Cam.Zoom);
+                int xFollow = (int)((SelectFirstMouseDownPosition.X - e.Location.X)*(SCALE/4) / Editor.Cam.Zoom);
+                int yFollow = (int)((SelectFirstMouseDownPosition.Y - e.Location.Y)*(SCALE/4) / Editor.Cam.Zoom);
 
                 Vector2 newPos = new Vector2(xFollow, yFollow);
                 Board[SelectedSpace].X -= newPos.X;
@@ -267,10 +353,10 @@ namespace MP6Editor
         /// /// <param name="version">Version of Mario Party being loaded.</param>
         public void LoadVersionTextures(int version)
         {
-            textures.Clear();
+            spaceTextures.Clear();
             foreach (string name in NameRetriever.GetTextureNames(version))
             {
-                textures.Add(Editor.Content.Load<Texture2D>(name));
+                spaceTextures.Add(Editor.Content.Load<Texture2D>(name));
             }
         }
 
@@ -289,7 +375,7 @@ namespace MP6Editor
                 Vector2 spot = new Vector2(center.X + (Board[i].X / SCALE), center.Y + (Board[i].Z / SCALE));
                 Positions.Add(spot);
                 rectangle = new Rectangle((int)Positions[i].X, (int)Positions[i].Y, SCALE, SCALE);
-                Board[i].texture = textures[Board[i].type];
+                Board[i].texture = spaceTextures[Board[i].type];
             }
 
             Editor.EndCamera2D();
