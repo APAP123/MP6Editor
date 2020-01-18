@@ -34,7 +34,6 @@ namespace MP6Editor
 
         public List<byte> flags = new List<byte>();
         public int type;
-        public Texture2D texture;
         public byte typePad; // Padding after the type byte; This probably isn't neccessary.
         public int linkAmount;
         public List<int> links = new List<int>(); // IDs of the spaces linked to.

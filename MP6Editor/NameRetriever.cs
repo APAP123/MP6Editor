@@ -19,7 +19,6 @@ namespace MP6Editor
     {
         private static readonly string Spaces_Directory = @"textures/spaces/";
 
-
         /// <summary>
         /// Gets texture locations for passed game version.
         /// </summary>
@@ -65,6 +64,34 @@ namespace MP6Editor
             }
 
         }// end getSpaceNames()
+
+        /// <summary>
+        ///  Gets directories of textures for path flag badges.
+        /// </summary>
+        /// <returns>String List of path texture directories.</returns>
+        static public List<string> GetPathTextureNames()
+        {
+            List<string> names = new List<string>();
+            foreach (string name in Enum.GetNames(typeof(Space.PathFlags)))
+            {
+                names.Add(@"textures/badges/" + name);
+            }
+            return names;
+        }// end GetPathTextureNames()
+
+        /// <summary>
+        ///  Gets directories of textures for traversal flag badges.
+        /// </summary>
+        /// <returns>String List of traversal texture directories.</returns>
+        static public List<string> GetTraversalTextureNames()
+        {
+            List<string> names = new List<string>();
+            foreach (string name in Enum.GetNames(typeof(Space.TraversalFlags)))
+            {
+                names.Add(@"textures/badges/" + name);
+            }
+            return names;
+        }// end GetPathTextureNames()
 
         static private List<string> MP4_GetSpaceTypes(string prepend)
         {
