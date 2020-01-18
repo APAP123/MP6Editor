@@ -13,7 +13,8 @@ namespace MP6Editor
 {
     class ToolBox : MonoGameControl
     {
-        Texture2D bigPixel; 
+        Texture2D bigPixel;
+        Rectangle testTangle = new Rectangle(0, 0, 20, 20);
         protected override void Initialize()
         {
             base.Initialize();
@@ -23,20 +24,22 @@ namespace MP6Editor
 
         protected override void Update(GameTime gameTime)
         {
-
+            /******TESTING******/
+            //SpriteBatch spriteBatch = new SpriteBatch(GraphicsDevice);
+            //Rectangle testTangle = new Rectangle(0, 0, 400, 400);
+            //spriteBatch.Begin();
+            //spriteBatch.Draw(bigPixel, testTangle, Color.White);
+            //spriteBatch.End();
+            /******END******/
         }
 
         protected override void Draw()
         {
             base.Draw();
-
-            /******TESTING******/
-            SpriteBatch spriteBatch = new SpriteBatch(GraphicsDevice);
-            Rectangle testTangle = new Rectangle(0, 0, 400, 400);
-            spriteBatch.Begin();
-            spriteBatch.Draw(bigPixel, testTangle, Color.White);
-            spriteBatch.End();
-            /******END******/
+            GraphicsDevice.Clear(Color.IndianRed);
+            Editor.spriteBatch.Begin();
+            Editor.spriteBatch.Draw(bigPixel, testTangle, Color.White);
+            Editor.spriteBatch.End();
         }
     }
 }

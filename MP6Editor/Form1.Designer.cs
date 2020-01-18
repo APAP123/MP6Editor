@@ -78,7 +78,6 @@
             this.textBox_flag3 = new System.Windows.Forms.TextBox();
             this.textBox_flag2 = new System.Windows.Forms.TextBox();
             this.textBox_flag1 = new System.Windows.Forms.TextBox();
-            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.comboBox_PathFlag = new System.Windows.Forms.ComboBox();
             this.comboBox_TravelFlag = new System.Windows.Forms.ComboBox();
             this.label_PathFlag = new System.Windows.Forms.Label();
@@ -90,21 +89,23 @@
             this.groupBox_type = new System.Windows.Forms.GroupBox();
             this.groupBox_spaceProperties = new System.Windows.Forms.GroupBox();
             this.drawTest1 = new MP6Editor.DrawTest();
+            this.toolBox = new MP6Editor.ToolBox();
+            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.groupBox_position.SuspendLayout();
             this.groupBox_flagCombo.SuspendLayout();
             this.groupBox_rotation.SuspendLayout();
             this.groupBox_size.SuspendLayout();
             this.groupBox_type.SuspendLayout();
             this.groupBox_spaceProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).BeginInit();
             this.SuspendLayout();
             // 
             // label_SelectedSpace
             // 
             this.label_SelectedSpace.AutoSize = true;
-            this.label_SelectedSpace.Location = new System.Drawing.Point(7, 189);
+            this.label_SelectedSpace.Location = new System.Drawing.Point(7, 16);
             this.label_SelectedSpace.Name = "label_SelectedSpace";
             this.label_SelectedSpace.Size = new System.Drawing.Size(130, 13);
             this.label_SelectedSpace.TabIndex = 1;
@@ -206,7 +207,7 @@
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1050, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1248, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -348,7 +349,7 @@
             // btn_CreateSpace
             // 
             this.btn_CreateSpace.Enabled = false;
-            this.btn_CreateSpace.Location = new System.Drawing.Point(7, 650);
+            this.btn_CreateSpace.Location = new System.Drawing.Point(10, 650);
             this.btn_CreateSpace.Name = "btn_CreateSpace";
             this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_CreateSpace.TabIndex = 17;
@@ -359,7 +360,7 @@
             // btn_DeleteSpace
             // 
             this.btn_DeleteSpace.Enabled = false;
-            this.btn_DeleteSpace.Location = new System.Drawing.Point(7, 621);
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(10, 621);
             this.btn_DeleteSpace.Name = "btn_DeleteSpace";
             this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_DeleteSpace.TabIndex = 18;
@@ -573,16 +574,6 @@
             this.textBox_flag1.TabIndex = 0;
             this.textBox_flag1.ModifiedChanged += new System.EventHandler(this.textBox_flags_WasModified);
             // 
-            // pictureBox_Space
-            // 
-            this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
-            this.pictureBox_Space.Location = new System.Drawing.Point(0, 19);
-            this.pictureBox_Space.Name = "pictureBox_Space";
-            this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
-            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_Space.TabIndex = 13;
-            this.pictureBox_Space.TabStop = false;
-            // 
             // comboBox_PathFlag
             // 
             this.comboBox_PathFlag.Enabled = false;
@@ -629,7 +620,7 @@
             this.groupBox_position.Controls.Add(this.label_X);
             this.groupBox_position.Controls.Add(this.label_Y);
             this.groupBox_position.Controls.Add(this.label_Z);
-            this.groupBox_position.Location = new System.Drawing.Point(10, 205);
+            this.groupBox_position.Location = new System.Drawing.Point(10, 256);
             this.groupBox_position.Name = "groupBox_position";
             this.groupBox_position.Size = new System.Drawing.Size(94, 98);
             this.groupBox_position.TabIndex = 40;
@@ -657,7 +648,7 @@
             this.groupBox_rotation.Controls.Add(this.label3);
             this.groupBox_rotation.Controls.Add(this.label2);
             this.groupBox_rotation.Controls.Add(this.label1);
-            this.groupBox_rotation.Location = new System.Drawing.Point(110, 205);
+            this.groupBox_rotation.Location = new System.Drawing.Point(110, 256);
             this.groupBox_rotation.Name = "groupBox_rotation";
             this.groupBox_rotation.Size = new System.Drawing.Size(94, 98);
             this.groupBox_rotation.TabIndex = 42;
@@ -672,7 +663,7 @@
             this.groupBox_size.Controls.Add(this.label6);
             this.groupBox_size.Controls.Add(this.label5);
             this.groupBox_size.Controls.Add(this.label4);
-            this.groupBox_size.Location = new System.Drawing.Point(210, 205);
+            this.groupBox_size.Location = new System.Drawing.Point(210, 256);
             this.groupBox_size.Name = "groupBox_size";
             this.groupBox_size.Size = new System.Drawing.Size(94, 98);
             this.groupBox_size.TabIndex = 43;
@@ -683,7 +674,7 @@
             // groupBox_type
             // 
             this.groupBox_type.Controls.Add(this.comboBox_Type);
-            this.groupBox_type.Location = new System.Drawing.Point(10, 305);
+            this.groupBox_type.Location = new System.Drawing.Point(210, 424);
             this.groupBox_type.Name = "groupBox_type";
             this.groupBox_type.Size = new System.Drawing.Size(94, 46);
             this.groupBox_type.TabIndex = 44;
@@ -692,12 +683,12 @@
             // 
             // groupBox_spaceProperties
             // 
+            this.groupBox_spaceProperties.Controls.Add(this.toolBox);
             this.groupBox_spaceProperties.Controls.Add(this.groupBox_rotation);
             this.groupBox_spaceProperties.Controls.Add(this.groupBox_type);
             this.groupBox_spaceProperties.Controls.Add(this.label_SelectedSpace);
             this.groupBox_spaceProperties.Controls.Add(this.groupBox_size);
             this.groupBox_spaceProperties.Controls.Add(this.label_Links);
-            this.groupBox_spaceProperties.Controls.Add(this.pictureBox_Space);
             this.groupBox_spaceProperties.Controls.Add(this.groupBox_flagCombo);
             this.groupBox_spaceProperties.Controls.Add(this.btn_AddLink);
             this.groupBox_spaceProperties.Controls.Add(this.groupBox_position);
@@ -725,21 +716,41 @@
             this.drawTest1.OnMouseWheelDownwards += new MonoGame.Forms.Controls.GraphicsDeviceControl.MouseWheelDownwardsEvent(this.DrawTest1_OnMouseWheelDownwards);
             this.drawTest1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DrawTest1_MouseClick);
             // 
+            // toolBox
+            // 
+            this.toolBox.ForeColor = System.Drawing.Color.IndianRed;
+            this.toolBox.Location = new System.Drawing.Point(10, 34);
+            this.toolBox.MouseHoverUpdatesOnly = false;
+            this.toolBox.Name = "toolBox";
+            this.toolBox.Size = new System.Drawing.Size(200, 216);
+            this.toolBox.TabIndex = 46;
+            this.toolBox.Text = "toolBox";
+            // 
+            // pictureBox_Space
+            // 
+            this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
+            this.pictureBox_Space.Location = new System.Drawing.Point(1054, 28);
+            this.pictureBox_Space.Name = "pictureBox_Space";
+            this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
+            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Space.TabIndex = 13;
+            this.pictureBox_Space.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 704);
+            this.ClientSize = new System.Drawing.Size(1248, 704);
             this.Controls.Add(this.groupBox_spaceProperties);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.drawTest1);
+            this.Controls.Add(this.pictureBox_Space);
             this.Name = "Form1";
             this.Text = "MP6Editor";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox_flags.ResumeLayout(false);
             this.groupBox_flags.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).EndInit();
             this.groupBox_position.ResumeLayout(false);
             this.groupBox_position.PerformLayout();
             this.groupBox_flagCombo.ResumeLayout(false);
@@ -751,6 +762,7 @@
             this.groupBox_type.ResumeLayout(false);
             this.groupBox_spaceProperties.ResumeLayout(false);
             this.groupBox_spaceProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Space)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,7 +781,6 @@
         private System.Windows.Forms.ComboBox comboBox_Type;
         private System.Windows.Forms.Label label_Links;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.PictureBox pictureBox_Space;
         private System.Windows.Forms.OpenFileDialog openFileDialog_wbin;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -818,6 +829,8 @@
         private System.Windows.Forms.GroupBox groupBox_size;
         private System.Windows.Forms.GroupBox groupBox_type;
         private System.Windows.Forms.GroupBox groupBox_spaceProperties;
+        private ToolBox toolBox;
+        private System.Windows.Forms.PictureBox pictureBox_Space;
     }
 }
 

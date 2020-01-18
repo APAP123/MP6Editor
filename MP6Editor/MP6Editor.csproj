@@ -64,7 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circle.cs" />
     <Compile Include="DrawTest.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -87,6 +86,9 @@
     </Compile>
     <Compile Include="Space.cs" />
     <Compile Include="NameRetriever.cs" />
+    <Compile Include="TextureManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ToolBox.cs">
       <SubType>Component</SubType>
     </Compile>
