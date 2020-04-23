@@ -88,8 +88,8 @@
             this.groupBox_size = new System.Windows.Forms.GroupBox();
             this.groupBox_type = new System.Windows.Forms.GroupBox();
             this.groupBox_spaceProperties = new System.Windows.Forms.GroupBox();
-            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.toolBox = new MP6Editor.ToolBox();
+            this.pictureBox_Space = new System.Windows.Forms.PictureBox();
             this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
@@ -194,7 +194,7 @@
             // label_Links
             // 
             this.label_Links.AutoSize = true;
-            this.label_Links.Location = new System.Drawing.Point(7, 357);
+            this.label_Links.Location = new System.Drawing.Point(7, 363);
             this.label_Links.Name = "label_Links";
             this.label_Links.Size = new System.Drawing.Size(51, 13);
             this.label_Links.TabIndex = 11;
@@ -308,7 +308,7 @@
             // btn_AddLink
             // 
             this.btn_AddLink.Enabled = false;
-            this.btn_AddLink.Location = new System.Drawing.Point(170, 373);
+            this.btn_AddLink.Location = new System.Drawing.Point(170, 379);
             this.btn_AddLink.Name = "btn_AddLink";
             this.btn_AddLink.Size = new System.Drawing.Size(26, 23);
             this.btn_AddLink.TabIndex = 14;
@@ -319,7 +319,7 @@
             // btn_RemoveLink
             // 
             this.btn_RemoveLink.Enabled = false;
-            this.btn_RemoveLink.Location = new System.Drawing.Point(170, 402);
+            this.btn_RemoveLink.Location = new System.Drawing.Point(170, 408);
             this.btn_RemoveLink.Name = "btn_RemoveLink";
             this.btn_RemoveLink.Size = new System.Drawing.Size(26, 23);
             this.btn_RemoveLink.TabIndex = 15;
@@ -332,7 +332,7 @@
             this.listView_Links.Enabled = false;
             this.listView_Links.HideSelection = false;
             this.listView_Links.LabelEdit = true;
-            this.listView_Links.Location = new System.Drawing.Point(21, 373);
+            this.listView_Links.Location = new System.Drawing.Point(21, 379);
             this.listView_Links.MultiSelect = false;
             this.listView_Links.Name = "listView_Links";
             this.listView_Links.Size = new System.Drawing.Size(144, 97);
@@ -349,7 +349,7 @@
             // btn_CreateSpace
             // 
             this.btn_CreateSpace.Enabled = false;
-            this.btn_CreateSpace.Location = new System.Drawing.Point(10, 650);
+            this.btn_CreateSpace.Location = new System.Drawing.Point(1054, 495);
             this.btn_CreateSpace.Name = "btn_CreateSpace";
             this.btn_CreateSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_CreateSpace.TabIndex = 17;
@@ -360,7 +360,7 @@
             // btn_DeleteSpace
             // 
             this.btn_DeleteSpace.Enabled = false;
-            this.btn_DeleteSpace.Location = new System.Drawing.Point(10, 621);
+            this.btn_DeleteSpace.Location = new System.Drawing.Point(1054, 466);
             this.btn_DeleteSpace.Name = "btn_DeleteSpace";
             this.btn_DeleteSpace.Size = new System.Drawing.Size(144, 23);
             this.btn_DeleteSpace.TabIndex = 18;
@@ -497,7 +497,7 @@
             this.groupBox_flags.Controls.Add(this.textBox_flag3);
             this.groupBox_flags.Controls.Add(this.textBox_flag2);
             this.groupBox_flags.Controls.Add(this.textBox_flag1);
-            this.groupBox_flags.Location = new System.Drawing.Point(10, 563);
+            this.groupBox_flags.Location = new System.Drawing.Point(1054, 356);
             this.groupBox_flags.Name = "groupBox_flags";
             this.groupBox_flags.Size = new System.Drawing.Size(171, 52);
             this.groupBox_flags.TabIndex = 35;
@@ -633,7 +633,7 @@
             this.groupBox_flagCombo.Controls.Add(this.comboBox_TravelFlag);
             this.groupBox_flagCombo.Controls.Add(this.label_TravelFlag);
             this.groupBox_flagCombo.Controls.Add(this.label_PathFlag);
-            this.groupBox_flagCombo.Location = new System.Drawing.Point(10, 476);
+            this.groupBox_flagCombo.Location = new System.Drawing.Point(10, 482);
             this.groupBox_flagCombo.Name = "groupBox_flagCombo";
             this.groupBox_flagCombo.Size = new System.Drawing.Size(200, 81);
             this.groupBox_flagCombo.TabIndex = 41;
@@ -674,7 +674,7 @@
             // groupBox_type
             // 
             this.groupBox_type.Controls.Add(this.comboBox_Type);
-            this.groupBox_type.Location = new System.Drawing.Point(210, 424);
+            this.groupBox_type.Location = new System.Drawing.Point(210, 431);
             this.groupBox_type.Name = "groupBox_type";
             this.groupBox_type.Size = new System.Drawing.Size(94, 46);
             this.groupBox_type.TabIndex = 44;
@@ -693,26 +693,13 @@
             this.groupBox_spaceProperties.Controls.Add(this.btn_AddLink);
             this.groupBox_spaceProperties.Controls.Add(this.groupBox_position);
             this.groupBox_spaceProperties.Controls.Add(this.btn_RemoveLink);
-            this.groupBox_spaceProperties.Controls.Add(this.groupBox_flags);
             this.groupBox_spaceProperties.Controls.Add(this.listView_Links);
-            this.groupBox_spaceProperties.Controls.Add(this.btn_DeleteSpace);
-            this.groupBox_spaceProperties.Controls.Add(this.btn_CreateSpace);
             this.groupBox_spaceProperties.Location = new System.Drawing.Point(734, 12);
             this.groupBox_spaceProperties.Name = "groupBox_spaceProperties";
             this.groupBox_spaceProperties.Size = new System.Drawing.Size(314, 680);
             this.groupBox_spaceProperties.TabIndex = 45;
             this.groupBox_spaceProperties.TabStop = false;
             this.groupBox_spaceProperties.Text = "Space Properties";
-            // 
-            // pictureBox_Space
-            // 
-            this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
-            this.pictureBox_Space.Location = new System.Drawing.Point(1054, 28);
-            this.pictureBox_Space.Name = "pictureBox_Space";
-            this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
-            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_Space.TabIndex = 13;
-            this.pictureBox_Space.TabStop = false;
             // 
             // toolBox
             // 
@@ -723,6 +710,16 @@
             this.toolBox.Size = new System.Drawing.Size(200, 216);
             this.toolBox.TabIndex = 46;
             this.toolBox.Text = "toolBox";
+            // 
+            // pictureBox_Space
+            // 
+            this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
+            this.pictureBox_Space.Location = new System.Drawing.Point(1054, 28);
+            this.pictureBox_Space.Name = "pictureBox_Space";
+            this.pictureBox_Space.Size = new System.Drawing.Size(155, 157);
+            this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Space.TabIndex = 13;
+            this.pictureBox_Space.TabStop = false;
             // 
             // drawTest1
             // 
@@ -745,6 +742,9 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.drawTest1);
             this.Controls.Add(this.pictureBox_Space);
+            this.Controls.Add(this.groupBox_flags);
+            this.Controls.Add(this.btn_DeleteSpace);
+            this.Controls.Add(this.btn_CreateSpace);
             this.Name = "Form1";
             this.Text = "MP6Editor";
             this.toolStrip1.ResumeLayout(false);
