@@ -71,6 +71,7 @@ namespace MP6Editor
             }
         }
 
+        // TODO: remove as much logic as possible from this function; should be in Update() instead.
         protected override void Draw()
         {
             base.Draw();

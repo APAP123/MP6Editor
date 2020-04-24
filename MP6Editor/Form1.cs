@@ -132,8 +132,11 @@ namespace MP6Editor
                     groupBox_flags.Controls[i].Enabled = true;
                     groupBox_flags.Controls[i].Text = tempList[i].ToString("X2");
                 }
+
+                // Update ToolBox.
+                toolBox.highlightSpace = drawTest1.Board[drawTest1.SelectedSpace].type;
             }
-        }// end updateDisplayInfo()
+        }// end UpdateDisplayInfo()
 
         /// <summary>
         /// Updates the information on the selected Space to match the info in the forms.
@@ -290,6 +293,8 @@ namespace MP6Editor
                 drawTest1.Board = extractor.ReadFile();
                 drawTest1.LoadVersionTextures(version);
                 drawTest1.InitPositions();
+
+                toolBox.drawTypes = true;
 
                 // Type ComboBox
                 List<string> names = NameRetriever.GetSpaceNames(version);

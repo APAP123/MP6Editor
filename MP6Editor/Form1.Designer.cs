@@ -707,7 +707,7 @@
             this.toolBox.Location = new System.Drawing.Point(10, 34);
             this.toolBox.MouseHoverUpdatesOnly = false;
             this.toolBox.Name = "toolBox";
-            this.toolBox.Size = new System.Drawing.Size(200, 216);
+            this.toolBox.Size = new System.Drawing.Size(280, 216);
             this.toolBox.TabIndex = 46;
             this.toolBox.Text = "toolBox";
             // 
