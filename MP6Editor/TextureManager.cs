@@ -30,12 +30,6 @@ namespace MP6Editor
         private static Texture2D starBadge;
         private static MonoGameControl mono;
 
-        /// <summary>
-        /// Loads textures based on passed MP version.
-        /// </summary>
-        /// <param name="version">MP version to load.</param>
-        /// 
-
         public static void Initialize(MonoGameControl gameControl)
         {
             mono = gameControl;
@@ -44,7 +38,13 @@ namespace MP6Editor
             starBadge = gameControl.Editor.Content.Load<Texture2D>(@"textures/badges/Star");
             font = gameControl.Editor.Content.Load<SpriteFont>(@"SpaceIDs");
         }
-        
+
+
+        /// <summary>
+        /// Loads textures based on passed MP version.
+        /// </summary>
+        /// <param name="version">MP version to load.</param>
+        /// 
         public static void LoadTextures(int version)
         {
             spaceTextures.Clear();
