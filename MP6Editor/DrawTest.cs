@@ -130,6 +130,7 @@ namespace MP6Editor
                 if (space > -1)
                 {
                     SelectedSpace = space;
+                    Mediator.ToolBox_SetSelected(Board[SelectedSpace].type);
                 }
             }
         }// end Board_OnMouseClick()

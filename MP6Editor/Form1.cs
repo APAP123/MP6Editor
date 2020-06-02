@@ -23,6 +23,8 @@ namespace MP6Editor
             InitializeComponent();
 
             AddToolTips();
+            Mediator.DrawTest = drawTest1;
+            Mediator.ToolBox = toolBox;
         }
 
         private void AddToolTips()
@@ -54,7 +56,6 @@ namespace MP6Editor
                     
                     control.Enabled = true;
                 }
-
             }
             UpdateDisplayInfo();
         }
@@ -132,9 +133,6 @@ namespace MP6Editor
                     groupBox_flags.Controls[i].Enabled = true;
                     groupBox_flags.Controls[i].Text = tempList[i].ToString("X2");
                 }
-
-                // Update ToolBox.
-                toolBox.highlightSpace = drawTest1.Board[drawTest1.SelectedSpace].type;
             }
         }// end UpdateDisplayInfo()
 

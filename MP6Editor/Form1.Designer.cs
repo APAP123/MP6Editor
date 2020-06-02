@@ -674,7 +674,7 @@
             // groupBox_type
             // 
             this.groupBox_type.Controls.Add(this.comboBox_Type);
-            this.groupBox_type.Location = new System.Drawing.Point(210, 431);
+            this.groupBox_type.Location = new System.Drawing.Point(216, 517);
             this.groupBox_type.Name = "groupBox_type";
             this.groupBox_type.Size = new System.Drawing.Size(94, 46);
             this.groupBox_type.TabIndex = 44;
@@ -704,7 +704,7 @@
             // toolBox
             // 
             this.toolBox.ForeColor = System.Drawing.Color.IndianRed;
-            this.toolBox.Location = new System.Drawing.Point(10, 34);
+            this.toolBox.Location = new System.Drawing.Point(10, 32);
             this.toolBox.MouseHoverUpdatesOnly = false;
             this.toolBox.Name = "toolBox";
             this.toolBox.Size = new System.Drawing.Size(280, 216);
