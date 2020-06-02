@@ -14,18 +14,22 @@ namespace MP6Editor
     class ToolBox : MonoGameControl
     {
         Texture2D bigPixel;
+        Texture2D separationBar;
         Rectangle testTangle = new Rectangle(0, 0, 20, 20);
         public bool drawTypes = false;
         public int highlightSpace = -1;
-        private const int rowCount = 6;
+        private const int rowCount = 6; // Max amount of spaces to show per row
 
         List<Rectangle> rectangles = new List<Rectangle>();
         Rectangle rectangle = new Rectangle(4, 4, 32, 32);
         Rectangle highRect = new Rectangle(0, 0, 40, 40);
+        Rectangle separationRect = new Rectangle(0, 0, 0, 0);
 
         protected override void Initialize()
         {
             base.Initialize();
+            separationRect = new Rectangle(0, 5, this.Width, 5);
+            separationBar = Editor.Content.Load<Texture2D>(@"textures/separation_bar");
 
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");
         }//end Initialize()
@@ -47,16 +51,33 @@ namespace MP6Editor
             return spacing;
         }// end EquaDistance()
 
+
+        /// <summary>
+        ///  Switches Space type if new type is selected.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                var mouseState = Mouse.GetState();
+                var mousePosition = new Point(mouseState.X, mouseState.Y);
+
+                for (int i = 0; i < rectangles.Count; i++)
+                {
+                    if (rectangles[i].Contains(mousePosition))
+                    {
+                        highlightSpace = i;
+                        Mediator.DrawTest_SetSpaceType(i);
+                    }
+                }
+            }
+        }// end OnMouseClick()
+
         protected override void Update(GameTime gameTime)
         {
-            /******TESTING******/
-            //SpriteBatch spriteBatch = new SpriteBatch(GraphicsDevice);
-            //Rectangle testTangle = new Rectangle(0, 0, 400, 400);
-            //spriteBatch.Begin();
-            //spriteBatch.Draw(bigPixel, testTangle, Color.White);
-            //spriteBatch.End();
-            /******END******/
-
             // Create rectangle List that Draw() simply iterates through
             if (drawTypes && !rectangles.Any())
             {
@@ -69,7 +90,7 @@ namespace MP6Editor
                     rectangles.Add(rectangle);
 
                     // Moves to next row after 7 Spaces
-                    if (i > 0 && i % (rowCount - 1) == 0)
+                    if ( (i > rowCount && i % rowCount == 0) || (i == rowCount - 1) )
                     {
                         rectangle = new Rectangle(4, rectangle.Y + rectangle.Height + spacing, rectangle.Width, rectangle.Height);
                     }
@@ -86,15 +107,11 @@ namespace MP6Editor
             base.Draw();
             GraphicsDevice.Clear(Color.IndianRed);
             Editor.spriteBatch.Begin();
-            //Editor.spriteBatch.Draw(bigPixel, testTangle, Color.White);
-
-            //rectangle = new Rectangle(4, 4, 32, 32);
 
             highRect = new Rectangle(0, 0, 40, 40);
 
-            if (drawTypes && rectangles.Any())
+            if (drawTypes && rectangles.Any()) //Possibly redundant if statement?
             {
-
                 for (int i = 0; i < rectangles.Count; i++)
                 {
                     Editor.spriteBatch.Draw(TextureManager.spaceTextures[i], rectangles[i], Color.White);
@@ -106,7 +123,10 @@ namespace MP6Editor
                         Editor.spriteBatch.Draw(TextureManager.highlight, highRect, Color.White);
                     }
                 }
+                separationRect = new Rectangle(0, rectangles[rectangles.Count - 1].Y + rectangle.Height + 5, separationRect.Width, separationRect.Height); 
             }
+
+            Editor.spriteBatch.Draw(TextureManager.separationBar, separationRect, Color.White);
 
             Editor.spriteBatch.End();
         }

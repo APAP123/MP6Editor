@@ -76,6 +76,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mediator.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,9 +87,7 @@
     </Compile>
     <Compile Include="Space.cs" />
     <Compile Include="NameRetriever.cs" />
-    <Compile Include="TextureManager.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="TextureManager.cs" />
     <Compile Include="ToolBox.cs">
       <SubType>Component</SubType>
     </Compile>

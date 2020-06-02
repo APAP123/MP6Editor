@@ -27,7 +27,9 @@ namespace MP6Editor
 
         public static Texture2D pathIndicator;
         public static Texture2D highlight;
+        public static Texture2D separationBar;
         private static Texture2D starBadge;
+        
         private static MonoGameControl mono;
 
         public static void Initialize(MonoGameControl gameControl)
@@ -36,6 +38,7 @@ namespace MP6Editor
             pathIndicator = gameControl.Editor.Content.Load<Texture2D>(@"BigPixel");
             highlight = gameControl.Editor.Content.Load<Texture2D>(@"Selected");
             starBadge = gameControl.Editor.Content.Load<Texture2D>(@"textures/badges/Star");
+            separationBar = gameControl.Editor.Content.Load<Texture2D>(@"textures/separation_bar");
             font = gameControl.Editor.Content.Load<SpriteFont>(@"SpaceIDs");
         }
 
