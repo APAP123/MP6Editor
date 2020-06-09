@@ -18,9 +18,13 @@ namespace MP6Editor
         Rectangle testTangle = new Rectangle(0, 0, 20, 20);
         public bool drawTypes = false;
         public int highlightSpace = -1;
+        private int highlightPath = -1;
         private const int rowCount = 6; // Max amount of spaces to show per row
 
-        List<Rectangle> rectangles = new List<Rectangle>();
+        private readonly string pathFlags = "Path Flags";
+
+        List<Rectangle> rectangles = new List<Rectangle>(); // List of Space rectangles
+        List<Rectangle> pathTangles = new List<Rectangle>();
         Rectangle rectangle = new Rectangle(4, 4, 32, 32);
         Rectangle highRect = new Rectangle(0, 0, 40, 40);
         Rectangle separationRect = new Rectangle(0, 0, 0, 0);
@@ -28,7 +32,7 @@ namespace MP6Editor
         protected override void Initialize()
         {
             base.Initialize();
-            separationRect = new Rectangle(0, 5, this.Width, 5);
+            separationRect = new Rectangle(0, 5, this.Width, 16);
             separationBar = Editor.Content.Load<Texture2D>(@"textures/separation_bar");
 
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");
@@ -51,6 +55,18 @@ namespace MP6Editor
             return spacing;
         }// end EquaDistance()
 
+        private bool FindSelection(List<Rectangle> rectangles, int highlight, Point mousePosition)
+        {
+            for (int i = 0; i < rectangles.Count; i++)
+            {
+                if (rectangles[i].Contains(mousePosition))
+                {
+                    highlight = i;
+                    return true;
+                }
+            }
+            return false;
+        } // end FindSelection()
 
         /// <summary>
         ///  Switches Space type if new type is selected.
@@ -65,32 +81,37 @@ namespace MP6Editor
                 var mouseState = Mouse.GetState();
                 var mousePosition = new Point(mouseState.X, mouseState.Y);
 
-                for (int i = 0; i < rectangles.Count; i++)
+                if (FindSelection(rectangles, highlightSpace, mousePosition)) // Space types
                 {
-                    if (rectangles[i].Contains(mousePosition))
-                    {
-                        highlightSpace = i;
-                        Mediator.DrawTest_SetSpaceType(i);
-                    }
+                    Mediator.DrawTest_SetSpaceType(highlightSpace);
+                    return;
+                }
+                
+                if (FindSelection(pathTangles, highlightPath, mousePosition)) // Path variables
+                {
+
                 }
             }
         }// end OnMouseClick()
 
-        protected override void Update(GameTime gameTime)
+        /// <summary>
+        /// Updates the toolbox with the passed List of Rectangles.
+        /// </summary>
+        /// <param name="rectangleList"></param>
+        /// <param name="textureList"></param>
+        protected void UpdateToolset(List<Rectangle> rectangleList, List<Texture2D> textureList, Rectangle rectangle)
         {
             // Create rectangle List that Draw() simply iterates through
-            if (drawTypes && !rectangles.Any())
+            if (drawTypes && !rectangleList.Any())
             {
-                rectangle = new Rectangle(4, 4, 32, 32);
-
                 int spacing = EquaDistance(this.Width, rowCount, rectangle);
 
-                for (int i = 0; i < TextureManager.spaceTextures.Count; i++)
+                for (int i = 0; i < textureList.Count; i++)
                 {
-                    rectangles.Add(rectangle);
+                    rectangleList.Add(rectangle);
 
                     // Moves to next row after 7 Spaces
-                    if ( (i > rowCount && i % rowCount == 0) || (i == rowCount - 1) )
+                    if ((i > rowCount && i % rowCount == 0) || (i == rowCount - 1))
                     {
                         rectangle = new Rectangle(4, rectangle.Y + rectangle.Height + spacing, rectangle.Width, rectangle.Height);
                     }
@@ -100,6 +121,41 @@ namespace MP6Editor
                     }
                 }
             }
+        } // end UpdateToolset()
+
+        /// <summary>
+        /// Draws the passed Textures onto the passed Rectangles.
+        /// </summary>
+        /// <param name="textures"></param>
+        /// <param name="rectangles"></param>
+        protected void DrawToolSet(List<Texture2D> textures, List<Rectangle> rectangles, int highlight)
+        {
+            highRect = new Rectangle(0, 0, 40, 40);
+
+            if (drawTypes && rectangles.Any()) //Possibly redundant if statement?
+            {
+                for (int i = 0; i < rectangles.Count; i++)
+                {
+                    Editor.spriteBatch.Draw(textures[i], rectangles[i], Color.White);
+
+                    // Draw highlight around selected Space Type
+                    if (i == highlight)
+                    {
+                        highRect = new Rectangle(rectangles[i].X - 4, rectangles[i].Y - 4, highRect.Width, highRect.Height);
+                        Editor.spriteBatch.Draw(TextureManager.highlight, highRect, Color.White);
+                    }
+                }
+            }
+        } // end DrawToolSet()
+
+        protected override void Update(GameTime gameTime)
+        {
+            UpdateToolset(rectangles, TextureManager.spaceTextures, new Rectangle(4, 4, 32, 32));
+            if (rectangles.Any())
+            {
+                rectangle = rectangles[rectangles.Count - 1];
+            }
+            UpdateToolset(pathTangles, TextureManager.PathTextures, new Rectangle(4, rectangle.Y + rectangle.Height + separationRect.Height + 10, 32, 32));
         }
 
         protected override void Draw()
@@ -108,25 +164,15 @@ namespace MP6Editor
             GraphicsDevice.Clear(Color.IndianRed);
             Editor.spriteBatch.Begin();
 
-            highRect = new Rectangle(0, 0, 40, 40);
+            DrawToolSet(TextureManager.spaceTextures, rectangles, highlightSpace); // Space types
+            DrawToolSet(TextureManager.PathTextures, pathTangles, highlightPath); //Path variables
 
-            if (drawTypes && rectangles.Any()) //Possibly redundant if statement?
+            if (rectangles.Any())
             {
-                for (int i = 0; i < rectangles.Count; i++)
-                {
-                    Editor.spriteBatch.Draw(TextureManager.spaceTextures[i], rectangles[i], Color.White);
-
-                    // Draw highlight around selected Space Type
-                    if (i == highlightSpace)
-                    {
-                        highRect = new Rectangle(rectangles[i].X - 4, rectangles[i].Y - 4, highRect.Width, highRect.Height);
-                        Editor.spriteBatch.Draw(TextureManager.highlight, highRect, Color.White);
-                    }
-                }
-                separationRect = new Rectangle(0, rectangles[rectangles.Count - 1].Y + rectangle.Height + 5, separationRect.Width, separationRect.Height); 
+                separationRect = new Rectangle(0, rectangles[rectangles.Count - 1].Y + rectangle.Height + 5, separationRect.Width, separationRect.Height);
             }
-
             Editor.spriteBatch.Draw(TextureManager.separationBar, separationRect, Color.White);
+            TextureManager.DrawText2(pathFlags, new Vector2(separationRect.X, separationRect.Y), Editor.spriteBatch);
 
             Editor.spriteBatch.End();
         }
