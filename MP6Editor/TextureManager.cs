@@ -20,6 +20,7 @@ namespace MP6Editor
     static class TextureManager
     {
         private static SpriteFont font;
+        private static SpriteFont font2;
 
         public static List<Texture2D> spaceTextures = new List<Texture2D>();
         public static List<Texture2D> PathTextures = new List<Texture2D>();
@@ -40,6 +41,7 @@ namespace MP6Editor
             starBadge = gameControl.Editor.Content.Load<Texture2D>(@"textures/badges/Star");
             separationBar = gameControl.Editor.Content.Load<Texture2D>(@"textures/separation_bar");
             font = gameControl.Editor.Content.Load<SpriteFont>(@"SpaceIDs");
+            font2 = gameControl.Editor.Content.Load<SpriteFont>(@"DelineationHeadlines");
         }
 
 
@@ -123,6 +125,15 @@ namespace MP6Editor
             spriteBatch.DrawString(font, text, position + new Vector2(-1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, text, position + new Vector2(1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, text, position, Color.White);
+        }
+
+        public static void DrawText2(string text, Vector2 position, SpriteBatch spriteBatch)
+        {
+            Vector2 stringSize = font2.MeasureString(text);
+            Vector2 newPos = new Vector2(position.X - (stringSize.X / 2), position.Y - (stringSize.Y / 2));
+            spriteBatch.DrawString(font2, text, position + new Vector2(-1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(font2, text, position + new Vector2(1, -1), Color.Black, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(font2, text, position, Color.White);
         }
     }
 }

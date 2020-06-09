@@ -25,6 +25,13 @@
 /processorParam:TextureFormat=Color
 /build:bigPixel.png
 
+#begin DelineationHeadlines.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:DelineationHeadlines.spritefont
+
 #begin Selected.png
 /importer:TextureImporter
 /processor:TextureProcessor
