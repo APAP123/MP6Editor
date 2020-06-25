@@ -22,6 +22,7 @@ namespace MP6Editor
         {
             ToolBox.highlightSpace = selected;
             ToolBox.highlightPath =  Array.IndexOf((Enum.GetValues(typeof(Space.PathFlags)) as int[]), DrawTest.Board[CurrentSpace].flags[0]);
+            ToolBox.highlightTravel = Array.IndexOf((Enum.GetValues(typeof(Space.TraversalFlags)) as int[]), DrawTest.Board[CurrentSpace].flags[1]);
         }
 
         public static void DrawTest_SetSpaceType(int type)
@@ -33,6 +34,11 @@ namespace MP6Editor
         {
             DrawTest.Board[CurrentSpace].flags[0] = (byte)(Enum.GetValues(typeof(Space.PathFlags)) as int[])[path];
             //DrawTest.Board[CurrentSpace].flags[0] = (byte)path;
+        }
+
+        public static void DrawTest_SetTravelType(int travel)
+        {
+            DrawTest.Board[CurrentSpace].flags[1] = (byte)(Enum.GetValues(typeof(Space.TraversalFlags)) as int[])[travel];
         }
     }
 }

@@ -19,20 +19,25 @@ namespace MP6Editor
         public bool drawTypes = false;
         public int highlightSpace = -1;
         public int highlightPath = -1;
+        public int highlightTravel = -1;
         private const int rowCount = 6; // Max amount of spaces to show per row
 
-        private readonly string pathFlags = "Path Flags";
+        private readonly string PathTitle = "Path Flags";
+        private readonly string travelTitle = "Travel Flags";
 
         List<Rectangle> spaceTangles = new List<Rectangle>(); // List of Space rectangles
         List<Rectangle> pathTangles = new List<Rectangle>(); // List of path rectangles
+        List<Rectangle> travelTangles = new List<Rectangle>(); // list of travel rectangles
         Rectangle rectangle = new Rectangle(4, 4, 32, 32);
         Rectangle highRect = new Rectangle(0, 0, 40, 40);
-        Rectangle separationRect = new Rectangle(0, 0, 0, 0);
+        Rectangle pathTitleBar = new Rectangle(0, 0, 0, 0); // Path Flags title bar
+        Rectangle travelTitleBar = new Rectangle(0, 0, 0, 0);
 
         protected override void Initialize()
         {
             base.Initialize();
-            separationRect = new Rectangle(0, 5, this.Width, 16);
+            pathTitleBar = new Rectangle(0, 5, this.Width, 16);
+            travelTitleBar = new Rectangle(0, 5, this.Width, 16);
             separationBar = Editor.Content.Load<Texture2D>(@"textures/separation_bar");
 
             bigPixel = Editor.Content.Load<Texture2D>(@"BigPixel");
@@ -86,15 +91,26 @@ namespace MP6Editor
                 var mouseState = Mouse.GetState();
                 var mousePosition = new Point(mouseState.X, mouseState.Y);
 
-                if ((highlightSpace = FindSelection(spaceTangles, mousePosition)) > -1) // Space types
+                int selection = -1;
+
+                if ((selection = FindSelection(spaceTangles, mousePosition)) > -1) // Space types
                 {
+                    highlightSpace = selection;
                     Mediator.DrawTest_SetSpaceType(highlightSpace);
                     return;
                 }
                 
-                if ((highlightPath = FindSelection(pathTangles, mousePosition)) > -1) // Path variables
+                if ((selection = FindSelection(pathTangles, mousePosition)) > -1) // Path variables
                 {
+                    highlightPath = selection;
                     Mediator.DrawTest_SetPathType(highlightPath);
+                    return;
+                }
+
+                if ((selection = FindSelection(travelTangles, mousePosition)) > -1) // travel variables
+                {
+                    highlightTravel = selection;
+                    Mediator.DrawTest_SetTravelType(highlightTravel);
                 }
             }
         }// end OnMouseClick()
@@ -160,7 +176,20 @@ namespace MP6Editor
             {
                 rectangle = spaceTangles[spaceTangles.Count - 1];
             }
-            UpdateToolset(pathTangles, TextureManager.PathTextures, new Rectangle(4, rectangle.Y + rectangle.Height + separationRect.Height + 10, 32, 32));
+            UpdateToolset(pathTangles, TextureManager.PathTextures, new Rectangle(4, rectangle.Y + rectangle.Height + pathTitleBar.Height + 10, 32, 32));
+            if (pathTangles.Any())
+            {
+                rectangle = pathTangles[pathTangles.Count - 1];
+            }
+            UpdateToolset(travelTangles, TextureManager.TraversalTextures, new Rectangle(4, rectangle.Y + rectangle.Height + pathTitleBar.Height + 10, 32, 32));
+            if (travelTangles.Any())
+            {
+                // Increases ToolBox height to accomodate all panels
+                if(travelTangles[travelTangles.Count - 1].Y + travelTangles[travelTangles.Count - 1].Height > this.Height)
+                {
+                    this.Height = travelTangles[travelTangles.Count - 1].Y + travelTangles[travelTangles.Count - 1].Height + 10;
+                }
+            }
         }
 
         protected override void Draw()
@@ -171,13 +200,20 @@ namespace MP6Editor
 
             DrawToolSet(TextureManager.spaceTextures, spaceTangles, highlightSpace); // Space types
             DrawToolSet(TextureManager.PathTextures, pathTangles, highlightPath); // Path variables
+            DrawToolSet(TextureManager.TraversalTextures, travelTangles, highlightTravel); // Travel variables
 
             if (spaceTangles.Any())
             {
-                separationRect = new Rectangle(0, spaceTangles[spaceTangles.Count - 1].Y + rectangle.Height + 5, separationRect.Width, separationRect.Height);
+                pathTitleBar = new Rectangle(0, spaceTangles[spaceTangles.Count - 1].Y + rectangle.Height + 5, pathTitleBar.Width, pathTitleBar.Height);
             }
-            Editor.spriteBatch.Draw(TextureManager.separationBar, separationRect, Color.White);
-            TextureManager.DrawText2(pathFlags, new Vector2(separationRect.X, separationRect.Y), Editor.spriteBatch);
+            if (pathTangles.Any())
+            {
+                travelTitleBar = new Rectangle(0, pathTangles[pathTangles.Count - 1].Y + rectangle.Height + 5, travelTitleBar.Width, travelTitleBar.Height);
+            }
+            Editor.spriteBatch.Draw(TextureManager.separationBar, pathTitleBar, Color.White);
+            Editor.spriteBatch.Draw(TextureManager.separationBar, travelTitleBar, Color.White);
+            TextureManager.DrawText2(PathTitle, new Vector2(pathTitleBar.X, pathTitleBar.Y), Editor.spriteBatch);
+            TextureManager.DrawText2(travelTitle, new Vector2(travelTitleBar.X, travelTitleBar.Y), Editor.spriteBatch);
 
             Editor.spriteBatch.End();
         }

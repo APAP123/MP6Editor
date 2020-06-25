@@ -88,8 +88,8 @@
             this.groupBox_size = new System.Windows.Forms.GroupBox();
             this.groupBox_type = new System.Windows.Forms.GroupBox();
             this.groupBox_spaceProperties = new System.Windows.Forms.GroupBox();
-            this.toolBox = new MP6Editor.ToolBox();
             this.pictureBox_Space = new System.Windows.Forms.PictureBox();
+            this.toolBox = new MP6Editor.ToolBox();
             this.drawTest1 = new MP6Editor.DrawTest();
             this.toolStrip1.SuspendLayout();
             this.groupBox_flags.SuspendLayout();
@@ -701,16 +701,6 @@
             this.groupBox_spaceProperties.TabStop = false;
             this.groupBox_spaceProperties.Text = "Space Properties";
             // 
-            // toolBox
-            // 
-            this.toolBox.ForeColor = System.Drawing.Color.IndianRed;
-            this.toolBox.Location = new System.Drawing.Point(10, 32);
-            this.toolBox.MouseHoverUpdatesOnly = false;
-            this.toolBox.Name = "toolBox";
-            this.toolBox.Size = new System.Drawing.Size(280, 216);
-            this.toolBox.TabIndex = 46;
-            this.toolBox.Text = "toolBox";
-            // 
             // pictureBox_Space
             // 
             this.pictureBox_Space.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Space.Image")));
@@ -720,6 +710,16 @@
             this.pictureBox_Space.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Space.TabIndex = 13;
             this.pictureBox_Space.TabStop = false;
+            // 
+            // toolBox
+            // 
+            this.toolBox.ForeColor = System.Drawing.Color.IndianRed;
+            this.toolBox.Location = new System.Drawing.Point(10, 32);
+            this.toolBox.MouseHoverUpdatesOnly = false;
+            this.toolBox.Name = "toolBox";
+            this.toolBox.Size = new System.Drawing.Size(280, 216);
+            this.toolBox.TabIndex = 46;
+            this.toolBox.Text = "toolBox";
             // 
             // drawTest1
             // 
